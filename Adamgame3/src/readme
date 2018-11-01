@@ -1,0 +1,34 @@
+Adam Arato
+aarato2
+676174995
+
+to run my programing type 
+----------
+make
+java GameTester <filename.gdf>
+----------
+
+this will print out the nessesary information, then you type the variouse directions to go that way
+you could optionally type the word go before the letter for the direction. that will also work. It is also not caps sensitive.
+
+each time you move it will tell you what room you have entered. if the room does not exist or it is locked, it will give the same error message "failed to move"
+
+typing quit or exit will let you quit
+the game will also quit if you go to the exit
+
+get, look, use and drop will all work. for get and drop you need to specify the item you are getting dropping or useing.
+
+
+
+type look to see where the player currently is
+
+all classes used were specified in the uml diagram
+
+if a npc reaches an exit they will have left the game and their move() will not longer be
+called.
+NPC will attempt to randomy move, pick up, drop or use objects. if it fails to do these tasks enough
+times it will just wait and do nothing.
+
+
+MysticCity is the default map
+LessMysticCity is the mystic city without the characters so that you can atest the functionailty of adding your own characters.
