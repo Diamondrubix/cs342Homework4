@@ -136,6 +136,20 @@ public class Place {
 		Direction d = (Direction) directions.get(randomInt);
 		return (d.getDirType());
 	}
+	// Return a random place ID
+	int randomID() {
+		int randomInt;	// Used to get a random index per the length of array
+		// Basically, convert hashmap to array
+		// Randomly select a place with random index
+		Random gen = new Random();
+		Object[] placesArray = places.values().toArray();
+		do {
+			randomInt = gen.nextInt(placesArray.length);
+		} while (randomInt == 0);	// This is to prevent player/NPC/Artifacts from being put in an exit
+
+		Place randomPlace = (Place) placesArray[randomInt];
+		return randomPlace.getPlace();	// Return the ID of a random place
+	}
 	// Return a random string from artifacts contained in this place
 	String getRandomArt() {
 		if (artifacts.size() < 1) {
