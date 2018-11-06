@@ -59,17 +59,17 @@ public class Place {
 		characters = new Vector<Character>();
 	}
 	// NEW in 4.0
-	void addCharacter(Character c) {
+	public void addCharacter(Character c) {
 		characters.add(c);
 	}
 	// Make function to remove characters
 	//...
 
 	// Adds an Artifact object to this Place's collection of Artifacts
-	void addArtifact(Artifact a) {
+	public void addArtifact(Artifact a) {
 		artifacts.add(a);
 	}
-	Boolean containsArtifact(String name) {
+	public Boolean containsArtifact(String name) {
 		for (Artifact a : artifacts) {
 			if (name.equals(a.name().toUpperCase() )) {
 				return true;
@@ -79,7 +79,7 @@ public class Place {
 	}
 	// Remove artifact from Place's artifact collection
 	// Return that artifact to be stored in user inventory (in Game)
-	Artifact removeArtifact(String name) {
+	public Artifact removeArtifact(String name) {
 		for (Artifact a : artifacts) {
 			if (name.equals(a.name().toUpperCase()) && a.weight() >= 0 ) {	// weight must be movable (>= 0)
 				artifacts.remove(a);
@@ -88,21 +88,21 @@ public class Place {
 		}
 		return null;
 	}
-	void removeCharacter(Character c) {
+	public void removeCharacter(Character c) {
 		// TODO: Drop loot to this place
 		// Did not feel like implementing this
 		// Probably really easy tbh
 		characters.remove(c);
 	}
 	// Passes the artifact to the useKey() method of all Directions present in this Place
-	void useKey(Artifact a) {
+	public void useKey(Artifact a) {
 		for (Direction d : directions) {
 			d.useKey(a);
 		}
 	}
 	// Returns the Place associated with the given ID number, or null
 	// Requires a map
-	static Place getPlaceByID(int id) {
+	public static Place getPlaceByID(int id) {
 		if (firstTime) {
 			firstTime = false;
 			/* CREATE EXIT */
@@ -112,7 +112,7 @@ public class Place {
 		}
 		return places.get(id);
 	}
-	static Place getRandomPlace() {
+	public static Place getRandomPlace() {
 		int randomInt;	// Used to get a random index per the length of array
 		// Basically, convert hashmap to array
 		// Randomly select a place with random index
@@ -126,7 +126,7 @@ public class Place {
 		return randomPlace;
 	}
 	// Returns a random string from direction contained in this place
-	String getRandomDir() {
+	public String getRandomDir() {
 		if (directions.size() < 1) {
 			return "";
 		}
@@ -151,7 +151,7 @@ public class Place {
 		return randomPlace.getPlace();	// Return the ID of a random place
 	}
 	// Return a random string from artifacts contained in this place
-	String getRandomArt() {
+	public String getRandomArt() {
 		if (artifacts.size() < 1) {
 			return "";
 		}
@@ -162,21 +162,21 @@ public class Place {
 		return (a.name());
 	}
 	// Returns name of place
-	String name() {
+	public String name() {
 		return name;
 	}
 	// Returns the description
-	String description() {
+	public String description() {
 		return description;
 	}
 	// Adds a Direction obj to this place's COLLECTION of directions
-	void addDirection(Direction dir) {
+	public void addDirection(Direction dir) {
 		directions.add(dir);
 	}
 	// Checks to see if this place has a a valid unlocked Direction corresponding to string passed
 	// If it does correspond, returns the place arrived at (after following)
 	// Else, returns itself
-	Place followDirection(String dir) {
+	public Place followDirection(String dir) {
 		for (Direction d : directions) {
 			if (d.match(dir) ) {
 				return d.follow();
@@ -185,7 +185,7 @@ public class Place {
 		return this;
 	}
 	// Prints out all Place information. DEBUGGING AND TESTING
-	void print_DEBUG() {
+	public void print_DEBUG() {
 		System.out.println("Place");
 		System.out.println("ID: " + ID);
 		System.out.println("Name: " + name);
@@ -194,7 +194,7 @@ public class Place {
 	}
 
 	// Prints out the area the user is current in
-	void print() {
+	public void print() {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println(description);
 		int totalWeight = 0;
@@ -214,7 +214,7 @@ public class Place {
 	}
 	// Prints all debugging info
 	// Directions, artifacts, characters in each place
-	static void printAll() {
+	public static void printAll() {
 		for (Map.Entry<Integer, Place> entry : places.entrySet() ) {
 
 			Place p = entry.getValue();	// Place
