@@ -137,7 +137,7 @@ public class Place {
 		return (d.getDirType());
 	}
 	// Return a random place ID
-	int randomID() {
+	public static int getRandomID() {
 		int randomInt;	// Used to get a random index per the length of array
 		// Basically, convert hashmap to array
 		// Randomly select a place with random index
