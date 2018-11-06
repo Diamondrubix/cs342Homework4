@@ -88,7 +88,7 @@ public class Character {
         ID = i;
         name = n;
         description = desc;
-        location = Place.getPlaceID(l);
+        location = Place.getPlaceByID(l);
     }
 
 
