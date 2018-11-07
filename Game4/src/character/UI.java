@@ -1,4 +1,6 @@
-import character.DecisionMaker;
+package character;
+
+import artifact.Move;
 import place.Place;
 
 import java.util.Scanner;
@@ -16,18 +18,19 @@ public class UI implements DecisionMaker {
     public Move getMove(Character c, Place location) {
         boolean valid = false;
         Move m = null;
-        while(!valid) {
+        //while(!valid) {//commented this out temporarily for test run
             Scanner sc = new Scanner(System.in);
             String text = sc.nextLine();
             //text = text.toLowerCase();
             m = new Move(text);
-            if(m.type!=Move.MoveType.invalid){
+            /*if(m.type()!=Move.MoveType.invalid){
                 valid = true;
-            }else{
+            }else
+            */{
                 System.out.println("input is invalid");
                 System.out.print(": ");
             }
-        }
+        //}
         return m;
 
 

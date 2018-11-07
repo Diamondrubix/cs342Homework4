@@ -3,8 +3,7 @@
 
 package place;
 
-import game.Place;
-import game.Game;
+import artifact.Artifact;
 import game.CleanLineScanner;
 
 import java.util.*;
@@ -20,16 +19,16 @@ public class Direction {
 
 	// Constructor for Direction object.
 	// ID - source - direction - destination - lockPattern
-	Direction(Scanner s) {
+	public Direction(Scanner s) {
 
-		String[] tokens = CleanLineScanner.getTokens(input);
+		String[] tokens = CleanLineScanner.getTokens(s);
 			
 		//One of required fields not provided.
 		if (tokens.length < 5) { //Skip malformed declarations.
 			this.ID = -1;
 			this.from = null;
 			this.to = null;
-			this.direction = DirType.getEnum("NONE");
+			this.dir = DirType.getEnum("NONE");
 			this.lockPattern = 0;
 			this.locked = false;
 			return;
@@ -75,7 +74,7 @@ public class Direction {
 	}
 	// If keyPattern of the artifact is positive and equal to lockPattern, toggle state of dir lock
 	public void useKey(Artifact a) {
-		if (a.keyPattern() > 0 && a.keyPattern() == this.lockPattern) {
+		if (a.getKeyPattern() > 0 && a.getKeyPattern() == this.lockPattern) {
 			locked = !(locked);
 			System.out.println(locked);
 			System.out.println("Used " + a.name() + "!\n");
@@ -182,7 +181,7 @@ public class Direction {
 		 *
 		 * @param name the String name of a direction
 		 * @return Directions object of a direction.
-		 * @see Directions
+		 * @see Direction
 		 */
 		private static DirType getEnum(String name) {
 			//Find provided string in directions map.

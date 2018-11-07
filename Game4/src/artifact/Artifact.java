@@ -1,7 +1,9 @@
 /* Author: Alexander Oey (NetID: aoey2) */
-package game;
+package artifact;
 
+import game.CleanLineScanner;
 import game.Game;
+import place.Place;
 
 import java.util.Scanner;
 

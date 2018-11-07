@@ -1,5 +1,6 @@
 package character;
 
+import artifact.Artifact;
 import place.Place;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class Character {
     protected String name;
     protected String description;
     protected Place location;
+    protected ArrayList<Artifact> inventory = new ArrayList<Artifact>();
     protected static boolean arePlayers = false;
 
 
@@ -91,6 +93,23 @@ public class Character {
         location = Place.getPlaceByID(l);
     }
 
+    public static Character getCharacterByID(int i){
+        return characters.get(i);
+    }
+
+    public boolean addArtifact(Artifact a){
+        inventory.add(a);
+        return true;
+    }
+
+    public void print(){
+        System.out.println("character print");
+    }
+
+
+    public boolean makeMove(){
+        return true;
+    }
 
 
 }

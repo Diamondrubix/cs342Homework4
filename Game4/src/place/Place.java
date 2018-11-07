@@ -3,6 +3,7 @@
 
 package place;
 
+import artifact.Artifact;
 import game.CleanLineScanner;
 
 import java.util.*;
@@ -18,7 +19,7 @@ public class Place {
 	static boolean firstTime = true;
 	// Constructor for creating Place object
 	//	** Add newly created place to static collection of known places
-	Place(Scanner s) {
+	public Place(Scanner s) {
 		directions = new Vector<Direction>();
 		artifacts = new Vector<Artifact>();
 		characters = new Vector<Character>();
@@ -50,7 +51,7 @@ public class Place {
 		}
 	}
 	// Constructor for creating the place object
-	Place(int ID, String name, String description) {
+	public Place(int ID, String name, String description) {
 		this.ID = ID;
 		this.name = name;
 		this.description = description;
@@ -237,7 +238,7 @@ public class Place {
 			// Characters present
 			for (Character c : p.characters) {
 				System.out.println("~~~Character~~~");
-				c.print();
+				//c.print();
 			}
 		}
 	}

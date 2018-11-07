@@ -1,13 +1,12 @@
 /* Author: Alexander Oey (NetID: aoey2) */
 package game;
 
-import game.Direction;
-import game.Place;
-import game.Artifact;
-import game.Character;
-import game.Player;
-import game.NPC;
-import game.CleanLineScanner;
+import character.Character;
+import character.Player;
+
+import place.Direction;
+import place.Place;
+import artifact.Artifact;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,7 +39,7 @@ public class Game {
 	public Game(Scanner input) {
 		//Construct special rooms.
 		//Expansion room.
-		Place dlc = new Place(0, "Nowhere", 
+		Place dlc = new Place(0, "Nowhere",
 		"Room Unavailable. Expansion coming soon. \n" + 
 		"Pre-order NOW! Visit: cs.uic.edu/~i342/ for more information.");
 		//Exit room.
@@ -78,7 +77,7 @@ public class Game {
 				System.out.println("Warning: No places declared!.");
 			}
 			for (int i = 0; i < numPlaces; ++i) {
-				Place p = new Place(input, 3);
+				Place p = new Place(input);
 			}
 		}
 
@@ -98,7 +97,7 @@ public class Game {
 			}
 			//Construct direction objects.
 			for (int i = 0; i < numDirections; ++i) {
-				Direction d = new Direction(input, 3);
+				Direction d = new Direction(input);
 			}
 		}
 		
@@ -116,7 +115,7 @@ public class Game {
 				String name = userInput.nextLine().trim();
 				System.out.print("Enter character description: ");
 				String description = userInput.nextLine().trim();
-				Character c = new Player(i+1, name, description);
+				Character c = new Player(i+1, name, description, Place.getRandomID());
 				characters.add(c);
 			}
 		}
@@ -128,11 +127,11 @@ public class Game {
 				String type = input.next().trim();
 				// System.out.println("Char " + i + "Type: " + type);
 				if (type.equals("PLAYER")) {
-					Character c = new Player(input, 3);
+					Character c = new Character(input); //change player to Character to solve temporary error to test compile
 					characters.add(c);
 				}
 				else if (type.equals("NPC")) {
-					Character c = new NPC(input, 3);
+					Character c = new Character(input);//change player to Character to solve temporary error to test compile
 					characters.add(c);
 				}
 				else {
@@ -165,6 +164,7 @@ public class Game {
 				
 				//Put artifact in its initial location.
 				if (locationID < 0) { // Character inventory
+
 					Character.getCharacterByID(Math.abs(locationID))
 					         .addArtifact(artifact);
 				}

@@ -1,5 +1,5 @@
 /* Author: Alexander Oey (NetID: aoey2) */
-package game;
+package artifact;
 
 /**
  * This class encapsulates an action.
@@ -35,6 +35,14 @@ public class Move {
 		this.type = type;
 		this.argument = args;
 	}
+
+	/*
+	DELETE THIS, THIS WAS A TEMOPRARY THING JUST SO THAT WE CAN RUN IT
+	 */
+	public Move(String s){
+	    type = null;
+	    argument = null;
+    }
 	
 	/**
 	 * Provides the type of the action.
