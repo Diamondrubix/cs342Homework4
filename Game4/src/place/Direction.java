@@ -1,6 +1,8 @@
 // Name: Zain Zahran
 // Netid: zzahra2
 
+package place;
+
 import game.Place;
 import game.Game;
 import game.CleanLineScanner;
