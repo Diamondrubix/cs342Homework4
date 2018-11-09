@@ -32,7 +32,7 @@ $(JDOC_DIR):
 jar: $(JAR_FILE) 
 
 $(JAR_FILE): $(MANIFEST) $(BUILD_CLASS)
-	jar cvfm $@ $< -C ./build/classes game
+	jar cvfm $@ $< -C ./build/classes .
 
 cbuild:
 	rm -rf ./build
