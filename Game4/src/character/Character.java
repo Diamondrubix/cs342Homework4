@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Character {
 
-    private static HashMap<Integer,Character> characters= new HashMap<Integer, Character>();
+    public static HashMap<Integer,Character> characters= new HashMap<Integer, Character>();
     private static ArrayList<Integer> characterIDs = new ArrayList<Integer>();
     protected int ID;
     protected String name;
@@ -22,18 +22,15 @@ public class Character {
     public Character(Scanner sc){
         //better remove
         String line = sc.nextLine();
-        line = line.replaceAll("//.*", "");
-        while (line.equals("")&&sc.hasNextLine()) {
+        line = line.replaceAll("//.*","");
+        while(line.equals("")){
             line = sc.nextLine();
-            line = line.replaceAll("//.*", "");
+            line = line.replaceAll("//.*","");
         }
         //better remove //end
+        line = line.trim();
 
-        //int i, String n, String desc //these are the characters constructors
-        line = line.replaceAll("\\s\\s*"," ");
-        String[] s =line.split("\\s");
-        String type =s[0];
-        int placeID = Integer.parseInt(s[1]);
+        int placeID =Integer.parseInt(line);
 
         //better remove
         line = sc.nextLine();
@@ -44,7 +41,7 @@ public class Character {
         }
         //better remove //end
 
-        s = line.split("\\s");
+        String s[] = line.split("\\s");
         int id = Integer.parseInt(s[0]);
         String name = "";
         for(int j =1; j<s.length;j++){
@@ -63,26 +60,13 @@ public class Character {
             desc=desc+" "+line;
         }
 
-
-        //System.out.println("name "+name+" desc "+desc+"id "+id);
-        type = type.toLowerCase();
-
         //picks a random place id
         if(placeID == 0){
             placeID = Place.getRandomID();
         }
 
-        if(type.equals("player")){
-            Character.characters.put(id, new Player(id, name, desc,placeID));
-        }else if(type.equals("npc")){
-            Character.characters.put(id, new NPC(id,name,desc, placeID));
-        }else{
-            System.out.println("something went wrong, we will be making a regular character object");
-            Character.characters.put(id, new Character(id,name,desc,placeID));
-        }
-
+        Character.characters.put(id, new Player(id, name, desc,placeID));
         characterIDs.add(id);
-
 
     }
 
@@ -106,10 +90,43 @@ public class Character {
         System.out.println("character print");
     }
 
-
-    public boolean makeMove(){
-        return true;
+    /*
+helper function to move characters
+ */
+    protected void moveCharacter(Place temp){
+        location.removeCharacter(this);
+        temp.addCharacter(this);
+        location = temp;
     }
 
+    /*
+lets you view your inventory with item name and description.
+ */
+    protected void viewInventory(){
+        for(int i =0; i<inventory.size();i++){
+            inventory.get(i).description();
+        }
+    }
+
+    /*
+grabs and returns a random object from the characters inventory. Will be null if inventory is empty.
+ */
+    protected Artifact randomArtifactFromInventory(){
+        int max = inventory.size();
+        if(max == 0){
+            return null;
+        }
+        max--;
+        int min = 0;
+        int choice = (int) ((Math.random() * ((max - min) + 1)) + min);
+        return inventory.get(choice);
+
+    }
+
+
+    public boolean makeMove(){
+        System.out.println("this is the character move function. this should not be running.");
+        return true;
+    }
 
 }

@@ -2,6 +2,7 @@
 package game;
 
 import character.Character;
+import character.NPC;
 import character.Player;
 
 import place.Direction;
@@ -126,12 +127,13 @@ public class Game {
 			for (int i = 0; i < numCharacters; ++i) {
 				String type = input.next().trim();
 				// System.out.println("Char " + i + "Type: " + type);
+				input.nextLine();
 				if (type.equals("PLAYER")) {
-					Character c = new Character(input); //change player to Character to solve temporary error to test compile
+					Character c = new Player(input); //change player to Character to solve temporary error to test compile
 					characters.add(c);
 				}
 				else if (type.equals("NPC")) {
-					Character c = new Character(input);//change player to Character to solve temporary error to test compile
+					Character c = new NPC(input);//change player to Character to solve temporary error to test compile
 					characters.add(c);
 				}
 				else {
