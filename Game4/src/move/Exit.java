@@ -14,11 +14,20 @@ public class Exit extends Move {
 	private final Character character;
 	private final Place current;
 	
+	/**
+	 * Constructs an exit command.
+	 * @param c character exiting the game
+	 * @param p current location of the character
+	 */
 	public Exit(Character c, Place p) {
 		this.character = c;
 		this.current = p;
 	}
 	
+	/**
+	 * Runs the command encapsulated by this object.
+	 */
+	@Override
 	public void execute() {
 		p.removeCharacter(c);
 	}

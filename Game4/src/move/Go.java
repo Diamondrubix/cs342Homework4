@@ -15,12 +15,22 @@ public class Go extends Move {
 	private final Place currentPlace;
 	private final String[] moveDirs;
 	
+	/**
+	 * Constructs a movement command.
+	 *
+	 * @param c character to move
+	 * @param current current place of the character
+	 * @param directions movement directions for the character
+	 */
 	public Go(Character c, Place current, String[] directions) {
 		this.character = c;
 		this.currentPlace = current;
 		this.moveDirs = directions;
 	}
 	
+	/**
+	 * Runs the command encapsulated by this object.
+	 */
 	@Override
 	public void execute() {
 		for (int i = 0; i < moveDirs.length; ++i) {
