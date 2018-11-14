@@ -95,6 +95,7 @@ public class Character {
 helper function to move characters
  */
     protected void moveCharacter(Place temp){
+
         location.removeCharacter(this);
         temp.addCharacter(this);
         location = temp;

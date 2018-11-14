@@ -1,7 +1,6 @@
 
 import java.io.IOException;
 
-//il make this a singleton
 public class Network {
 
     private static Server server;
