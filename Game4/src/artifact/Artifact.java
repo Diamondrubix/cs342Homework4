@@ -4,6 +4,7 @@ package artifact;
 import game.CleanLineScanner;
 import game.Game;
 import place.Place;
+import character.Character;
 
 import java.util.Scanner;
 
