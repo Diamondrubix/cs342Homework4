@@ -64,6 +64,21 @@ public class Place {
 		characters.add(c);
 	}
 
+	/**
+	 * Returns an array containing names of directions in this room.
+	 *
+	 * @return a String array containing names of directions
+	 */
+	public String[] getDirections() {
+		String[] names = new String[doors.size()];
+		int i = 0;
+		for (Direction d: doors) {
+			names[i] = d.getName();
+			i++;
+		}
+		return names;
+	}
+	
 	// Adds an Artifact object to this Place's collection of Artifacts
 	public void addArtifact(Artifact a) {
 		artifacts.add(a);
