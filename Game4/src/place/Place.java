@@ -238,14 +238,4 @@ public class Place {
 			}
 		}
 	}
-	/* 5.0 Important Additions*/
-	/* Ambient Function */
-	// Desc: Places will override this method based
-	//		on their functionality.
-	// 	Ex: LavaRoom will override to require the player/NPC
-	// 		to have a lava suit. 
-	public void ambientFunction() {
-		return;
-	}
-
 }
