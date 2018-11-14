@@ -20,10 +20,10 @@ public class UI implements DecisionMaker {
         System.out.print("\n"+c.name+": ");
 
         KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
-        String line = sc.nextLine();
-
 
         String input = sc.nextLine().toUpperCase().trim();
+
+        String[] args = input.split(" ");
 
         //Quit.
         if (input.equals("QUIT") || input.equals("Q") ||
@@ -69,7 +69,7 @@ public class UI implements DecisionMaker {
         }
         //Move to other rooms.
         else {
-            return new Move(MoveType.GO, input);
+            return new Go(c,location, args);
         }
 
 

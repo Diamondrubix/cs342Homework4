@@ -104,9 +104,9 @@ helper function to move characters
     /*
 lets you view your inventory with item name and description.
  */
-    protected void viewInventory(){
+    public void viewInventory(){
         for(int i =0; i<inventory.size();i++){
-            inventory.get(i).description();
+            inventory.get(i).display();
         }
     }
 
@@ -148,7 +148,7 @@ drops the specified artifact
         return false;
     }
 
-    
+
 
 
 
