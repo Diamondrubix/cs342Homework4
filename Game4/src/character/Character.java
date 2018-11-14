@@ -125,13 +125,30 @@ grabs and returns a random object from the characters inventory. Will be null if
 
     }
 
-    public int heal(int h){
+    public void heal(int h){
         health+=h;
     }
 
-    public int damage(int d){
+    public void damage(int d){
         health-=d;
     }
+
+    /*
+drops the specified artifact
+*/
+    protected boolean drop(String thing){
+        for(int i =0; i< inventory.size();i++){
+            String name = inventory.get(i).name().toLowerCase();
+            if(name.equals(thing)){
+                location.addArtifact(inventory.get(i));
+                inventory.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    
 
 
 
