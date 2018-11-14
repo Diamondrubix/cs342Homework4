@@ -20,6 +20,8 @@ public class UI implements DecisionMaker {
 
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
+        String[] args = new StringTokenizer(line);
+
 
 
     }
