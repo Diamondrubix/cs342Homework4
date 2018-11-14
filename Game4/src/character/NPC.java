@@ -2,6 +2,7 @@ package character;
 
 import artifact.Artifact;
 import artifact.Move;
+import place.Place;
 
 import java.util.Scanner;
 
