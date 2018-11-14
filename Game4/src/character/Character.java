@@ -137,6 +137,7 @@ grabs and returns a random object from the characters inventory. Will be null if
 
 
     public boolean makeMove(){
+
         System.out.println("this is the character move function. this should not be running.");
         return true;
     }

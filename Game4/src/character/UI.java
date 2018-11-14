@@ -1,6 +1,6 @@
 package character;
 
-import artifact.Move;
+import move.*;
 import place.Place;
 
 import java.util.Scanner;
@@ -22,7 +22,7 @@ public class UI implements DecisionMaker {
             Scanner sc = new Scanner(System.in);
             String text = sc.nextLine();
             //text = text.toLowerCase();
-            m = new Move(text);
+            //m = new Move(text);
             /*if(m.type()!=Move.MoveType.invalid){
                 valid = true;
             }else

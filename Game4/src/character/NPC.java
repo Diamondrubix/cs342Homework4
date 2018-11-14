@@ -1,13 +1,11 @@
 package character;
 
 import artifact.Artifact;
-import artifact.Move;
-import place.Place;
+
 
 import java.util.Scanner;
 
 public class NPC extends Character{
-    private static final Object Direction = ;
     private boolean isAlive = true;
 
     public NPC(Scanner sc){
@@ -20,7 +18,8 @@ public class NPC extends Character{
 
 
     @Override
-    public void makeMove() {
+    public boolean makeMove() {
+        /*
         if (isAlive) {
             //System.out.println("\n"+name+" is moving");
             Move move = ai.getMove(this, location);
@@ -75,6 +74,8 @@ public class NPC extends Character{
 
             }
         }
+        */
+        return true;
     }
 
     /*
@@ -97,7 +98,7 @@ helper function to drop one object
         if(a ==null){
             System.out.println(name+" tried to use and object but found their inventory empty");
         }else{
-            a.use();
+            a.use(this,location);
         }
 
 

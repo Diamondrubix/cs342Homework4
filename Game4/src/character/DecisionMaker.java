@@ -1,6 +1,7 @@
 package character;
 
-import artifact.Move;
+
+import move.*;
 import place.Place;
 
 /*
