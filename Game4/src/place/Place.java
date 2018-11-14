@@ -5,7 +5,7 @@ package place;
 
 import artifact.Artifact;
 import game.CleanLineScanner;
-
+import character.Character;
 import java.util.*;
 
 // Represents as an object ROOM or place in the game
