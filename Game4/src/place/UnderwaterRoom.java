@@ -13,7 +13,7 @@ import game.CleanLineScanner;
 // 		inventory. Otherwise, -10 hp per turn.
 // Extra-Idea: Should ScubaSuit regen hp when user swims in this place?
 
-public class Underwater extends Place {
+public class UnderwaterRoom extends Place {
 	@Override
 	public void ambientFunction(Character c) {
 		// Check Player/NPC inventory for a ScubaSuit
