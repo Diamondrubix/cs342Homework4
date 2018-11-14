@@ -7,7 +7,7 @@ public class Network {
     private static Server server;
     private static Client client;
 
-
+/*
     public static Server getServer() throws IOException {
         if(server == null){
             server = new Server();
@@ -16,10 +16,11 @@ public class Network {
             return server;
         }
     }
+    */
 
-    public static Client getCLient() throws IOException {
+    public static Client getCLient(String server,int port) throws IOException {
         if(client == null){
-            client = new Client();
+            client = new Client(server,port);
             return client;
         }else{
             return client;
