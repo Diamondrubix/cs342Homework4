@@ -63,8 +63,6 @@ public class Place {
 	public void addCharacter(Character c) {
 		characters.add(c);
 	}
-	// Make function to remove characters
-	//...
 
 	// Adds an Artifact object to this Place's collection of Artifacts
 	public void addArtifact(Artifact a) {
@@ -90,10 +88,8 @@ public class Place {
 		return null;
 	}
 	public void removeCharacter(Character c) {
-		// TODO: Drop loot to this place
-		// Did not feel like implementing this
-		// Probably really easy tbh
 		characters.remove(c);
+		// Note: Have not implemented loot-drop
 	}
 	// Passes the artifact to the useKey() method of all Directions present in this Place
 	public void useKey(Artifact a) {
@@ -242,4 +238,14 @@ public class Place {
 			}
 		}
 	}
+	/* 5.0 Important Additions*/
+	/* Ambient Function */
+	// Desc: Places will override this method based
+	//		on their functionality.
+	// 	Ex: LavaRoom will override to require the player/NPC
+	// 		to have a lava suit. 
+	public void ambientFunction() {
+		return;
+	}
+
 }
