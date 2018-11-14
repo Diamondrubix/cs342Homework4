@@ -1,12 +1,14 @@
 /* Author: Alexander Oey (NetID: aoey2) */
-package artifact;
+package move;
 
 /**
  * This class encapsulates an action.
  *
  * @author Alexander Oey (aoey2)
  */
-public class Move {
+public abstract class Move {
+	public abstract void execute();
+	
 	/**
 	 * Represents the type of action encapsulated by the Move object.
 	 *
