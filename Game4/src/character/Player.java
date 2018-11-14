@@ -1,12 +1,7 @@
 package character;
 
-import artifact.Artifact;
-import move.*;
-import move.Move;
-import place.Place;
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class Player extends Character{
     private UI ui = new UI();
@@ -27,7 +22,7 @@ public class Player extends Character{
         System.out.print("\n"+name+": ");
         ui.getMove(this, location).execute();
 
-
+        return true;
     }
 
 }

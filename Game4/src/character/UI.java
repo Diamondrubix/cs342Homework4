@@ -16,24 +16,59 @@ public class UI implements DecisionMaker {
      */
     @Override
     public Move getMove(Character c, Place location) {
-        boolean valid = false;
-        Move m = null;
-        //while(!valid) {//commented this out temporarily for test run
-            Scanner sc = new Scanner(System.in);
-            String text = sc.nextLine();
-            //text = text.toLowerCase();
-            //m = new Move(text);
-            /*if(m.type()!=Move.MoveType.invalid){
-                valid = true;
-            }else
-            */{
-                System.out.println("input is invalid");
-                System.out.print(": ");
-            }
-        //}
-        return m;
+        System.out.print("\n"+c.name+": ");
+
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine();
 
 
+    }
+
+
+    private Move _move(String text){
+        text = text.toLowerCase();
+        String args = text;
+        StringTokenizer st = new StringTokenizer(text);
+        text = st.nextToken();
+
+
+        switch (text) {
+            case "get":
+                type = MoveType.get;
+                break;
+            case "drop":
+                type = MoveType.drop;
+                break;
+            case "look":
+                type = MoveType.look;
+                break;
+            case "inventory":
+
+            case "inve":
+                type = MoveType.inventory;
+                break;
+            case "use":
+                type = MoveType.use;
+                break;
+            case "wait":
+                type = MoveType.wait;
+                break;
+            case "exit":
+
+            case "quit":
+                type = MoveType.exit;
+                break;
+            case "go":
+                type = MoveType.go;
+                break;
+            default:
+                if(Direction.dirType.isDir(text)){
+                    type = MoveType.go;
+                }else{
+
+                    type = MoveType.invalid;
+                }
+        }
     }
 
 }
