@@ -23,7 +23,7 @@ gets the move information for NPC Characters
         int min = 0;
         int choice = (int) ((Math.random() * ((max - min) + 1)) + min);
         if(choice <2){
-            return new Go(this, location, location.get);
+            return new Go(this, location, location.getDirections());
         }else if(choice == 2){
             return new Move("get");
         }else if(choice == 3) {

@@ -9,20 +9,34 @@ import java.util.Scanner;
  *
  * @author Alexander Oey (aoey2)
  */
-public class KeyboardScanner {
-	private static Scanner keyboard = null;
+public class KeyboardScanner{
+	private Scanner keyboard = null;
+	private static KeyboardScanner kScanner;
 	
 	/**
 	 * Returns the Scanner object to System.in
 	 * 
 	 * @return Scanner object
 	 */
-	public static Scanner getKeyboardScanner() {
+	public static KeyboardScanner getKeyboardScanner() {
 		//First use of KeyboardScanner
-		if (keyboard == null) {
+		if (kScanner == null) {
 			new KeyboardScanner();
 		}
-		return keyboard;
+		return getKeyboardScanner();
+	}
+
+
+	public String nextLine(){
+		String line = keyboard.nextLine();
+		//add socket stuff here
+		return line;
+	}
+
+	public int nextInt(){
+		int l = keyboard.nextInt();
+
+		return l;
 	}
 	
 	private KeyboardScanner() {

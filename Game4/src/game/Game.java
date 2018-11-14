@@ -107,7 +107,7 @@ public class Game {
 		if (words.length < 2 || !words[0].equalsIgnoreCase("CHARACTERS")) {
 			System.out.println("CHARACTERS section not defined");
 			//No input on Character section.
-			Scanner userInput = KeyboardScanner.getKeyboardScanner();
+			KeyboardScanner userInput = KeyboardScanner.getKeyboardScanner();
 			System.out.print("Enter the number of players: ");
 			int numCharacters = userInput.nextInt();
 			userInput.nextLine();
