@@ -12,15 +12,15 @@ import move.Move;
  */ 
 public class Look extends Move {
 	private final Character character;
-	private final Place current;
+	private final Place currentPlace;
 	
 	public Look(Character c, Place p) {
 		this.character = c;
-		this.current = p;
+		this.currentPlace = p;
 	}
 	
 	public void execute() {
-		c.display();
-		p.display();
+		character.display();
+		currentPlace.display();
 	}
 }

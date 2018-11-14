@@ -14,6 +14,7 @@ public class Go extends Move {
 	private final Character character;
 	private final Place currentPlace;
 	private final String[] moveDirs;
+	private final Place destination;
 	
 	/**
 	 * Constructs a movement command.
@@ -29,6 +30,19 @@ public class Go extends Move {
 	}
 	
 	/**
+	 * Constructs a movement command.
+	 *
+	 * @param c character to move
+	 * @param current current place of the character
+	 * @param directions movement directions for the character
+	 */
+	public Go(Character c, Place current, Place dest) {
+		this.character = c;
+		this.currentPlace = current;
+		this.destination = dest;
+	}
+	
+	/**
 	 * Runs the command encapsulated by this object.
 	 */
 	@Override
@@ -40,8 +54,8 @@ public class Go extends Move {
 			}
 			Place prev = currentPlace;
 			currentPlace = currentPlace.followDirection(words[i]);
-			prev.removeCharacter(c);
-			currentPlace.addCharacter(c);
+			prev.removeCharacter(character);
+			currentPlace.addCharacter(character);
 		}
 	}
 }

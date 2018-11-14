@@ -12,7 +12,7 @@ import move.Move;
  */ 
 public class Exit extends Move {
 	private final Character character;
-	private final Place current;
+	private final Place currentPlace;
 	
 	/**
 	 * Constructs an exit command.
@@ -29,7 +29,7 @@ public class Exit extends Move {
 	 */
 	@Override
 	public void execute() {
-		p.removeCharacter(c);
+		currentPlace.removeCharacter(character);
 	}
 }
 	

@@ -18,6 +18,6 @@ public class ShowInventory extends Move {
 	}
 	
 	public void execute() {
-		c.displayInventory();
+		character.displayInventory();
 	}
 }
