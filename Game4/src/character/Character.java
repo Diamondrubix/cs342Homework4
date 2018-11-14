@@ -17,6 +17,7 @@ public class Character {
     protected Place location;
     protected ArrayList<Artifact> inventory = new ArrayList<Artifact>();
     protected static boolean arePlayers = false;
+    protected int health = 100;
 
 
     public Character(Scanner sc){
@@ -122,6 +123,16 @@ grabs and returns a random object from the characters inventory. Will be null if
         return inventory.get(choice);
 
     }
+
+    public int heal(int h){
+        health+=h;
+    }
+
+    public int damage(int d){
+        health-=d;
+    }
+
+
 
 
     public boolean makeMove(){
