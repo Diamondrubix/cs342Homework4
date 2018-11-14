@@ -14,11 +14,20 @@ public class Look extends Move {
 	private final Character character;
 	private final Place currentPlace;
 	
+	/**
+	 * Constructs a look around command.
+	 *
+	 * @param c character exiting the game
+	 * @param p current location of the character
+	 */
 	public Look(Character c, Place p) {
 		this.character = c;
 		this.currentPlace = p;
 	}
 	
+	/**
+	 * Runs the command encapsulated by this object.
+	 */
 	public void execute() {
 		character.display();
 		currentPlace.display();

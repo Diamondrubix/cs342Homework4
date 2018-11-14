@@ -63,6 +63,20 @@ public class Place {
 	public void addCharacter(Character c) {
 		characters.add(c);
 	}
+	/**
+	 * Returns an array containing names of Artifacts in this room.
+	 *
+	 * @return a String array containing names of artifacts
+	 */
+	public String[] getArtifacts() {
+		String[] names = new String[artifacts.size()];
+		int i = 0;
+		for (Artifact a: artifacts) {
+			names[i] = a.name();
+			i++;
+		}
+		return names;
+	}
 
 	/**
 	 * Returns an array containing names of directions in this room.
@@ -70,9 +84,9 @@ public class Place {
 	 * @return a String array containing names of directions
 	 */
 	public String[] getDirections() {
-		String[] names = new String[doors.size()];
+		String[] names = new String[directions.size()];
 		int i = 0;
-		for (Direction d: doors) {
+		for (Direction d: directions) {
 			names[i] = d.getName();
 			i++;
 		}
