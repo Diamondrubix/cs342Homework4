@@ -63,8 +63,6 @@ public class Place {
 	public void addCharacter(Character c) {
 		characters.add(c);
 	}
-	// Make function to remove characters
-	//...
 
 	// Adds an Artifact object to this Place's collection of Artifacts
 	public void addArtifact(Artifact a) {
@@ -90,10 +88,8 @@ public class Place {
 		return null;
 	}
 	public void removeCharacter(Character c) {
-		// TODO: Drop loot to this place
-		// Did not feel like implementing this
-		// Probably really easy tbh
 		characters.remove(c);
+		// Note: Have not implemented loot-drop
 	}
 	// Passes the artifact to the useKey() method of all Directions present in this Place
 	public void useKey(Artifact a) {
