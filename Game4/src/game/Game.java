@@ -60,6 +60,7 @@ public class Game {
 		System.out.println("press 0 to play single player. press 1 to host multiplayer\nenter an ip to spectate a host");
 		Scanner sc = new Scanner(System.in);
 		String typeOfGame = sc.nextLine();
+		boolean newver = true;
 
 		if (typeOfGame.equals("0")||typeOfGame.equals("1")) {
 			if (typeOfGame.equals("1")) {
@@ -89,10 +90,10 @@ public class Game {
 				System.out.println("Invalid file header.");
 				name = "";
 			} 
-			// else if (Double.parseDouble(words[1]) > 4.0) {
-				// System.out.println("Version " + words[1] + " unsupported");
-				// name = "";
-			// }
+			else if (Double.parseDouble(words[1]) < 5.1) {
+				newver = false;
+				name = "";
+			}
 			else {
 				name = words[2];
 			}
@@ -113,17 +114,22 @@ public class Game {
 					System.out.println("Warning: No places declared!.");
 				}
 				for (int i = 0; i < numPlaces; ++i) {
-					words = CleanLineScanner.getTokens(input); //No support for older GDF
-					Place p; //Pick place object based on GDF type.
-					switch(Integer.parseInt(words[0])) {
-						case 0: p = new Place(input); break;
-						case 1: p = new LavaRoom(input); break;
-						case 2: p = new UnderwaterRoom(input); break;
-						case 3: p = new DarkRoom(input); break;
-						case 4: p = new SpaceRoom(input); break;
-						case 5: p = new FountainRoom(input); break;
-						case 6: p = new RiverRoom(input); break;
-						default: p = new Place(input); break;
+					if (newver) {
+						words = CleanLineScanner.getTokens(input); //No support for older GDF
+						Place p; //Pick place object based on GDF type.
+						switch(Integer.parseInt(words[0])) {
+							case 0: p = new Place(input); break;
+							case 1: p = new LavaRoom(input); break;
+							case 2: p = new UnderwaterRoom(input); break;
+							case 3: p = new DarkRoom(input); break;
+							case 4: p = new SpaceRoom(input); break;
+							case 5: p = new FountainRoom(input); break;
+							case 6: p = new RiverRoom(input); break;
+							default: p = new Place(input); break;
+						}
+					}
+					else {
+						Place p = new Place(input);
 					}
 				}
 			}
@@ -213,7 +219,7 @@ public class Game {
 						typeID = Integer.parseInt(words[1]);
 					}
 					
-					// System.out.println("Place ID of Artifact " + i + ": " + locationID + " : " +typeID);
+					System.out.println("Place ID of Artifact " + i + ": " + locationID + " : " +typeID);
 					Artifact artifact;
 					if (typeID == 1) {
 						artifact = new Armor(input, 3);
