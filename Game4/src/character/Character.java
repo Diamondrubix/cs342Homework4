@@ -155,7 +155,7 @@ drops the specified artifact
                 return inventory.get(i);
             }
         }
-        return null
+        return null;
     }
 
 
