@@ -148,6 +148,16 @@ drops the specified artifact
         return false;
     }
 
+    public Artifact strToArtifact(String str){
+        str.toLowerCase()
+        for(int i =0; i< inventory.size();i++){
+            if(str.equals(inventory.get(i).name().toLowerCase())){
+                return inventory.get(i);
+            }
+        }
+        return null
+    }
+
 
 
 
