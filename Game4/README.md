@@ -32,5 +32,5 @@ methods in my Artifact class to interface better with the other 2 members' class
 
 I added the Armor functionality to the game and all the supporting functionalities such
 as modifications to the GDF file format, the parser in the Game class for both special
-Artifact and Place types, and added methods in the Character class to support equipping 
-the armor. Lastly, I added javadoc documentation for my classes.
+Artifact and Place types, and added some methods in the Character class to 
+support equipping the armor. Lastly, I added javadoc documentation for some classes.
