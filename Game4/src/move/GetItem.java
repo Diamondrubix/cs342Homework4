@@ -33,10 +33,7 @@ public class GetItem extends Move {
 	 * Runs the command encapsulated by this object.
 	 */
 	public void execute() {
-		Artifact a = Place.getArtifact(artifactName);
-		if (a != null) {
-			character.addArtifact(a);
-			Place.removeArtifact(a);
-		}
+		Artifact a = Place.removeArtifact(artifactName);
+		character.addArtifact(a);
 	}
 }
