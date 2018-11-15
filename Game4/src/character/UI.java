@@ -17,8 +17,6 @@ public class UI implements DecisionMaker {
      */
     @Override
     public Move getMove(Character c, Place location) {
-        System.out.print("\n"+c.name+": ");
-
         KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
         //Scanner sc = new Scanner(System.in);
 
