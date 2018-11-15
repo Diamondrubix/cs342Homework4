@@ -1,6 +1,7 @@
 package character;
 
 import artifact.Artifact;
+import move.Move;
 
 
 import java.util.Scanner;
@@ -20,7 +21,10 @@ public class NPC extends Character{
 
     @Override
     public boolean makeMove() {
-        ai.getMove(this,location).execute();
+        System.out.print("\n"+name+" makes a move");
+        Move m = ai.getMove(this,location);
+        m.execute();
+
 
         return true;
     }
