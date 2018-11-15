@@ -20,7 +20,7 @@ import java.util.Scanner;
 public class Game {
 	//Fields.
 	private final String name;
-	private final ArrayList<Character> characters = new ArrayList<>();
+	public static ArrayList<Character> characters = new ArrayList<>();
 	private int neededPlayers = 0;
 	
 	/**
@@ -30,6 +30,11 @@ public class Game {
 	 */
 	public Game(String name) {
 		this.name = name;
+	}
+
+	public static void removeCharacter(Character c) {
+		characters.remove(c);
+		// Note: Have not implemented loot-drop
 	}
 	
 	/**
@@ -193,6 +198,8 @@ public class Game {
 			}
 		}
 	}
+
+
 
 	private boolean shouldExit(){
 		for(int i =0; i<characters.size();i++){

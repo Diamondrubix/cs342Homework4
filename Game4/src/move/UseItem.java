@@ -12,9 +12,9 @@ import artifact.Artifact;
  * @author Alexander Oey (aoey2)
  */ 
 public class UseItem extends Move {
-	private final Character character;
-	private final Place currentPlace;
-	private final String artifact;
+	private Character character;
+	private  Place currentPlace;
+	private String artifact;
 	
 	/**
 	 * Constructs a use item command.
@@ -35,6 +35,12 @@ public class UseItem extends Move {
 	public void execute() {
 		// Do nothing.
 		Artifact a = character.strToArtifact(artifact);
+		if(character ==null){
+			System.out.println("character null");
+		}
+		if(currentPlace ==null){
+			System.out.println("place null");
+		}
 		a.use(character, currentPlace);
 	}
 }

@@ -136,6 +136,7 @@ public class Place {
 	}
 	public void removeCharacter(Character c) {
 		characters.remove(c);
+
 		// Note: Have not implemented loot-drop
 	}
 	// Passes the artifact to the useKey() method of all Directions present in this Place

@@ -2,6 +2,7 @@
 package move;
 
 import character.Character;
+import game.Game;
 import place.Place;
 import move.Move;
 
@@ -30,6 +31,7 @@ public class Exit extends Move {
 	@Override
 	public void execute() {
 		currentPlace.removeCharacter(character);
+		Game.removeCharacter(character);
 	}
 }
 	
