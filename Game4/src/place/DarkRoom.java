@@ -4,6 +4,7 @@
 package place;
 
 import artifact.Artifact;
+import character.Character;
 import game.CleanLineScanner;
 
 /* DARK ROOM */

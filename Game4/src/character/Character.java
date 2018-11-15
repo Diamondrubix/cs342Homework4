@@ -158,11 +158,6 @@ drops the specified artifact
         return null;
     }
 
-
-
-
-
-
     public boolean makeMove(){
 
         System.out.println("this is the character move function. this should not be running.");

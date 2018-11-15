@@ -27,6 +27,13 @@ public class Place {
 	private Vector <Character> characters;	// Collection of people that are in this Place
 	static private Map <Integer, Place> places = new HashMap<Integer, Place>();	// ID lookup on places 
 	static boolean firstTime = true;
+	
+	//Avoid compile errors.
+	protected Place() {}
+	
+	//Should be abstract, but whatever.
+	public void ambientFunction(Character c) { }
+	
 	// Constructor for creating Place object
 	//	** Add newly created place to static collection of known places
 	public Place(Scanner s) {

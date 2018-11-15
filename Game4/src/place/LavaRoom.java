@@ -3,6 +3,7 @@
 
 package place;
 
+import character.Character;
 import artifact.Artifact;
 import game.CleanLineScanner;
 
