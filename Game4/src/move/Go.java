@@ -56,7 +56,7 @@ public class Go extends Move {
 			if (moveDirs[i].equalsIgnoreCase("GO")) {
 				continue;
 			}
-			System.out.println("Direction " + moveDirs[i]);
+			// System.out.println("Direction " + moveDirs[i]);
 			Place dest = currentPlace.followDirection(moveDirs[i]);
 			if (dest.equals(Place.getPlaceByID(1))) { //Exit state
 				currentPlace.removeCharacter(character);
