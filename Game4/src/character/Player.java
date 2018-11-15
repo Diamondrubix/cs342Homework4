@@ -6,6 +6,12 @@ import sun.nio.ch.Net;
 
 import java.util.Scanner;
 
+/**
+ * The player class. has its own make move  that uses a UI to make moves based on user input
+ *
+ * @author Adam Arato
+ */
+
 public class Player extends Character{
     private UI ui = new UI();
 

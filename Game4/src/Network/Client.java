@@ -10,18 +10,21 @@ import java.net.Socket;
 
 
 /**
- * Trivial client for the date server.
+ * The Network class allows you to create a singleton of the client object. It also has a static method to easily
+ * send and print data at the same time.
+ * Network also originally created a server singleton but that was changes and now only servers client.
+ *
+ * @author Adam Arato
  */
+
 public class Client {
     private String serverAddress;
     private Socket socket;
     private BufferedReader in;
     private PrintWriter out;
     /**
-     * Runs the client as an application.  First it displays a dialog
-     * box asking for the IP address or hostname of a host running
-     * the date server, then connects to it and displays the date that
-     * it serves.
+     * I do relize that for a proper singleton this should not exist, but this is the result of constatnly changeing and
+     * experimenting with the code. This should not be called directly by anybody
      */
     public Client(String address, int port) throws IOException {
         // Make connection and initialize streams
@@ -33,6 +36,9 @@ public class Client {
 
     }
 
+    /*
+    gets data from the server
+     */
     public String getData() {
         try {
             return in.readLine();
@@ -42,6 +48,9 @@ public class Client {
         return "failed to get a message";
     }
 
+    /*
+    sends data to the server
+     */
     public void sendData(String msg){
         out.println(msg);
     }

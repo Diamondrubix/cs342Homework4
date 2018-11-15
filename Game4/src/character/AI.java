@@ -6,11 +6,17 @@ import place.Place;
 
 import java.util.Scanner;
 
+/**
+ * Ai is the DecisionMaker Class that takes care of Movements of the NPC
+ *
+ * @author Adam Arato
+ */
+
+
 /*
 this is the decisionMaker for the NPC class. Likely to be extended for different AI controlled characters
 in the future
  */
-
 public class AI implements DecisionMaker{
     /*
 gets the move information for NPC Characters

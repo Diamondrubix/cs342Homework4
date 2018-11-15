@@ -14,6 +14,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * The Character class is not to be used directly, rather the game should implemente the children to move in its place
+ *
+ * @author Adam Arato
+ */
+
+
 public class Character {
 
     public static HashMap<Integer,Character> characters= new HashMap<Integer, Character>();
@@ -25,9 +32,12 @@ public class Character {
     protected ArrayList<Artifact> inventory = new ArrayList<Artifact>();
     protected static boolean arePlayers = false;
     protected int health = 100;
-		protected Armor armorEquip;
+    protected Armor armorEquip;
 
 
+	/*
+	main constructor by which characters are made.
+	 */
     public Character(Scanner sc){
 				//Get place information.
 				String[] tokens = CleanLineScanner.getTokens(sc);
@@ -93,6 +103,9 @@ public class Character {
 				location.addCharacter(this);
     }
 
+    /*
+    a secondary constructor to make players if the gdf load has none
+     */
     protected Character(int i, String n, String desc, int l){
         ID = i;
         name = n;
@@ -100,15 +113,24 @@ public class Character {
         location = Place.getPlaceByID(l);
     }
 
+    /*
+    returns a character by its id
+     */
     public static Character getCharacterByID(int i){
         return characters.get(i);
     }
 
+    /*
+    adds an artifact to the inventory. The boolean is irrlevent and a depricated features at this point
+     */
     public boolean addArtifact(Artifact a){
         inventory.add(a);
         return true;
     }
 
+    /*
+    dislays health and armor
+     */
     public void print(){
         System.out.println("health: " + health);
 				if (armorEquip != null) {

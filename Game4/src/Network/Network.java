@@ -8,17 +8,17 @@ public class Network {
     private static Server server;
     private static Client client;
 
-/*
-    public static Server getServer() throws IOException {
-        if(server == null){
-            server = new Server();
-            return server;
-        }else{
-            return server;
-        }
-    }
-    */
+    /**
+     * The Network class allows you to create a singleton of the client object. It also has a static method to easily
+     * send and print data at the same time.
+     * Network also originally created a server singleton but that was changes and now only servers client.
+     *
+     * @author Adam Arato
+     */
 
+    /*
+    returns a client object based on the server ip and port
+     */
     public static Client getClient(String server,int port) throws IOException {
         multiplayer = true;
         if(client == null){
@@ -36,6 +36,9 @@ public class Network {
         }
     }
 
+    /*
+    will simply return a client object
+     */
     public static Client getClient() {
         multiplayer = true;
         if(client == null){

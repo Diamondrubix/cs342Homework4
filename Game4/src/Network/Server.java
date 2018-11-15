@@ -10,34 +10,33 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
 
+
+/*
+creates a server in another thread in order to start listening to clients and broadcasting their messages to the other
+clients
+ */
+
 public class Server extends Thread{
 
 
-    /**
-     * The port that the server listens on.
-     */
-    private static int PORT = 9001;
+    //default port to listen on
+    private static int port = 3001;
 
-    /**
-     * The set of all names of clients in the chat room.  Maintained
-     * so that we can check that new clients are not registering name
-     * already in use.
-     */
-    private static HashSet<String> names = new HashSet<String>();
 
-    /**
-     * The set of all the print writers for all the clients.  This
+    /*
+     * The set of all the print writers for all the clients. This
      * set is kept so we can easily broadcast messages.
      */
     private static HashSet<PrintWriter> writers = new HashSet<PrintWriter>();
 
     public Server(int p){
-        PORT = p;
+        port = p;
     }
+
 
     public void run(){
         try {
-            StartServer(PORT);
+            StartServer(port);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,8 +46,8 @@ public class Server extends Thread{
      * The appplication main method, which just listens on a port and
      * spawns handler threads.
      */
-    private void StartServer(int port) throws IOException {
-        PORT = port;
+    private void StartServer(int p) throws IOException {
+        port = p;
         System.out.println("Server starting on port "+port);
         ServerSocket listener =new ServerSocket(port);
         try {
@@ -64,35 +63,26 @@ public class Server extends Thread{
     }
 
     /**
-     * A handler thread class.  Handlers are spawned from the listening
-     * loop and are responsible for a dealing with a single client
-     * and broadcasting its messages.
+     * just starts the listening in a seperate thread in order not to hold up the entire program
      */
     private static class Handler extends Thread {
-        private String name;
         private Socket socket;
         private BufferedReader in;
         private PrintWriter out;
 
         /**
-         * Constructs a handler thread, squirreling away the socket.
-         * All the interesting work is done in the run method.
+         * just accepts a socket to be able to run
          */
         public Handler(Socket socket) {
             this.socket = socket;
         }
 
         /**
-         * Services this thread's client by repeatedly requesting a
-         * screen name until a unique one has been submitted, then
-         * acknowledges the name and registers the output stream for
-         * the client in a global set, then repeatedly gets inputs and
-         * broadcasts them.
+         * constantly listening in a seperate thread in order to get teh data to forward it to the clients
          */
         public void run() {
             try {
 
-                // Create character streams for the socket.
                 in = new BufferedReader(new InputStreamReader(
                         socket.getInputStream()));
                 out = new PrintWriter(socket.getOutputStream(), true);
@@ -104,7 +94,6 @@ public class Server extends Thread{
                         return;
                     }
                     for (PrintWriter writer : writers) {
-                        //writer.println("MESSAGE " + name + ": " + input);
                         writer.println(input);
                     }
                 }

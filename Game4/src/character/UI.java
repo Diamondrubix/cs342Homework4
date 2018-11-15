@@ -7,9 +7,12 @@ import place.Place;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-/*
-handles user input to control each player instance's movements
+/**
+ * The players decision maker. It takes user input and then returns a move based on that user input
+ * Handles userinput
+ * @author Adam Arato
  */
+
 
 public class UI implements DecisionMaker {
     /*
