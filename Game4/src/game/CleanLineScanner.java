@@ -1,4 +1,4 @@
-/* Author: Alexander Oey (NetID: aoey2) */
+/* Author: Alexander Oey (aoey2) */
 package game;
 
 import java.util.Scanner;

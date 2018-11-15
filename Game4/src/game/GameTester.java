@@ -1,4 +1,9 @@
-/* Author: Alexander Oey (NetID: aoey2) */
+/*
+ * Author: 
+ * Alexander Oey (aoey2) 
+ * Zain Zahran (zzahra2)
+ * Adam Arato (aarato2)
+ */
 package game;
 
 import java.io.File;
@@ -9,13 +14,16 @@ import java.util.Scanner;
  * Contains the main method and sets up the game for testing.
  *
  * @author Alexander Oey (aoey2)
+ * @author Zain Zahran (zzahra2)
+ * @author Adam Arato (aarato2)
  */
 public class GameTester {
 
 	public static void main(String[] args) {
-		//testPlaceAndDirection();
-
-		System.out.println("Author: Alexander Oey (NetID: aoey2)");
+		System.out.println("Author: ");
+		System.out.println("Alexander Oey (aoey2)");
+		System.out.println("Zain Zahran (zzahra2)");
+		System.out.println("Adam Arato (aarato2)");
 		System.out.println("Text-based exploration game.");
 		System.out.println("");
 		System.out.println("Instructions: ");
