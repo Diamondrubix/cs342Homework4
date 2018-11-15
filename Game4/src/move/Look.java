@@ -29,7 +29,7 @@ public class Look extends Move {
 	 * Runs the command encapsulated by this object.
 	 */
 	public void execute() {
-		character.display();
-		currentPlace.display();
+		character.print();
+		currentPlace.print();
 	}
 }

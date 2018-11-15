@@ -50,13 +50,12 @@ public class Go extends Move {
 	public void execute() {
 		for (int i = 0; i < moveDirs.length; ++i) {
 			//Ignore GO keyword.
-			if (words[i].equalsIgnoreCase("GO")) {
+			if (moveDirs[i].equalsIgnoreCase("GO")) {
 				continue;
 			}
-			Place prev = currentPlace;
-			currentPlace = currentPlace.followDirection(words[i]);
-			prev.removeCharacter(character);
-			currentPlace.addCharacter(character);
+			Place dest = currentPlace.followDirection(moveDirs[i]);
+			currentPlace.removeCharacter(character);
+			dest.addCharacter(character);
 		}
 	}
 }

@@ -136,7 +136,7 @@ grabs and returns a random object from the characters inventory. Will be null if
     /*
 drops the specified artifact
 */
-    protected boolean drop(String thing){
+    public boolean drop(String thing){
         for(int i =0; i< inventory.size();i++){
             String name = inventory.get(i).name().toLowerCase();
             if(name.equals(thing)){

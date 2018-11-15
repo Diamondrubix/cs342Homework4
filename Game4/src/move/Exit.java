@@ -21,7 +21,7 @@ public class Exit extends Move {
 	 */
 	public Exit(Character c, Place p) {
 		this.character = c;
-		this.current = p;
+		this.currentPlace = p;
 	}
 	
 	/**
