@@ -19,7 +19,7 @@ public class Network {
     }
     */
 
-    public static Client getCLient(String server,int port) throws IOException {
+    public static Client getClient(String server,int port) throws IOException {
         multiplayer = true;
         if(client == null){
             client = new Client(server,port);
@@ -29,7 +29,14 @@ public class Network {
         }
     }
 
-    public static Client getCLient() {
+    public static void netPrintln(String str){
+        System.out.println(str);
+        if(Network.multiplayer) {
+            client.sendData(str);
+        }
+    }
+
+    public static Client getClient() {
         multiplayer = true;
         if(client == null){
             System.out.println("New Client created without specifiying network. prolly not good");

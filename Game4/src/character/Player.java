@@ -1,6 +1,9 @@
 package character;
 
 
+import Network.Network;
+import sun.nio.ch.Net;
+
 import java.util.Scanner;
 
 public class Player extends Character{
@@ -19,7 +22,8 @@ public class Player extends Character{
 
     @Override
     public boolean makeMove() {
-        System.out.print("\n"+name+": ");
+        //SOystem.out.print("\n"+name+": ");
+        Network.netPrintln("\n"+name+": ");
         ui.getMove(this, location).execute();
 
         return true;
