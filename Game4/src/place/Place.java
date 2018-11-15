@@ -127,7 +127,7 @@ public class Place {
 	// Return that artifact to be stored in user inventory (in Game)
 	public Artifact removeArtifact(String name) {
 		for (Artifact a : artifacts) {
-			if (name.equals(a.name().toUpperCase()) && a.weight() >= 0 ) {	// weight must be movable (>= 0)
+			if (name.equals(a.name().toLowerCase()) && a.weight() >= 0 ) {	// weight must be movable (>= 0)
 				artifacts.remove(a);
 				return a;
 			}

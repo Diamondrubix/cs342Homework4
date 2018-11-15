@@ -26,7 +26,7 @@ public class GetItem extends Move {
 	public GetItem(Character c, Place p, String artifactName) {
 		this.character = c;
 		this.currentPlace = p;
-		this.artifactName = artifactName;
+		this.artifactName = artifactName.toLowerCase();
 	}
 	
 	/**
@@ -34,6 +34,10 @@ public class GetItem extends Move {
 	 */
 	public void execute() {
 		Artifact a = currentPlace.removeArtifact(artifactName);
-		character.addArtifact(a);
+		if(a==null){
+			System.out.println("no artifacts to pick up/coudn't pick it up");
+		}else {
+			character.addArtifact(a);
+		}
 	}
 }
