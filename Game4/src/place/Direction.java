@@ -92,7 +92,7 @@ public class Direction {
 		locked = false;
 	}
 	// Returns true if Direction is locked
-	public Boolean isLocked() {
+	public boolean isLocked() {
 		if (locked == true)
 			return true;
 		return false;

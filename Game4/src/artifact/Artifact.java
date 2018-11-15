@@ -115,6 +115,16 @@ public class Artifact {
 	}
 	
 	/**
+	 * Provides the suitType of the artifact. If it is not a suit, 
+	 * the method will return null.
+	 *
+	 * @return suit type
+	 */
+	public String getSuit() {
+		return suitType;
+	}
+	
+	/**
 	 * Uses the artifact.
 	 */
 	public void use(Character character, Place room) {
