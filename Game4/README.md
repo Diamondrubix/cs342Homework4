@@ -30,7 +30,7 @@ game and move package. In this homework, I modified the implementation of the Mo
 from using enumeration MoveType to command design pattern. In addition, I modified some 
 methods in my Artifact class to interface better with the other 2 members' classes.
 
-I added the Armor functionality to the game and all the supporting functionalities such
+I added the Armor functionality to the game and some the supporting functionalities such
 as modifications to the GDF file format, the parser in the Game class for both special
 Artifact and Place types, and added some methods in the Character class to 
 support equipping the armor. Lastly, I added javadoc documentation for some classes.
