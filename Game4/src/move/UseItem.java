@@ -34,9 +34,6 @@ public class UseItem extends Move {
 	 */
 	public void execute() {
 		Artifact a = Place.getArtifact(artifact);
-		if (a != null) {
-			character.addArtifact(a);
-			Place.removeArtifact(a);
-		}
+		a.use(character, currentPlace);
 	}
 }
