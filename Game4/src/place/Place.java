@@ -63,6 +63,7 @@ public class Place {
 	public void addCharacter(Character c) {
 		characters.add(c);
 	}
+
 	/**
 	 * Returns an array containing names of Artifacts in this room.
 	 *

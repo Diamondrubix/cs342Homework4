@@ -36,6 +36,7 @@ public class Go extends Move {
 	 * @param current current place of the character
 	 * @param directions movement directions for the character
 	 */
+	@Deprecated
 	public Go(Character c, Place current, Place dest) {
 		this.character = c;
 		this.currentPlace = current;
