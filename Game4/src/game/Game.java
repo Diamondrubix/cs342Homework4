@@ -11,8 +11,8 @@ import character.NPC;
 import character.Player;
 import Network.*;
 import place.Direction;
-import place.Place;
-import artifact.Artifact;
+import place.*;
+import artifact.*;
 import sun.nio.ch.Net;
 
 import java.io.IOException;
@@ -113,9 +113,21 @@ public class Game {
 					System.out.println("Warning: No places declared!.");
 				}
 				for (int i = 0; i < numPlaces; ++i) {
-					Place p = new Place(input);
+					words = CleanLineScanner.getTokens(input); //No support for older GDF
+					Place p; //Pick place object based on GDF type.
+					switch(Integer.parseInt(words[0])) {
+						case 0: p = new Place(input); break;
+						case 1: p = new LavaRoom(input); break;
+						case 2: p = new UnderwaterRoom(input); break;
+						case 3: p = new DarkRoom(input); break;
+						case 4: p = new SpaceRoom(input); break;
+						case 5: p = new FountainRoom(input); break;
+						case 6: p = new RiverRoom(input); break;
+						default: p = new Place(input); break;
+					}
 				}
 			}
+		
 
 			//Parse Directions section.
 			words = CleanLineScanner.getTokens(input);
@@ -165,11 +177,11 @@ public class Game {
 						Character c = new Player(input); //change player to Character to solve temporary error to test compile
 						characters.add(c);
 					} else if (type.equals("NPC")) {
-						Character c = new NPC(input);//change player to Character to solve temporary error to test compile
+						Character c = new NPC(input); //change player to Character to solve temporary error to test compile
 						characters.add(c);
 					} else {
 						System.out.println("Error: Invalid character type!");
-						return;
+						// return;
 					}
 				}
 			}
@@ -183,22 +195,36 @@ public class Game {
 			}
 			if (words.length < 2 || !words[0].equalsIgnoreCase("ARTIFACTS")) {
 				System.out.println("ARTIFACTS section not defined.");
-				return;
 			} else {
 				//Parse all entries in Artifacts section.
 				int numArtifacts = Integer.parseInt(words[1]);
 				// System.out.println("Num artifacts: " + numArtifacts);
 				//Construct artifact objects.
 				for (int i = 0; i < numArtifacts; ++i) {
-					int locationID = input.nextInt();
-					// System.out.println("Place ID of Artifact " + i + ": " + locationID);
-					Artifact artifact = new Artifact(input, 3);
+					words = CleanLineScanner.getTokens(input);
+					int locationID = Integer.parseInt(words[0]);
+					
+					//Support GDF without type of Artifact information.
+					int typeID;
+					if (words.length == 1) {
+						typeID = 0;
+					}
+					else {
+						typeID = Integer.parseInt(words[1]);
+					}
+					
+					// System.out.println("Place ID of Artifact " + i + ": " + locationID + " : " +typeID);
+					Artifact artifact;
+					if (typeID == 1) {
+						artifact = new Armor(input, 3);
+					}
+					else {
+						artifact = new Artifact(input, 3);
+					}
 
 					//Put artifact in its initial location.
 					if (locationID < 0) { // Character inventory
-
-						Character.getCharacterByID(Math.abs(locationID))
-								.addArtifact(artifact);
+						Character.getCharacterByID(Math.abs(locationID)).addArtifact(artifact);
 					} else if (locationID == 0) { // Random room
 						//Random.
 					} else { // Room
@@ -208,7 +234,7 @@ public class Game {
 			}
 		} 
 		else{
-			name = "dopesn't maatter";
+			name = "doesn't maatter";
 			System.out.println("you are a spectator just watching another game");
 			Client cl = null;
 			try {

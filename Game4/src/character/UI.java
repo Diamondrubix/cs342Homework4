@@ -5,7 +5,7 @@ import move.*;
 import place.Place;
 
 import java.util.Scanner;
-        import java.util.StringTokenizer;
+import java.util.StringTokenizer;
 
 /*
 handles user input to control each player instance's movements
@@ -67,6 +67,15 @@ public class UI implements DecisionMaker {
             }
             return new UseItem(c,location, artifactName.trim());
         }
+				else if (input.contains("EQUIP")) {
+					  String[] words = input.split("\\s+");
+            // Append tokenized names.
+            String artifactName = "";
+            for (int i = 1; i < words.length; ++i) {
+                artifactName += words[i] + " ";
+            }
+            return new Equip(c,location, artifactName.trim());
+				}
         //Move to other rooms.
         else {
             return new Go(c,location, args);

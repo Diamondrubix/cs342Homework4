@@ -10,7 +10,7 @@ public abstract class Move {
 	/**
 	 * Default constructor that does nothing.
 	 */
-	public Move() { }
+	protected Move() { }
 	
 	/**
 	 * Runs the command encapsulated by the subclasses of this object.

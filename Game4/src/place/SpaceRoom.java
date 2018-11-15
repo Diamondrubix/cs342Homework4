@@ -5,7 +5,9 @@ package place;
 
 import character.Character;
 import artifact.Artifact;
+import artifact.Armor.*;
 import game.CleanLineScanner;
+import java.util.Scanner;
 
 /* SPACE ROOM */
 // Desc: There's no oxygen in this room. Player cannot breathe...
@@ -15,10 +17,14 @@ import game.CleanLineScanner;
 //					Then the user will take -25 damage per turn. (deadly)
 
 public class SpaceRoom extends Place {
+	public SpaceRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		// Check user inventory for a space suit.
-		if (c.checkFor("SpaceSuit") ) {
+		if (c.armorEquipped(ArmorType.SPACE) ) {
 			// User takes no damage
 		}
 		else {

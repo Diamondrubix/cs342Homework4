@@ -4,8 +4,10 @@
 package place;
 
 import artifact.Artifact;
+import artifact.Armor.*;
 import character.Character;
 import game.CleanLineScanner;
+import java.util.Scanner;
 
 /* UNDERWATER ROOM */
 // Desc: This room is completely submerged in cold water. 
@@ -15,10 +17,14 @@ import game.CleanLineScanner;
 // Extra-Idea: Should ScubaSuit regen hp when user swims in this place?
 
 public class UnderwaterRoom extends Place {
+	public UnderwaterRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		// Check Player/NPC inventory for a ScubaSuit
-		if (c.checkFor("ScubaSuit") ) {
+		if (c.armorEquipped(ArmorType.SCUBA) ) {
 			// Do nothing OR regen HP
 			return;
 		}

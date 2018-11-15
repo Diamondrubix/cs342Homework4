@@ -5,7 +5,10 @@ package place;
 
 import character.Character;
 import artifact.Artifact;
+import artifact.Armor.*;
 import game.CleanLineScanner;
+
+import java.util.Scanner;
 
 /* LAVA ROOM */
 // Desc: This room is extremely hot. Player/NPC should not
@@ -16,10 +19,14 @@ import game.CleanLineScanner;
 // Extra-Idea: Should LavaSuit regen hp when user stands in this place?
 
 public class LavaRoom extends Place {
+	public LavaRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		// Check Player/NPC inventory for a LavaSuit
-		if (c.checkFor("LavaSuit") ) {
+		if (c.armorEquipped(ArmorType.LAVA) ) {
 			// Do nothing OR regen HP
 			return;
 		}

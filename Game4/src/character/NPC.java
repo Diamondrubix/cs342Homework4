@@ -26,7 +26,7 @@ public class NPC extends Character{
         Network.netPrintln("\n"+name+" makes a move\n");
         Move m = ai.getMove(this,location);
         m.execute();
-
+				super.makeMove();
 
         return true;
     }

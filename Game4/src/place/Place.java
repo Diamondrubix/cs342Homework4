@@ -10,7 +10,7 @@ import character.Character;
 import java.util.*;
 
 /* Place key IDs */
-// These are ID codes that will be used in GDF 5.0 file
+// These are ID codes that will be used in GDF 5.1 file
 // ~ 0 ~ Normal, vanilla Place
 // ~ 1 ~ Lava Room
 // ~ 2 ~ Underwater Room
@@ -32,8 +32,8 @@ public class Place {
 	//Avoid compile errors.
 	protected Place() {}
 	
-	//Should be abstract, but whatever.
-	public void ambientFunction(Character c) { }
+	//Do nothing for vanilla place.
+	public void ambientFunction(Character c) {}
 	
 	// Constructor for creating Place object
 	//	** Add newly created place to static collection of known places

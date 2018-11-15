@@ -23,8 +23,6 @@ public class Artifact {
 	private final int mobility;
 	private final int keyPattern;
 	private Place currentPlace;
-	private String suitType;
-	
 	
 	/**
 	 * Constructs an Artifact given a Scanner to a file and GDF file version.
@@ -113,16 +111,6 @@ public class Artifact {
 	 */
 	public int getKeyPattern() {
 		return keyPattern;
-	}
-	
-	/**
-	 * Provides the suitType of the artifact. If it is not a suit, 
-	 * the method will return null.
-	 *
-	 * @return suit type
-	 */
-	public String getSuit() {
-		return suitType;
 	}
 	
 	/**

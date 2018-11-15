@@ -1,9 +1,13 @@
 package character;
 
 import artifact.Artifact;
+import artifact.Armor;
+import artifact.Armor.ArmorType;
 import place.Place;
 
 import game.CleanLineScanner;
+import game.Game;
+import Network.Network;
 
 
 import java.util.ArrayList;
@@ -21,57 +25,10 @@ public class Character {
     protected ArrayList<Artifact> inventory = new ArrayList<Artifact>();
     protected static boolean arePlayers = false;
     protected int health = 100;
+		protected Armor armorEquip;
 
 
     public Character(Scanner sc){
-/*         //better remove
-        String line = sc.nextLine();
-        line = line.replaceAll("//.*","");
-        while(line.equals("")){
-            line = sc.nextLine();
-            line = line.replaceAll("//.*","");
-        }
-        //better remove //end
-        line = line.trim();
-
-        int placeID =Integer.parseInt(line);
-
-        //better remove
-        line = sc.nextLine();
-        line = line.replaceAll("//.*","");
-        while(line.equals("")){
-            line = sc.nextLine();
-            line = line.replaceAll("//.*","");
-        }
-        //better remove //end
-
-        String s[] = line.split("\\s");
-        int id = Integer.parseInt(s[0]);
-        String name = "";
-        for(int j =1; j<s.length;j++){
-            if(j==s.length-1) {
-                name = name + s[j];
-            }else{
-                name = name + s[j]+" ";
-            }
-        }
-        line = sc.nextLine();
-        String desc = "";
-        //getting the desc
-        int numLines = Integer.parseInt(line);
-        for(int j = 0; j<numLines;j++){
-            line = sc.nextLine();
-            desc=desc+" "+line;
-        }
-
-        //picks a random place id
-        if(placeID == 0){
-            placeID = Place.getRandomID();
-        }
-
-        Character.characters.put(id, new Player(id, name, desc,placeID));
-        characterIDs.add(id); */
-				
 				//Get place information.
 				String[] tokens = CleanLineScanner.getTokens(sc);
 				//PlaceID not provided.
@@ -153,12 +110,15 @@ public class Character {
     }
 
     public void print(){
-        System.out.println("character print");
+        System.out.println("health: " + health);
+				if (armorEquip != null) {
+					System.out.println("Equipped: " + armorEquip.name());
+				}
     }
 
     /*
-helper function to move characters
- */
+			helper function to move characters
+		 */
     protected void moveCharacter(Place temp){
 
         location.removeCharacter(this);
@@ -167,8 +127,8 @@ helper function to move characters
     }
 
     /*
-lets you view your inventory with item name and description.
- */
+			lets you view your inventory with item name and description.
+		 */
     public void viewInventory(){
         for(int i =0; i<inventory.size();i++){
             inventory.get(i).display();
@@ -176,8 +136,9 @@ lets you view your inventory with item name and description.
     }
 
     /*
-grabs and returns a random object from the characters inventory. Will be null if inventory is empty.
- */
+			grabs and returns a random object from the characters inventory. 
+			Will be null if inventory is empty.
+		 */
     protected Artifact randomArtifactFromInventory(){
         int max = inventory.size();
         if(max == 0){
@@ -199,8 +160,8 @@ grabs and returns a random object from the characters inventory. Will be null if
     }
 
     /*
-drops the specified artifact
-*/
+			drops the specified artifact
+		*/
     public boolean drop(String thing){
         for(int i =0; i< inventory.size();i++){
             String name = inventory.get(i).name().toLowerCase();
@@ -223,14 +184,44 @@ drops the specified artifact
         return null;
     }
 		
+		/**
+		 * Checks if a certain type of armor is being used.
+		 *
+		 * @param armor type of armor
+		 * @return true if ArmorType armor is equipped
+		 */
+		public boolean armorEquipped(ArmorType armor) {
+			if (armorEquip == null) return false;
+			return (armorEquip.getType() == armor);
+		}
+		
+		/**
+		 * Equips armor.
+		 *
+		 * @param armor Armor object
+		 */
+		public void equipArmor(Artifact armor) {
+			if (armor instanceof Armor) {
+				armorEquip = (Armor) armor;
+				inventory.remove(armor);
+			}
+			else {
+				System.out.println("Not an Armor");
+			}
+		}
+		
 		public boolean checkFor(String str) {
-			return (strToArtifact(str) == null);
+			return (strToArtifact(str) != null);
 		}
 
     public boolean makeMove(){
-
-        System.out.println("this is the character move function. this should not be running.");
-        return true;
+        //System.out.println("this is the character move function. this should not be running.");
+        location.ambientFunction(this);
+				if (health <= 0) {
+					Game.removeCharacter(this);
+					Network.netPrintln(name +" has died.");
+				}
+				return true;
     }
 
     public void setLocation(Place p){

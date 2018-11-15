@@ -25,7 +25,7 @@ public class Player extends Character{
         //SOystem.out.print("\n"+name+": ");
         Network.netPrintln("\n"+name+": ");
         ui.getMove(this, location).execute();
-
+				super.makeMove();
         return true;
     }
 

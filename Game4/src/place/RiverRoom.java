@@ -7,6 +7,8 @@ import character.Character;
 import artifact.Artifact;
 import game.CleanLineScanner;
 
+import java.util.Scanner;
+
 /* RIVER ROOM */
 // Desc: You have to cross a river or travel down it. Watch out for jumping 
 //		fish, crocodiles and the occasional rapids and waterfalls. Don't fall in!
@@ -16,6 +18,10 @@ import game.CleanLineScanner;
 // Extra-idea: User drowns or gets attacked when/if attempting to cross the river
 
 public class RiverRoom extends Place {
+	public RiverRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		// Check user inventory for a raft.

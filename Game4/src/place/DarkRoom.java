@@ -8,6 +8,8 @@ import artifact.Artifact;
 import character.Character;
 import game.CleanLineScanner;
 
+import java.util.Scanner;
+
 /* DARK ROOM */
 // Desc: It's really dark in this room. Player can't see a thing...
 // 		user should have a flashlight to navigate and see what
@@ -20,6 +22,10 @@ import game.CleanLineScanner;
 //				OR user gets put in a random place.
 
 public class DarkRoom extends Place {
+	public DarkRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		// Check user inventory for a flash light.

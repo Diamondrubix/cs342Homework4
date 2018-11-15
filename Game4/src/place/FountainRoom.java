@@ -7,6 +7,8 @@ import artifact.Artifact;
 import character.Character;
 import game.CleanLineScanner;
 
+import java.util.Scanner;
+
 /* FOUNTAIN ROOM */
 // Desc: This room is very colorful and bright. The light shines
 //		upon a crystal clear water fountain. The user heals while standing
@@ -14,6 +16,10 @@ import game.CleanLineScanner;
 // AmbientFunction: User gets healed 10hp a turn while staying in this room.
 
 public class FountainRoom extends Place {
+	public FountainRoom(Scanner sc) {
+		super(sc);
+	}
+	
 	@Override
 	public void ambientFunction(Character c) {
 		c.heal(10);	// Heal 10 hp per turn in this room
