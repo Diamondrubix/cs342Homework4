@@ -149,7 +149,7 @@ drops the specified artifact
     }
 
     public Artifact strToArtifact(String str){
-        str.toLowerCase()
+        str.toLowerCase();
         for(int i =0; i< inventory.size();i++){
             if(str.equals(inventory.get(i).name().toLowerCase())){
                 return inventory.get(i);

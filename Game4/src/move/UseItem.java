@@ -33,7 +33,8 @@ public class UseItem extends Move {
 	 * Runs the command encapsulated by this object.
 	 */
 	public void execute() {
-		Artifact a = Place.getArtifact(artifact);
+		// Do nothing.
+		Artifact a = character.strToArtifact(artifact);
 		a.use(character, currentPlace);
 	}
 }
