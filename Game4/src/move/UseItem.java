@@ -22,7 +22,7 @@ public class UseItem extends Move {
 	 *
 	 * @param c character exiting the game
 	 * @param p current location of the character
-	 * @param artifactName name of item to be used
+	 * @param itemName name of item to be used
 	 */
 	public UseItem(Character c, Place p, String itemName) {
 		this.character = c;

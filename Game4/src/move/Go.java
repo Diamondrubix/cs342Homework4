@@ -37,7 +37,7 @@ public class Go extends Move {
 	 *
 	 * @param c character to move
 	 * @param current current place of the character
-	 * @param directions movement directions for the character
+	 * @param dest place destination of the move command
 	 */
 	@Deprecated
 	public Go(Character c, Place current, Place dest) {
