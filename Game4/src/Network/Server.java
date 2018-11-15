@@ -73,8 +73,8 @@ public class Server extends Thread{
         /**
          * just accepts a socket to be able to run
          */
-        public Handler(Socket socket) {
-            this.socket = socket;
+        public Handler(Socket s) {
+            socket = s;
         }
 
         /**
