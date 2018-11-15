@@ -36,3 +36,26 @@ Artifact and Place types, and added some methods in the Character class to
 support equipping the armor. Lastly, I added javadoc documentation for some classes.
 
 
+Zain Zahran (zzahra2) :
+
+My part of the project was the same as everyone else for the merge step. We all sat together to
+attempt to get all of our classes together to compile. This was challenging since we had to
+consistently modify each of our classes, rename functions, etc. 
+
+My primary responsibility was the Place class. Along with the addition of new functions
+the additional features were to create different kinds of places. I added about 6 new
+places that all inherit from Place, but have their own functionalities. We called this,
+the ambientFunction() - each place has its own ambient function. For the normal place,
+the vanilla function did nothing. But the new kinds of places that extend Place overrided this
+to change functionalities. For example, one of the new places is a Dark Room. The player must have
+a flashlight in his/her inventory to get an output. If no flashlight exists, inventory cannot be displayed
+along with the artifacts in the room. Another room, FountainRoom, is just a add-on room that
+heals the player 10 hp per turn. These are just some samples of the new kinds of places we implemented
+to HW 4.
+
+The 2nd main thing I worked on, was the UML diagram. For that, I was able to create the diagram structure
+of our program and give a better understanding of the fundamentals occuring within. Everyone chipped in here
+to make sure that their new features were included in the UML diagram. Everything was confirmed and verified
+by all group members for changes/adjustments.
+
+
