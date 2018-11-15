@@ -24,7 +24,7 @@ gets the move information for NPC Characters
         int choice = (int) ((Math.random() * ((max - min) + 1)) + min);
         if(choice <2){
             return new Go(this, location, location.getDirections());
-        }else if(choice == 2){
+        }/*else if(choice == 2){
             return new Move("get");
         }else if(choice == 3) {
             return new Move("drop");
@@ -34,6 +34,7 @@ gets the move information for NPC Characters
             System.out.println("ERROR: getmove of ai class else statement called.");
             return new Move("invalid");
         }
+        */
 
     }
 }

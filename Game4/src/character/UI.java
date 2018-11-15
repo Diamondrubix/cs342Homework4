@@ -36,7 +36,7 @@ public class UI implements DecisionMaker {
         }
         //Access inventory.
         else if (input.equals("INVE") || input.equals("INVENTORY")) {
-            return new Move(MoveType.INVENTORY, "");
+            return new Inve(c, "");
         }
         //Pick up artifact.
         else if (input.contains("GET")) {
@@ -46,7 +46,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Move(MoveType.GET, artifactName.trim());
+            return new Get(c, artifactName.trim());
         }
         //Drop or use artifact.
         else if (input.contains("DROP")) {
@@ -56,7 +56,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Move(MoveType.DROP, artifactName.trim());
+            return new Drop(c, artifactName.trim());
         }
         else if (input.contains("USE")) {
             String[] words = input.split("\\s+");
@@ -65,7 +65,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Move(MoveType.USE, artifactName.trim());
+            return new Use(c, artifactName.trim());
         }
         //Move to other rooms.
         else {
