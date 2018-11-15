@@ -219,7 +219,7 @@ public class Game {
 						typeID = Integer.parseInt(words[1]);
 					}
 					
-					System.out.println("Place ID of Artifact " + i + ": " + locationID + " : " +typeID);
+					// System.out.println("Place ID of Artifact " + i + ": " + locationID + " : " +typeID);
 					Artifact artifact;
 					if (typeID == 1) {
 						artifact = new Armor(input, 3);

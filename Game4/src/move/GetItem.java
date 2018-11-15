@@ -40,7 +40,7 @@ public class GetItem extends Move {
 			Network.netPrintln("No artifacts to pick up/could not pick it up");
 		}else {
 			//System.out.println("Picked up " + artifactName);
-			Network.netPrintln("No artifacts to pick up/could not pick it up");
+			Network.netPrintln("Picked up " + artifactName);
 			character.addArtifact(a);
 		}
 	}
