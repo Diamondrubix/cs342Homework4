@@ -21,7 +21,7 @@ public class NPC extends Character{
 
     @Override
     public boolean makeMove() {
-        System.out.print("\n"+name+" makes a move");
+        System.out.print("\n"+name+" makes a move\n");
         Move m = ai.getMove(this,location);
         m.execute();
 

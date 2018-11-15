@@ -58,6 +58,7 @@ public class Go extends Move {
 			System.out.println("Direction " + moveDirs[i]);
 			Place dest = currentPlace.followDirection(moveDirs[i]);
 			currentPlace.removeCharacter(character);
+			character.setLocation(dest);
 			dest.addCharacter(character);
 		}
 	}

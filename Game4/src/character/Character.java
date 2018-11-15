@@ -233,4 +233,8 @@ drops the specified artifact
         return true;
     }
 
+    public void setLocation(Place p){
+        location = p;
+    }
+
 }
