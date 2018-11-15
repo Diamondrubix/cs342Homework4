@@ -27,6 +27,7 @@ public class Go extends Move {
 		this.character = c;
 		this.currentPlace = current;
 		this.moveDirs = directions;
+		this.destination = null;
 	}
 	
 	/**
@@ -40,6 +41,7 @@ public class Go extends Move {
 	public Go(Character c, Place current, Place dest) {
 		this.character = c;
 		this.currentPlace = current;
+		this.moveDirs = null;
 		this.destination = dest;
 	}
 	

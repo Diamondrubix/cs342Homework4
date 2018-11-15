@@ -105,7 +105,7 @@ public class Place {
 		String[] names = new String[directions.size()];
 		int i = 0;
 		for (Direction d: directions) {
-			names[i] = d.getName();
+			names[i] = d.toString();
 			i++;
 		}
 		return names;

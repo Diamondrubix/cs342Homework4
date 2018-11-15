@@ -157,6 +157,10 @@ drops the specified artifact
         }
         return null;
     }
+		
+		public boolean checkFor(String str) {
+			return (strToArtifact(str) == null);
+		}
 
     public boolean makeMove(){
 
