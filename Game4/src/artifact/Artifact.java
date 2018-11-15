@@ -22,6 +22,7 @@ public class Artifact {
 	private final int mobility;
 	private final int keyPattern;
 	private Place currentPlace;
+	private String suitType;
 	
 	
 	/**

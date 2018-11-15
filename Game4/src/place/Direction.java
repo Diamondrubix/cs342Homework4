@@ -13,7 +13,7 @@ public class Direction {
 	private int ID;
 	private Place from;
 	private Place to;
-	private Boolean locked;
+	private boolean locked;
 	private int lockPattern;	// Artifact has a corresponding keyPattern
 	private DirType dir;		// Enum defined at bottom of Direction class
 
