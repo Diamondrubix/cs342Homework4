@@ -231,7 +231,9 @@ public class Character {
 				System.out.println("Not an Armor");
 			}
 		}
-		
+		/*
+		smple helper function to check not null
+		 */
 		public boolean checkFor(String str) {
 			return (strToArtifact(str) != null);
 		}
