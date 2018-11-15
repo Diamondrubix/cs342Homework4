@@ -4,7 +4,7 @@ group project for cs 342
 We all sat together and peer programed the beginning and for variouse reasons had to make changes to
 the Game, and Game Tester class
 
-Adam Arato:
+Adam Arato (aarato2):
 
 My third of the project that we merged was all the things in the Character package.
 I one by one copy pasted the functions from my gmae 3 into those classes as needed, then made
@@ -34,3 +34,7 @@ I added the Armor functionality to the game and all the supporting functionaliti
 as modifications to the GDF file format, the parser in the Game class for both special
 Artifact and Place types, and added methods in the Character class to support equipping 
 the armor. Lastly, I added javadoc documentation for my classes.
+
+
+Zain Zahran (zzahra2):
+Created added things in the place package and added new places
