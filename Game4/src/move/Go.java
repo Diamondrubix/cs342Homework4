@@ -4,6 +4,7 @@ package move;
 import character.Character;
 import place.Place;
 import move.Move;
+import game.Game;
 
 /**
  * This class encapsulates a command to move from Place to Place.
@@ -57,9 +58,19 @@ public class Go extends Move {
 			}
 			System.out.println("Direction " + moveDirs[i]);
 			Place dest = currentPlace.followDirection(moveDirs[i]);
-			currentPlace.removeCharacter(character);
-			character.setLocation(dest);
-			dest.addCharacter(character);
+			if (dest.equals(Place.getPlaceByID(1))) { //Exit state
+				currentPlace.removeCharacter(character);
+				Game.removeCharacter(character);
+			} 
+			else if (dest.equals(Place.getPlaceByID(0))) { //Expansion
+				//Do nothing except print.
+				
+			}
+			else {
+				currentPlace.removeCharacter(character);
+				character.setLocation(dest);
+				dest.addCharacter(character);
+			}
 		}
 	}
 }

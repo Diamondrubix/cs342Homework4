@@ -75,6 +75,7 @@ public class Place {
 		directions = new Vector<Direction>();
 		artifacts  = new Vector<Artifact>();
 		characters = new Vector<Character>();
+		places.put(this.ID, this);
 	}
 	// NEW in 4.0
 	public void addCharacter(Character c) {
