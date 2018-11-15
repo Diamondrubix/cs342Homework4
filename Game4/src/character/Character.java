@@ -3,6 +3,9 @@ package character;
 import artifact.Artifact;
 import place.Place;
 
+import game.CleanLineScanner;
+
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -21,7 +24,7 @@ public class Character {
 
 
     public Character(Scanner sc){
-        //better remove
+/*         //better remove
         String line = sc.nextLine();
         line = line.replaceAll("//.*","");
         while(line.equals("")){
@@ -67,8 +70,70 @@ public class Character {
         }
 
         Character.characters.put(id, new Player(id, name, desc,placeID));
-        characterIDs.add(id);
-
+        characterIDs.add(id); */
+				
+				//Get place information.
+				String[] tokens = CleanLineScanner.getTokens(sc);
+				//PlaceID not provided.
+				if (tokens.length < 1) {
+					this.ID = -1;
+					this.name = "";
+					this.description = "";
+					return;
+				}
+				//Set current place.
+				int placeID = Integer.parseInt(tokens[0]);
+				if (placeID > 0) {
+					location = Place.getPlaceByID(placeID);
+				}
+				else if (placeID == 0) { // Random starting place.
+					location = Place.getRandomPlace();
+				}
+				else { // Invalid
+					System.out.println("Error! Invalid PlaceID");
+					this.ID = -1;
+					this.name = "";
+					this.description = "";
+					return;
+				}
+				
+				// System.out.println("placeID " + placeID);
+				
+				//Get data for the character.
+				tokens = CleanLineScanner.getTokens(sc);
+				
+				//ID or name not provided.
+				if (tokens.length < 2) {
+					this.ID = -1;
+					this.name = "";
+					this.description = "";
+					return;
+				}
+				int id = Integer.parseInt(tokens[0]);
+				String charaName = "";
+				//Append whitespace separated Place name tokens.
+				for (int j = 1; j < tokens.length; ++j) {
+					//System.out.println("Token " + j + ": " + tokens[j]);
+					charaName += tokens[j] + " ";
+				}
+				// System.out.println("id " + id);
+				// System.out.println("name " + charaName);
+				
+				//Get Place description.
+				int descLines = sc.nextInt();
+				String desc = "";
+				sc.nextLine();
+				for (int j = 0; j < descLines; ++j) {
+					desc += CleanLineScanner.getCleanLine(sc.nextLine()) + "\n";
+				}
+				
+				//System.out.println("Place 0" + ": " + id + " " + placeName + " " + desc);
+				//Set data fields of this object.
+				this.ID = id;
+				this.name = charaName.trim();
+				this.description = desc;
+				Character.characters.put(ID, this);
+				location.addCharacter(this);
     }
 
     protected Character(int i, String n, String desc, int l){
