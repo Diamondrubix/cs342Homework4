@@ -204,7 +204,7 @@ drops the specified artifact
     public boolean drop(String thing){
         for(int i =0; i< inventory.size();i++){
             String name = inventory.get(i).name().toLowerCase();
-            if(name.equals(thing)){
+            if(name.equals(thing.toLowerCase())){
                 location.addArtifact(inventory.get(i));
                 inventory.remove(i);
                 return true;
@@ -214,7 +214,7 @@ drops the specified artifact
     }
 
     public Artifact strToArtifact(String str){
-        str.toLowerCase();
+        str = str.toLowerCase();
         for(int i =0; i< inventory.size();i++){
             if(str.equals(inventory.get(i).name().toLowerCase())){
                 return inventory.get(i);

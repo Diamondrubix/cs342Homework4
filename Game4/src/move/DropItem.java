@@ -33,6 +33,6 @@ public class DropItem extends Move {
 	 * Runs the command encapsulated by this object.
 	 */
 	public void execute() {
-		character.drop(artifactName);
+		System.out.println("Dropped: " + character.drop(artifactName));
 	}
 }
