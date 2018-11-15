@@ -70,7 +70,6 @@ public class Go extends Move {
 				currentPlace.removeCharacter(character);
 				character.setLocation(dest);
 				dest.addCharacter(character);
-				dest.print();
 			}
 			currentPlace = dest;
 		}
