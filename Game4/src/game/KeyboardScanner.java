@@ -1,6 +1,9 @@
 /* Author: Alexander Oey (NetID: aoey2) */
 package game;
 
+import Network.Client;
+import Network.Network;
+
 import java.util.Scanner;
 
 /**
@@ -12,6 +15,7 @@ import java.util.Scanner;
 public class KeyboardScanner{
 	private Scanner keyboard = null;
 	private static KeyboardScanner kScanner;
+	//private Client client;
 	
 	/**
 	 * Returns the Scanner object to System.in
@@ -29,12 +33,19 @@ public class KeyboardScanner{
 
 	public String nextLine(){
 		String line = keyboard.nextLine();
+		if(Network.multiplayer){
+			Network.getCLient().sendData(line);
+		}
 		//add socket stuff here
 		return line;
 	}
 
 	public int nextInt(){
 		int l = keyboard.nextInt();
+
+		if(Network.multiplayer){
+			Network.getCLient().sendData(Integer.toString(l));
+		}
 
 		return l;
 	}

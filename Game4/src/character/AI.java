@@ -1,8 +1,7 @@
 package character;
 
-import artifact.Move;
 import move.Go;
-import move.Move;
+import move.*;
 import place.Place;
 
 import java.util.Scanner;
@@ -23,18 +22,18 @@ gets the move information for NPC Characters
         int min = 0;
         int choice = (int) ((Math.random() * ((max - min) + 1)) + min);
         if(choice <2){
-            return new Go(this, location, location.getDirections());
-        }/*else if(choice == 2){
-            return new Move("get");
+            return new Go(c, location, location.getDirections());
+        }else if(choice == 2){
+            return new GetItem(c,location,location.getRandomArt());
         }else if(choice == 3) {
-            return new Move("drop");
+            return new DropItem(c,location,location.getRandomArt());
         }else if(choice == 4){
-            return new Move("use");
+            return new UseItem(c,location,location.getRandomArt());
         }else{
             System.out.println("ERROR: getmove of ai class else statement called.");
-            return new Move("invalid");
+            return null;
         }
-        */
+
 
     }
 }

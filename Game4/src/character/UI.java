@@ -36,7 +36,7 @@ public class UI implements DecisionMaker {
         }
         //Access inventory.
         else if (input.equals("INVE") || input.equals("INVENTORY")) {
-            return new Inve(c, "");
+            return new ShowInventory(c);
         }
         //Pick up artifact.
         else if (input.contains("GET")) {
@@ -46,7 +46,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Get(c, artifactName.trim());
+            return new GetItem(c,location, artifactName.trim());
         }
         //Drop or use artifact.
         else if (input.contains("DROP")) {
@@ -56,7 +56,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Drop(c, artifactName.trim());
+            return new DropItem(c,location, artifactName.trim());
         }
         else if (input.contains("USE")) {
             String[] words = input.split("\\s+");
@@ -65,7 +65,7 @@ public class UI implements DecisionMaker {
             for (int i = 1; i < words.length; ++i) {
                 artifactName += words[i] + " ";
             }
-            return new Use(c, artifactName.trim());
+            return new UseItem(c,location, artifactName.trim());
         }
         //Move to other rooms.
         else {
@@ -76,51 +76,5 @@ public class UI implements DecisionMaker {
 
     }
 
-
-    private Move _move(String text){
-        text = text.toLowerCase();
-        String args = text;
-        StringTokenizer st = new StringTokenizer(text);
-        text = st.nextToken();
-
-
-        switch (text) {
-            case "get":
-                type = MoveType.get;
-                break;
-            case "drop":
-                type = MoveType.drop;
-                break;
-            case "look":
-                type = MoveType.look;
-                break;
-            case "inventory":
-
-            case "inve":
-                type = MoveType.inventory;
-                break;
-            case "use":
-                type = MoveType.use;
-                break;
-            case "wait":
-                type = MoveType.wait;
-                break;
-            case "exit":
-
-            case "quit":
-                type = MoveType.exit;
-                break;
-            case "go":
-                type = MoveType.go;
-                break;
-            default:
-                if(Direction.dirType.isDir(text)){
-                    type = MoveType.go;
-                }else{
-
-                    type = MoveType.invalid;
-                }
-        }
-    }
 
 }

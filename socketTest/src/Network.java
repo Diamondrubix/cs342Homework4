@@ -8,7 +8,7 @@ public class Network {
 
 /*
     public static Server getServer() throws IOException {
-        if(server == null){
+        if(i server == null){
             server = new Server();
             return server;
         }else{
