@@ -34,9 +34,10 @@ public class GetItem extends Move {
 	 */
 	public void execute() {
 		Artifact a = currentPlace.removeArtifact(artifactName);
-		if(a==null){
-			System.out.println("no artifacts to pick up/coudn't pick it up");
+		if(a==null){ // Artifact not found.
+			System.out.println("No artifacts to pick up/could not pick it up");
 		}else {
+			System.out.println("Picked up " + artifactName);
 			character.addArtifact(a);
 		}
 	}

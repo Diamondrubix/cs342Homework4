@@ -2,6 +2,7 @@
 package move;
 
 import character.Character;
+import character.Player;
 import place.Place;
 import move.Move;
 import game.Game;
@@ -13,7 +14,7 @@ import game.Game;
  */ 
 public class Go extends Move {
 	private final Character character;
-	private final Place currentPlace;
+	private Place currentPlace;
 	private final String[] moveDirs;
 	private final Place destination;
 	
@@ -64,13 +65,16 @@ public class Go extends Move {
 			} 
 			else if (dest.equals(Place.getPlaceByID(0))) { //Expansion
 				//Do nothing except print.
-				
 			}
-			else {
+			else { // Normal rooms.
 				currentPlace.removeCharacter(character);
 				character.setLocation(dest);
 				dest.addCharacter(character);
 			}
+			currentPlace = dest;
+		}
+		if (character instanceof Player) {
+				currentPlace.print();
 		}
 	}
 }

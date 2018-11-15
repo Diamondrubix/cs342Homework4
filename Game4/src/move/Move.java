@@ -7,51 +7,13 @@ package move;
  * @author Alexander Oey (aoey2)
  */
 public abstract class Move {
+	/**
+	 * Default constructor that does nothing.
+	 */
 	public Move() { }
 	
+	/**
+	 * Runs the command encapsulated by the subclasses of this object.
+	 */
 	public abstract void execute();
-	
-	/*
-	public enum MoveType {
-		EXIT,
-		LOOK,
-		INVENTORY,
-		GET,
-		DROP,
-		USE,
-		GO;
-	}
-	
-	//Fields
-	private final MoveType type;
-	private final String argument;
-		
-	public Move(MoveType type, String args) {
-		this.type = type;
-		this.argument = args;
-	}
-
-	/*
-	DELETE THIS, THIS WAS A TEMOPRARY THING JUST SO THAT WE CAN RUN IT
-	public Move(String s){
-	    type = null;
-	    argument = null;
-    }
-	
-	/**
-	 * Provides the type of the action.
-	 *
-	 * @return type of action in MoveType
-	public MoveType type() {
-		return type;
-	}
-	
-	/**
-	 * Provides the arguments given to this action.
-	 *
-	 * @return argument(s) to the action
-
-	public String argument() {
-		return argument;
-	}*/
 }

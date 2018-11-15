@@ -69,7 +69,7 @@ public class Direction {
 	}
 	// Returns true if the string s matches that of the stored direction, dir
 	// Further Enhance ("N", "n", "NORTH", "north", "North")
-	public Boolean match(String s) {
+	public boolean match(String s) {
 		return (this.dir).match(s);	// Calls the match(String) method of DirType
 	}
 	// If keyPattern of the artifact is positive and equal to lockPattern, toggle state of dir lock
@@ -81,6 +81,7 @@ public class Direction {
 		}
 		else {
 			System.out.println("Keypattern does not match.\n");
+			// System.out.println("Actual " + this.lockPattern + " given " + a.getKeyPattern());
 		}
 	}
 	// Locks this direction

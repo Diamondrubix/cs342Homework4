@@ -38,7 +38,7 @@ public class UseItem extends Move {
 		if(a!=null) {
 			a.use(character, currentPlace);
 		}else{
-			System.out.println("coudn't use artifact");
+			System.out.println("couldn't use artifact " + artifact);
 		}
 	}
 }
