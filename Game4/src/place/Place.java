@@ -9,6 +9,7 @@ import character.Character;
 import java.util.*;
 
 /* Place key IDs */
+// These are ID codes that will be used in GDF 5.0 file
 // ~ 0 ~ Normal, vanilla Place
 // ~ 1 ~ Lava Room
 // ~ 2 ~ Underwater Room
