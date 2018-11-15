@@ -4,11 +4,13 @@ package game;
 import character.Character;
 import character.NPC;
 import character.Player;
-
+import Network.*;
 import place.Direction;
 import place.Place;
 import artifact.Artifact;
+import sun.nio.ch.Net;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,30 +45,44 @@ public class Game {
 	 * @param input Scanner instance
 	 */
 	public Game(Scanner input) {
-		System.out.println("press 0 to play single player. press 1 to host multiplayer\nenter an ip to join a host");
-		//Construct special rooms.
-		//Expansion room.
-		Place dlc = new Place(0, "Nowhere",
-		"Room Unavailable. Expansion coming soon. \n" + 
-		"Pre-order NOW! Visit: cs.uic.edu/~i342/ for more information.");
+		System.out.println("press 0 to play single player. press 1 to host multiplayer\nenter an ip to spectate a host");
+		Scanner sc = new Scanner(System.in);
+		String typeOfGame = sc.nextLine();
+
+		if (typeOfGame.equals("0")||typeOfGame.equals("1")){
+			if (typeOfGame.equals("1")) {
+				System.out.println("you are playing 1");
+				new Server(3001).start();
+
+				try {
+					Network.getClient("localhost", 3001);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
+				//client = Network.getCLient("localhost",3001);
+			}
+			//Construct special rooms.
+			//Expansion room.
+			Place dlc = new Place(0, "Nowhere",
+					"Room Unavailable. Expansion coming soon. \n" +
+							"Pre-order NOW! Visit: cs.uic.edu/~i342/ for more information.");
 		//Exit room.
 		Place exit = new Place(1, "Exit", "You exited the game");
-		
+
 		//Parse header.
 		String line = CleanLineScanner.getCleanLine(input.nextLine());
 		String[] words = line.split("\\s+");
 		if (words.length < 3 && !words[0].equals("GDF")) {
 			System.out.println("Invalid file header.");
 			name = "";
-		}
-		else if (Double.parseDouble(words[1]) > 4.0) {
+		} else if (Double.parseDouble(words[1]) > 4.0) {
 			System.out.println("Version " + words[1] + " unsupported");
 			name = "";
-		}
-		else {
+		} else {
 			name = words[2];
 		}
-		
+
 		//Parse Places section.
 		words = CleanLineScanner.getTokens(input);
 		//Places section keyword not found.
@@ -74,8 +90,7 @@ public class Game {
 			System.out.println("Error: PLACES section not defined.");
 			Place p = new Place(1, "", "");
 			return;
-		}
-		else {
+		} else {
 			//Parse all entries on Places section.
 			int numPlaces = Integer.parseInt(words[1]);
 			//System.out.println("Num places: " + numPlaces);
@@ -93,8 +108,7 @@ public class Game {
 		if (words.length < 2 || !words[0].equalsIgnoreCase("DIRECTIONS")) {
 			System.out.println("Error: DIRECTIONS section not defined");
 			return;
-		}
-		else {
+		} else {
 			//Parse all entries in Directions section.
 			int numDirections = Integer.parseInt(words[1]);
 			//System.out.println("Num directions: " + numDirections);
@@ -107,7 +121,7 @@ public class Game {
 				Direction d = new Direction(input);
 			}
 		}
-		
+
 		//Parse Characters section.
 		words = CleanLineScanner.getTokens(input);
 		if (words.length < 2 || !words[0].equalsIgnoreCase("CHARACTERS")) {
@@ -122,11 +136,10 @@ public class Game {
 				String name = userInput.nextLine().trim();
 				System.out.print("Enter character description: ");
 				String description = userInput.nextLine().trim();
-				Character c = new Player(i+1, name, description, Place.getRandomID());
+				Character c = new Player(i + 1, name, description, Place.getRandomID());
 				characters.add(c);
 			}
-		}
-		else {
+		} else {
 			//Parse all entries in the Characters section.
 			int numCharacters = Integer.parseInt(words[1]);
 			//Construct character objects.
@@ -137,30 +150,27 @@ public class Game {
 				if (type.equals("PLAYER")) {
 					Character c = new Player(input); //change player to Character to solve temporary error to test compile
 					characters.add(c);
-				}
-				else if (type.equals("NPC")) {
+				} else if (type.equals("NPC")) {
 					Character c = new NPC(input);//change player to Character to solve temporary error to test compile
 					characters.add(c);
-				}
-				else {
+				} else {
 					System.out.println("Error: Invalid character type!");
 					return;
 				}
 			}
 		}
-		
-		
+
+
 		//Parse Artifacts section.
 		//Skip reading next line if characters is not defined.
-		if (words.length < 2 || !words[0].equalsIgnoreCase("CHARACTERS"));
+		if (words.length < 2 || !words[0].equalsIgnoreCase("CHARACTERS")) ;
 		else {
 			words = CleanLineScanner.getTokens(input);
 		}
 		if (words.length < 2 || !words[0].equalsIgnoreCase("ARTIFACTS")) {
 			System.out.println("ARTIFACTS section not defined.");
 			return;
-		}
-		else {
+		} else {
 			//Parse all entries in Artifacts section.
 			int numArtifacts = Integer.parseInt(words[1]);
 			// System.out.println("Num artifacts: " + numArtifacts);
@@ -169,23 +179,37 @@ public class Game {
 				int locationID = input.nextInt();
 				// System.out.println("Place ID of Artifact " + i + ": " + locationID);
 				Artifact artifact = new Artifact(input, 3);
-				
+
 				//Put artifact in its initial location.
 				if (locationID < 0) { // Character inventory
 
 					Character.getCharacterByID(Math.abs(locationID))
-					         .addArtifact(artifact);
-				}
-				else if (locationID == 0) { // Random room
+							.addArtifact(artifact);
+				} else if (locationID == 0) { // Random room
 					//Random.
-				}
-				else { // Room
+				} else { // Room
 					Place.getPlaceByID(locationID).addArtifact(artifact);
 				}
 			}
 		}
+		}else{
+			name = "dopesn't maatter";
+			System.out.println("you are a spectator just watching another game");
+			Client cl = null;
+			try {
+				cl = Network.getClient(typeOfGame, 3001);
+				while(true){
+					System.out.println(cl.getData());
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 	}
-	
+
+
 	/**
 	 * Runs the main loop of the game and handles interaction with the user.
 	 */
@@ -223,5 +247,5 @@ public class Game {
 
 	}
 
-	
+
 }

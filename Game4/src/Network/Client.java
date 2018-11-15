@@ -34,16 +34,6 @@ public class Client {
     }
 
     public String getData() {
-        /*
-        String answer = "no answer";
-        try {
-            BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            answer = input.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return answer;
-        */
         try {
             return in.readLine();
         } catch (IOException e) {

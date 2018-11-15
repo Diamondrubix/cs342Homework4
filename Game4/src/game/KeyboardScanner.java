@@ -35,7 +35,7 @@ public class KeyboardScanner{
 		String line = keyboard.nextLine();
 
 		if(Network.multiplayer){
-			Network.getCLient().sendData(line);
+			Network.getClient().sendData(line);
 		}
 
 		//add socket stuff here
@@ -46,7 +46,7 @@ public class KeyboardScanner{
 		int l = keyboard.nextInt();
 
 		if(Network.multiplayer){
-			Network.getCLient().sendData(Integer.toString(l));
+			Network.getClient().sendData(Integer.toString(l));
 		}
 
 		return l;
