@@ -19,8 +19,8 @@ public class UI implements DecisionMaker {
     public Move getMove(Character c, Place location) {
         System.out.print("\n"+c.name+": ");
 
-        //KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
-        Scanner sc = new Scanner(System.in);
+        KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
+        //Scanner sc = new Scanner(System.in);
 
         String input = sc.nextLine();
         input = input.toUpperCase().trim();
