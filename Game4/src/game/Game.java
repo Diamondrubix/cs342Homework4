@@ -192,10 +192,11 @@ public class Game {
 	public void play() {
 		boolean exit = false;
 		while (!shouldExit()) {
-			for (Character c: characters) {
-				exit = c.makeMove();
-				if (shouldExit()) break;
+			for(int i=0; i<characters.size();i++){
+				exit = characters.get(i).makeMove();
+				if(shouldExit())break;
 			}
+
 		}
 	}
 
