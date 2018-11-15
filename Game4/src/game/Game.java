@@ -186,12 +186,21 @@ public class Game {
 	 */
 	public void play() {
 		boolean exit = false;
-		while (!exit) {
+		while (!shouldExit()) {
 			for (Character c: characters) {
 				exit = c.makeMove();
-				if (exit) break;
+				if (shouldExit()) break;
 			}
 		}
+	}
+
+	private boolean shouldExit(){
+		for(int i =0; i<characters.size();i++){
+			if(characters.get(i) instanceof Player){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	/**

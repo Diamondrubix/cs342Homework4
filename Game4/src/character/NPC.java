@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class NPC extends Character{
     private boolean isAlive = true;
+    private AI ai = new AI();
 
     public NPC(Scanner sc){
         super(sc);
@@ -19,62 +20,8 @@ public class NPC extends Character{
 
     @Override
     public boolean makeMove() {
-        /*
-        if (isAlive) {
-            //System.out.println("\n"+name+" is moving");
-            Move move = ai.getMove(this, location);
-            Move.MoveType m = move.type;
-            String text = "";
-            switch (m) {
-                case go:
-                    boolean followed = false;
-                    int count = 0;
-                    while (count < 50 && !followed) {
-                        String dir = String.valueOf(Direction.dirType.randomDirection());
-                        Place temp = location.followDirection(dir);
-                        if (temp == null) {
-                            System.out.println(name + "has reached an exit and is leaving");
-                            isAlive = false;
-                            //System.exit(0);
-                            break;
-                        }
-                        if(temp == null){
-                            System.out.println(name + " did not move");
-                            break;
-                        }
-                        if (!temp.equals(location)) {
-                            moveCharacter(temp);
-                            System.out.println("\n"+name + " moved to " + location.name());
-                            followed = true;
-                        } else {
-                            count++;
-                        }
-                    }
-                    if (!followed) {
-                        System.out.println(name + " did nothing");
-                    }
-                    break;
-                case get:
-                    Artifact a = location.getRandomArtifact();
-                    if(a!=null){
-                        inventory.add(a);
-                        System.out.println(name+" picked up "+a.getName());
-                    }else{
-                        System.out.println(name+" found nothing to pick up");
-                    }
-                    break;
-                case drop:
-                    randomDrop();
-                    break;
-                case use:
-                    randomUse();
-                    break;
-                default:
-                    System.out.println("default case for " + name);
+        ai.getMove(this,location).execute();
 
-            }
-        }
-        */
         return true;
     }
 
