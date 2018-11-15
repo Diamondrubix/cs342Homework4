@@ -38,6 +38,7 @@ public class Game {
 	 * @param input Scanner instance
 	 */
 	public Game(Scanner input) {
+		System.out.println("press 0 to play single player. press 1 to host multiplayer\nenter an ip to join a host");
 		//Construct special rooms.
 		//Expansion room.
 		Place dlc = new Place(0, "Nowhere",
