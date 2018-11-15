@@ -8,6 +8,15 @@ import game.CleanLineScanner;
 import character.Character;
 import java.util.*;
 
+/* Place key IDs */
+// ~ 0 ~ Normal, vanilla Place
+// ~ 1 ~ Lava Room
+// ~ 2 ~ Underwater Room
+// ~ 3 ~ Dark Room
+// ~ 4 ~ Space Room
+// ~ 5 ~ Fountain Room
+// ~ 6 ~ River Room
+
 // Represents as an object ROOM or place in the game
 public class Place {
 	private int ID;
