@@ -1,6 +1,7 @@
 /* Author: Alexander Oey (NetID: aoey2) */
 package move;
 
+import Network.Network;
 import character.Character;
 import place.Place;
 import move.Move;
@@ -35,9 +36,11 @@ public class GetItem extends Move {
 	public void execute() {
 		Artifact a = currentPlace.removeArtifact(artifactName);
 		if(a==null){ // Artifact not found.
-			System.out.println("No artifacts to pick up/could not pick it up");
+			//System.out.println("No artifacts to pick up/could not pick it up");
+			Network.netPrintln("No artifacts to pick up/could not pick it up");
 		}else {
-			System.out.println("Picked up " + artifactName);
+			//System.out.println("Picked up " + artifactName);
+			Network.netPrintln("No artifacts to pick up/could not pick it up");
 			character.addArtifact(a);
 		}
 	}

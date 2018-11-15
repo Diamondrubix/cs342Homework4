@@ -3,6 +3,7 @@
 
 package place;
 
+import Network.Network;
 import artifact.Artifact;
 import game.CleanLineScanner;
 import character.Character;
@@ -241,18 +242,27 @@ public class Place {
 
 	// Prints out the area the user is current in
 	public void print() {
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~");
-		System.out.println(description);
+
+		//System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+		//System.out.println(description);
+		Network.netPrintln("~~~~~~~~~~~~~~~~~~~~~");
+		Network.netPrintln(description);
 		int totalWeight = 0;
 		// Print all the available artifacts in the room.
 		if ( !artifacts.isEmpty() ) {
-			System.out.print("All available artifacts: ");
+			//System.out.print("All available artifacts: ");
+			Network.netPrintln("All available artifacts: ");
 			for (Artifact a : artifacts ) {
-				System.out.print(a.name() + ", ");
+				//System.out.print(a.name() + ", ");
+				Network.netPrintln(a.name() + ", ");
 				totalWeight += a.weight();
 			}
-			System.out.println();
+			//System.out.println();
+			Network.netPrintln("");
 		}
+
+
+
 	}
 	// Returns ID of place
 	int getPlace() {

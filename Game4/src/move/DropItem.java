@@ -1,6 +1,7 @@
 /* Author: Alexander Oey (NetID: aoey2) */
 package move;
 
+import Network.Network;
 import character.Character;
 import place.Place;
 import move.Move;
@@ -34,6 +35,7 @@ public class DropItem extends Move {
 	 */
 	public void execute() {
 		character.drop(artifactName);
-		System.out.println("Dropped: " + artifactName);
+		//System.out.println("Dropped: " + artifactName);
+		Network.netPrintln("Dropped: " + artifactName);
 	}
 }

@@ -3,6 +3,7 @@
 
 package place;
 
+import Network.Network;
 import artifact.Artifact;
 import character.Character;
 import game.CleanLineScanner;
@@ -33,6 +34,7 @@ public class DarkRoom extends Place {
 	// Overwrite print to print nothing but darkness...
 	@Override
 	public void print() {
-		System.out.println("It's too dark in here to see anything...");
+		//System.out.println("It's too dark in here to see anything...");
+		Network.netPrintln("It's too dark in here to see anything...");
 	}
 }
