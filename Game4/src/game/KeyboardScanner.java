@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Alexander Oey (aoey2)
  */
 public class KeyboardScanner{
-	private Scanner keyboard = null;
+	private Scanner keyboard;
 	private static KeyboardScanner kScanner;
 	//private Client client;
 	
@@ -25,17 +25,19 @@ public class KeyboardScanner{
 	public static KeyboardScanner getKeyboardScanner() {
 		//First use of KeyboardScanner
 		if (kScanner == null) {
-			new KeyboardScanner();
+			kScanner = new KeyboardScanner();
 		}
-		return getKeyboardScanner();
+		return kScanner;
 	}
 
 
 	public String nextLine(){
 		String line = keyboard.nextLine();
+
 		if(Network.multiplayer){
 			Network.getCLient().sendData(line);
 		}
+
 		//add socket stuff here
 		return line;
 	}
