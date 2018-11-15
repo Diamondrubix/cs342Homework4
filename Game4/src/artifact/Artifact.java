@@ -1,6 +1,7 @@
 /* Author: Alexander Oey (NetID: aoey2) */
 package artifact;
 
+import Network.Network;
 import game.CleanLineScanner;
 import game.Game;
 import place.Place;
@@ -136,10 +137,16 @@ public class Artifact {
 	 * Displays user-friendly information about this Artifact object.
 	 */
 	public void display() {
+		/*
 		System.out.println(this.name);
 		System.out.println("Value: " + this.value);
 		System.out.println("Weight: " + this.mobility);
 		System.out.println(this.description);
+		*/
+		Network.netPrintln(this.name);
+		Network.netPrintln("Value: " + this.value);
+		Network.netPrintln("Weight: " + this.mobility);
+		Network.netPrintln(this.description);
 	}
 	
 	/**

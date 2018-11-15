@@ -1,5 +1,6 @@
 package character;
 
+import Network.Network;
 import artifact.Artifact;
 import move.Move;
 
@@ -21,7 +22,8 @@ public class NPC extends Character{
 
     @Override
     public boolean makeMove() {
-        System.out.print("\n"+name+" makes a move\n");
+        //System.out.print("\n"+name+" makes a move\n");
+        Network.netPrintln("\n"+name+" makes a move\n");
         Move m = ai.getMove(this,location);
         m.execute();
 
@@ -35,7 +37,8 @@ helper function to drop one object
     private void randomDrop(){
         Artifact a = randomArtifactFromInventory();
         if(a == null){
-            System.out.println(name+" tried to drop something but didn't have anything");
+            //System.out.println(name+" tried to drop something but didn't have anything");
+            Network.netPrintln(name+" tried to drop something but didn't have anything");
         }else{
             location.addArtifact(a);
             inventory.remove(a);
@@ -47,7 +50,8 @@ helper function to drop one object
     private void randomUse(){
         Artifact a = randomArtifactFromInventory();
         if(a ==null){
-            System.out.println(name+" tried to use and object but found their inventory empty");
+            //System.out.println(name+" tried to use and object but found their inventory empty");
+            Network.netPrintln(name+" tried to use and object but found their inventory empty");
         }else{
             a.use(this,location);
         }
