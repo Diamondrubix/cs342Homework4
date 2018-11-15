@@ -228,7 +228,7 @@ public class Character {
 				inventory.remove(armor);
 			}
 			else {
-				Network.netPrintln("Not an Armor");
+				System.out.println("Not an Armor");
 			}
 		}
 		/*
