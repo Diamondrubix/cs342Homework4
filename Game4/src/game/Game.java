@@ -88,10 +88,12 @@ public class Game {
 			if (words.length < 3 && !words[0].equals("GDF")) {
 				System.out.println("Invalid file header.");
 				name = "";
-			} else if (Double.parseDouble(words[1]) > 4.0) {
-				System.out.println("Version " + words[1] + " unsupported");
-				name = "";
-			} else {
+			} 
+			// else if (Double.parseDouble(words[1]) > 4.0) {
+				// System.out.println("Version " + words[1] + " unsupported");
+				// name = "";
+			// }
+			else {
 				name = words[2];
 			}
 
