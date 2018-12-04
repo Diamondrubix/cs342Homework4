@@ -10,8 +10,11 @@ import ui.UserInterface;
  * @author Alexander Oey (aoey2)
  */
 public class GUI_1 implements UserInterface {
+	private final JFrame frame;
+	
 	public GUI_1() {
-		
+		frame = new JFrame("Game");
+		init();
 	}
 	
 	/**
@@ -33,4 +36,7 @@ public class GUI_1 implements UserInterface {
 	public String getLine() {
 		return "";
 	}
+	
+	/* Set up components for the frame. Extract to other classes later. */
+	
 }
