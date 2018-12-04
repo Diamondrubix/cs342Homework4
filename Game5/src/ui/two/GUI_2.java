@@ -1,5 +1,5 @@
-/* Author: Alexander Oey (aoey2) */
-package ui.one;
+/* Author: */
+package ui.two;
 
 import ui.UserInterface;
 
@@ -7,14 +7,12 @@ import ui.UserInterface;
  * This class represents a graphical user interface.
  * This user interface is not intended to be used with the command line.
  *
- * @author Alexander Oey (aoey2)
+ * @author 
  */
-public class GUI_1 implements UserInterface {
-	private final JFrame frame;
+public class GUI_2 implements UserInterface {
 	
-	public GUI_1() {
-		frame = new JFrame("Game");
-		init();
+	public GUI_2() {
+
 	}
 	
 	/**
@@ -36,7 +34,4 @@ public class GUI_1 implements UserInterface {
 	public String getLine() {
 		return "";
 	}
-	
-	/* Set up components for the frame. Extract to other classes later. */
-	
 }
