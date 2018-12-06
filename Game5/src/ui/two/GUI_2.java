@@ -27,7 +27,6 @@ public class GUI_2 implements UserInterface {
 	private JTextArea textOutput;
 	private JScrollPane areaScrollPane;
 	private boolean gotInput = false;
-	private String line = "";
 
 	public GUI_2() {
 		frame = new JFrame();
@@ -71,8 +70,9 @@ public class GUI_2 implements UserInterface {
 			//send stuff here
 			//label.setText("Button "+event.getActionCommand() +" was clicked");
 			//System.out.println("action");
-			line = commandInput.getText();
+			//line = commandInput.getText();
 			gotInput = true;
+			textOutput.setText("");
 		}
 
 	}
@@ -85,7 +85,7 @@ public class GUI_2 implements UserInterface {
 	 */
 	public void display(String message) {
 		textOutput.append(message+"\n");
-		
+
 	}
 	
 	/**
@@ -95,17 +95,22 @@ public class GUI_2 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
-		/*
-		while(!gotInput){
 
+		while(!gotInput){
+			try {
+				Thread.sleep(200);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		gotInput = false;
 
-		return line;
-		*/
+		return commandInput.getText();
 
-		KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
-		return sc.nextLine();
+
+		//KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
+		//return sc.nextLine();
 
 	}
 }
