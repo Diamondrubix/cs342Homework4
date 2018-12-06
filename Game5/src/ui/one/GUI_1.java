@@ -9,7 +9,15 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextField;
+
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 /**
  * This class represents a graphical user interface.
@@ -19,13 +27,18 @@ import java.awt.BorderLayout;
  */
 public class GUI_1 implements UserInterface {
 	private final JFrame frame;
+	private JTextField inputField = new JTextField();
+	private volatile boolean inputReceived = false;
 	
 	public GUI_1() {
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		frame = new JFrame("Game");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		init();
-		frame.setVisible(true);
 		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setBounds(0,0,800, 600);
+		frame.setVisible(true);
 	}
 	
 	/**
@@ -45,7 +58,18 @@ public class GUI_1 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
-		return "";
+		while (!inputReceived) {
+			try {
+				Thread.sleep(200);
+			}
+			catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println("inputField: " + inputField.getText());
+		inputReceived = false;
+		return inputField.getText();
 	}
 	
 	/* Set up components for the frame. Extract to other classes later. */
@@ -55,16 +79,29 @@ public class GUI_1 implements UserInterface {
 		JScrollPane scroll = new JScrollPane(dialog); 
 		frame.getContentPane().add(scroll, BorderLayout.CENTER);
 		
+		JPanel inputPanel = new JPanel(new GridLayout(2, 1));
 		JButton endTurnButton = new JButton("End Turn");
-		frame.getContentPane().add(endTurnButton, BorderLayout.SOUTH);
+		
+		endTurnButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("inputField: " + GUI_1.this.inputField.getText());
+				GUI_1.this.inputReceived = true;
+			}
+		});
+		
+		inputPanel.add(inputField);
+		inputPanel.add(endTurnButton);
+	
+		frame.getContentPane().add(inputPanel, BorderLayout.SOUTH);
 		
 		JLabel nameLabel = new JLabel("Player");
 		frame.getContentPane().add(nameLabel, BorderLayout.NORTH);
 		
 		JTextArea inventory = new JTextArea("inventory", 5, 2);
-		frame.getContentPane().add(inventory, BorderLayout.EAST);
+		frame.getContentPane().add(inventory, BorderLayout.LINE_END);
 		
 		JTextArea stats = new JTextArea("stats", 5, 2);
-		frame.getContentPane().add(stats, BorderLayout.WEST);
+		frame.getContentPane().add(stats, BorderLayout.LINE_START);
 	}
 }
