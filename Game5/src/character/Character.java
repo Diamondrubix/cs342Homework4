@@ -45,6 +45,10 @@ public class Character {
         currentCharacter.io.display(msg);
     }
 
+    public static String currentPlayerName(){
+        return currentCharacter.name;
+    }
+
 
 	/*
 	main constructor by which characters are made.
