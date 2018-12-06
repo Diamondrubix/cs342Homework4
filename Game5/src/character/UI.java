@@ -36,73 +36,80 @@ public class UI implements DecisionMaker {
 				}
 				
 				// tokenize.
-        String[] args = input.split(" ");
-				
-        //Quit.
-        if (input.equals("QUIT") || input.equals("Q") ||
-                input.equals("EXIT")) {
-            return new Exit(c,location);
-        }
-        //Redisplay current place.
-        else if (input.equals("LOOK")) {
-            return new Look(c,location);
-        }
-        //Access inventory.
-        else if (input.equals("INVE") || input.equals("INVENTORY")) {
-            return new ShowInventory(c);
-        }
-        //Pick up artifact.
-        else if (input.contains("GET")) {
-            String[] words = input.split("\\s+");
-            String artifactName = "";
-            // Append tokenized names.
-            for (int i = 1; i < words.length; ++i) {
-                artifactName += words[i] + " ";
-            }
-            return new GetItem(c,location, artifactName.trim());
-        }
-        //Drop or use artifact.
-        else if (input.contains("DROP")) {
-            String[] words = input.split("\\s+");
-            // Append tokenized names.
-            String artifactName = "";
-            for (int i = 1; i < words.length; ++i) {
-                artifactName += words[i] + " ";
-            }
-            return new DropItem(c,location, artifactName.trim());
-        }
-        else if (input.contains("USE")) {
-            String[] words = input.split("\\s+");
-            // Append tokenized names.
-            String artifactName = "";
-            for (int i = 1; i < words.length; ++i) {
-                artifactName += words[i] + " ";
-            }
-            return new UseItem(c,location, artifactName.trim());
-        }
-				else if (input.contains("EQUIP")) {
-					  String[] words = input.split("\\s+");
-            // Append tokenized names.
-            String artifactName = "";
-            for (int i = 1; i < words.length; ++i) {
-                artifactName += words[i] + " ";
-            }
-            return new Equip(c,location, artifactName.trim());
-				}
-				else if (input.contains("ATTACK")) {
-						String[] words = input.split("\\s+");
-            // Append tokenized names.
-            String targetName = "";
-            for (int i = 1; i < words.length; ++i) {
-                targetName += words[i] + " ";
-            }
-						Character t = location.getCharacter(targetName.trim());
-            return new Attack(c, t, location, 10);
+        String[] args = input.split("\\s+");
+				// System.out.println(input);
+				if (args.length > 0) {
+					//Quit.
+					if (args[0].equals("QUIT") || args[0].equals("Q") ||
+									args[0].equals("EXIT")) {
+							return new Exit(c,location);
+					}
+					//Redisplay current place.
+					else if (args[0].equals("LOOK")) {
+							return new Look(c,location);
+					}
+					//Access inventory.
+					else if (args[0].equals("INVE") || args[0].equals("INVENTORY")) {
+							return new ShowInventory(c);
+					}
+					//Pick up artifact.
+					else if (args[0].equals("GET")) {
+							// System.out.println("GET");
+							String[] words = input.split("\\s+");
+							String artifactName = "";
+							// Append tokenized names.
+							for (int i = 1; i < words.length; ++i) {
+									artifactName += words[i] + " ";
+							}
+							return new GetItem(c,location, artifactName.trim());
+					}
+					//Drop or use artifact.
+					else if (args[0].equals("DROP")) {
+							String[] words = input.split("\\s+");
+							// Append tokenized names.
+							String artifactName = "";
+							for (int i = 1; i < words.length; ++i) {
+									artifactName += words[i] + " ";
+							}
+							return new DropItem(c,location, artifactName.trim());
+					}
+					else if (args[0].equals("USE")) {
+							// System.out.println("USE");
+							String[] words = input.split("\\s+");
+							// Append tokenized names.
+							String artifactName = "";
+							for (int i = 1; i < words.length; ++i) {
+									artifactName += words[i] + " ";
+							}
+							return new UseItem(c,location, artifactName.trim());
+					}
+					else if (args[0].equals("EQUIP")) {
+							// System.out.println("EQUIP");
+							String[] words = input.split("\\s+");
+							// Append tokenized names.
+							String artifactName = "";
+							for (int i = 1; i < words.length; ++i) {
+									artifactName += words[i] + " ";
+							}
+							return new Equip(c,location, artifactName.trim());
+					}
+					else if (args[0].equals("ATTACK")) {
+							// System.out.println("ATTACK");
+							String[] words = input.split("\\s+");
+							// Append tokenized names.
+							String targetName = "";
+							for (int i = 1; i < words.length; ++i) {
+									targetName += words[i] + " ";
+							}
+							// System.out.println("target: " + targetName);
+							Character t = location.getCharacter(targetName.trim());
+							return new Attack(c, t, location, c.getDamage());
+					}
 				}
         //Move to other rooms.
-        else {
+        // else {
             return new Go(c,location, args);
-        }
+        // }
 
 
 

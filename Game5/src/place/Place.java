@@ -86,7 +86,7 @@ public class Place {
 	// NEW in 5.0
 	public Character getCharacter(String name) {
 		for (Character c: characters) {
-			if (c.getName().equals(name)) {
+			if (c.getName().equalsIgnoreCase(name)) {
 				return c;
 			}
 		}
