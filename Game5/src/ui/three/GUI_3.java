@@ -61,6 +61,7 @@ public class GUI_3 implements UserInterface {
         submit.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent ea) {
         		GUI_3.this.inputTrigger = true;
+        		textField.setText("");
         	}
         });
         // Set the default button on 'Enter' to submit
@@ -75,7 +76,7 @@ public class GUI_3 implements UserInterface {
         // Dedicated for printing/display
         cPanel = new JPanel();
         // Text Area at the south
-        ta = new JTextArea("TEXT AREA");
+        ta = new JTextArea();
         ta.setFont(new Font("Serif", Font.ITALIC, 16));
         ta.setLineWrap(true);
         ta.setEditable(false);	// User is not allowed to change any of the text
@@ -133,7 +134,7 @@ public class GUI_3 implements UserInterface {
 	 */
 	public void display(String message) {
 		// Change to display
-		ta.setText(message);
+		ta.append(message+"\n");
 	}
 	
 	/**
