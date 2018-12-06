@@ -43,16 +43,27 @@ public class IO {
 	 * Displays the message to the user using the implemented user interface.
 	 *
 	 * @param message message to display
+	 * @author Alexander Oey (aoey2)  Adam Arato aarato2
 	 */
 	public void display(String message) {
 		implementor.display(message);
 		Network.netPrintln(message);
 	}
 
+	/**
+	 * displays method without sending it out on the network.
+	 * @Param message message to display
+	 * @author Adam Arato aarato2
+	 */
 	public void noNetDisplay(String message){
 		implementor.display(message);
 	}
 
+	/**
+	 * displays to every interface, not just the owners interface
+	 * @Param message message to display
+	 * @author Adam Arato aarato2
+	 */
 	public static void globalDisplay(String message){
 		for(int i =0; i <allIO.size();i++){
 			allIO.get(i).noNetDisplay(message);
@@ -60,6 +71,11 @@ public class IO {
 		Network.netPrintln(message);
 	}
 
+	/**
+	 * displays method to all interfaces without sending it out on the network.
+	 * @Param message message to display
+	 * @author Adam Arato aarato2
+	 */
 	public static void noNetglobalDisplay(String message){
 		for(int i =0; i <allIO.size();i++){
 			allIO.get(i).noNetDisplay(message);

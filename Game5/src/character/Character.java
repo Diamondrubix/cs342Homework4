@@ -42,6 +42,9 @@ public class Character {
     protected IO io; // Input output interface.
     private static Character currentCharacter;
 
+    /*
+    gets the total value of a characters inventory
+     */
     public int getTotalValue(){
         int val = 0;
         for(int i =0; i < inventory.size();i++){
@@ -49,6 +52,9 @@ public class Character {
         }
         return val;
     }
+    /*
+    getter for the name
+     */
     public String getName(){
         return name;
     }

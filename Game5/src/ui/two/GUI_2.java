@@ -12,7 +12,7 @@ import ui.UserInterface;
  * This class represents a graphical user interface.
  * This user interface is not intended to be used with the command line.
  *
- * @author 
+ * @author Adam Arato aarato2
  */
 public class GUI_2 implements UserInterface {
 
