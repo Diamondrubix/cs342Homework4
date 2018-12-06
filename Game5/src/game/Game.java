@@ -264,6 +264,7 @@ public class Game {
 		boolean exit = false;
 		while (!shouldExit()) {
 			for(int i=0; i<characters.size();i++){
+				Character.setCurrent(characters.get(i));
 				exit = characters.get(i).makeMove();
 				if(shouldExit())break;
 			}

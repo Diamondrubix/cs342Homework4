@@ -34,8 +34,16 @@ public class Character {
     protected static boolean arePlayers = false;
     protected int health = 100;
     protected Armor armorEquip;
-		
-		protected IO io; // Input output interface.
+    protected IO io; // Input output interface.
+    private static Character currentCharacter;
+
+    public static void setCurrent(Character c){
+        currentCharacter = c;
+    }
+
+    public static void println(String msg){
+        currentCharacter.io.display(msg);
+    }
 
 
 	/*
