@@ -8,6 +8,7 @@ import place.Place;
 import game.CleanLineScanner;
 import game.Game;
 import Network.Network;
+import ui.IO;
 
 
 import java.util.ArrayList;
@@ -33,6 +34,8 @@ public class Character {
     protected static boolean arePlayers = false;
     protected int health = 100;
     protected Armor armorEquip;
+		
+		protected IO io; // Input output interface.
 
 
 	/*
@@ -101,6 +104,7 @@ public class Character {
 				this.description = desc;
 				Character.characters.put(ID, this);
 				location.addCharacter(this);
+				io = new IO();
     }
 
     /*

@@ -5,6 +5,7 @@ import move.*;
 import place.Place;
 
 import java.util.Scanner;
+import ui.IO;
 
 /**
  * Ai is the DecisionMaker Class that takes care of Movements of the NPC
@@ -23,7 +24,7 @@ gets the move information for NPC Characters
  */
 
     @Override
-    public Move getMove(Character c, Place location) {
+    public Move getMove(Character c, Place location, IO io) {
         int max = 4;
         int min = 0;
         int choice = (int) ((Math.random() * ((max - min) + 1)) + min);

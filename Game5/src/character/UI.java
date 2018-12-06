@@ -3,6 +3,7 @@ package character;
 import game.KeyboardScanner;
 import move.*;
 import place.Place;
+import ui.IO;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -18,16 +19,25 @@ public class UI implements DecisionMaker {
     /*
     gets the move information for players
      */
-    @Override
-    public Move getMove(Character c, Place location) {
-        KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
+    public Move getMove(Character c, Place location, IO sc) {
+        // KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
         //Scanner sc = new Scanner(System.in);
 
-        String input = sc.nextLine();
+        String input = sc.getLine();
         input = input.toUpperCase().trim();
-
+				
+				// Change gui
+				if (input.contains("GUI")) {
+					String[] words = input.split("\\s+");
+					sc.selectInterface(Integer.parseInt(words[1]));
+					// Ask for input again.
+					input = sc.getLine();
+					input = input.toUpperCase().trim();
+				}
+				
+				// tokenize.
         String[] args = input.split(" ");
-
+				
         //Quit.
         if (input.equals("QUIT") || input.equals("Q") ||
                 input.equals("EXIT")) {

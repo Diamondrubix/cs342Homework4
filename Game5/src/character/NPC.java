@@ -3,7 +3,7 @@ package character;
 import Network.Network;
 import artifact.Artifact;
 import move.Move;
-
+import ui.IO;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class NPC extends Character{
     public boolean makeMove() {
         //System.out.print("\n"+name+" makes a move\n");
         Network.netPrintln("\n"+name+" makes a move\n");
-        Move m = ai.getMove(this,location);
+        Move m = ai.getMove(this,location, io);
         m.execute();
 				super.makeMove();
 

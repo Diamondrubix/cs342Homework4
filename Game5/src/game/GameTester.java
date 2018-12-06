@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import ui.one.GUI_1;
+
 /**
  * Contains the main method and sets up the game for testing.
  *
@@ -18,6 +20,10 @@ import java.util.Scanner;
  * @author Adam Arato (aarato2)
  */
 public class GameTester {
+	// public static void main(String[] args) {
+		// GUI_1 gui = new GUI_1();
+	// }
+	
 
 	public static void main(String[] args) {
 		System.out.println("Author: ");
@@ -70,5 +76,5 @@ public class GameTester {
 				continue;
 			}
 		}
-	}
+	} 
 }

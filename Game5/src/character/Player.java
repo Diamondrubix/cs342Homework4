@@ -3,6 +3,7 @@ package character;
 
 import Network.Network;
 import sun.nio.ch.Net;
+import ui.IO;
 
 import java.util.Scanner;
 
@@ -30,7 +31,11 @@ public class Player extends Character{
     public boolean makeMove() {
         //SOystem.out.print("\n"+name+": ");
         Network.netPrintln("\n"+name+": ");
-        ui.getMove(this, location).execute();
+				if (io == null) {
+					System.out.println("io null");
+					System.exit(-1);
+				}
+        ui.getMove(this, location, io).execute();
 				super.makeMove();
         return true;
     }
