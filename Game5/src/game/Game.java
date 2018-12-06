@@ -13,6 +13,7 @@ import Network.*;
 import place.Direction;
 import place.*;
 import artifact.*;
+import ui.Spectator;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -240,12 +241,16 @@ public class Game {
 		} 
 		else{
 			name = "doesn't maatter";
+			Spectator s = new Spectator();
+			s.display("you are a spectator just watching another game");
 			System.out.println("you are a spectator just watching another game");
 			Client cl = null;
 			try {
 				cl = Network.getClient(typeOfGame, 3001);
 				while(true){
-					System.out.println(cl.getData());
+					String st = cl.getData();
+					System.out.println(st);
+					s.display(st);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
