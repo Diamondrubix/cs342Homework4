@@ -54,7 +54,7 @@ public class Character {
     }
 
     public static void println(String msg){
-        currentCharacter.io.display(msg);
+        currentCharacter.io.display(msg + "\n");
     }
 
     public static String currentPlayerName(){
