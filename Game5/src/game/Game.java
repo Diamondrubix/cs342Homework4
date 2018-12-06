@@ -28,7 +28,7 @@ import java.util.Scanner;
 public class Game {
 	//Fields.
 	private final String name;
-	public static ArrayList<Character> characters = new ArrayList<>();
+	public static ArrayList<Character> characters = new ArrayList<Character>();
 	private int neededPlayers = 0;
 	
 	/**
@@ -268,6 +268,21 @@ public class Game {
 				if(shouldExit())break;
 			}
 
+		}
+		System.out.println("\n\n\n");
+		int winner = -1;
+		int ammount = 0;
+		for(int i =0; i<characters.size();i++){
+			int temp = characters.get(i).getTotalValue();
+			if(temp>ammount){
+				winner = i;
+				ammount = temp;
+			}
+		}
+		if(winner !=-1){
+			System.out.println(characters.get(winner).getName()+" won with a grand total of "+ammount);
+		}else{
+			System.out.println("you are all losers for having a value of 0");
 		}
 	}
 

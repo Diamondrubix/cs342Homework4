@@ -73,7 +73,7 @@ public class GUI_2 implements UserInterface {
 			//System.out.println("action");
 			//line = commandInput.getText();
 			gotInput = true;
-			commandInput.setText("");
+
 			//textOutput.setText("");
 		}
 
@@ -107,8 +107,9 @@ public class GUI_2 implements UserInterface {
 			}
 		}
 		gotInput = false;
-
-		return commandInput.getText();
+		String line =commandInput.getText();
+		commandInput.setText("");
+		return line;
 
 
 		//KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();

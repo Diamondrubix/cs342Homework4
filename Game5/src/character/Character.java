@@ -37,6 +37,17 @@ public class Character {
     protected IO io; // Input output interface.
     private static Character currentCharacter;
 
+    public int getTotalValue(){
+        int val = 0;
+        for(int i =0; i < inventory.size();i++){
+            val+=inventory.get(i).value();
+        }
+        return val;
+    }
+    public String getName(){
+        return name;
+    }
+
     public static void setCurrent(Character c){
         currentCharacter = c;
         c.io.noNetDisplay("IT IS YOUR TURN");
