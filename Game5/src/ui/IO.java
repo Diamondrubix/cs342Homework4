@@ -4,6 +4,7 @@ package ui;
 import ui.UserInterface;
 import ui.TextInterface;
 import ui.one.GUI_1;
+import ui.two.GUI_2;
 
 /**
  * This class provides the input and output services from the program 
@@ -55,7 +56,7 @@ public class IO {
 		switch(select) {
 			case TEXT: implementor = new TextInterface(); break;
 			case GUI_1: implementor = new GUI_1(); break;
-			case GUI_2: // text interface placeholder until implemented
+			case GUI_2: implementor = new GUI_2(); break;
 			case GUI_3: // text interface placeholder until implemented
 			default: 
 				implementor = new TextInterface(); 

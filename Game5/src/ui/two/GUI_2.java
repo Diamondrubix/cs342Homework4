@@ -1,5 +1,9 @@
-/* Author: */
+/* Author: Adam Arato */
 package ui.two;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import ui.UserInterface;
 
@@ -10,8 +14,60 @@ import ui.UserInterface;
  * @author 
  */
 public class GUI_2 implements UserInterface {
-	
+
+	private static final int FRAME_WIDTH = 700;
+	private static final int FRAME_HEIGHT = 700;
+
+	private JFrame frame;
+	private JPanel panel;
+	private JButton send;
+	private JLabel label;
+	private JTextField commandInput = new JTextField(20);
+	private JTextArea textOutput;
+	private JScrollPane areaScrollPane;
+
 	public GUI_2() {
+		frame = new JFrame();
+		panel = new JPanel();
+		send = new JButton("Send");
+		panel.add(send);
+
+		label = new JLabel("no button clicked");
+
+		panel.add(label);
+		panel.add(commandInput);
+
+		textOutput= new JTextArea(10,60);
+		textOutput.setLineWrap(true);
+		textOutput.setWrapStyleWord(true);
+		areaScrollPane = new JScrollPane(textOutput);
+		areaScrollPane.setVerticalScrollBarPolicy(
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		//areaScrollPane.setPreferredSize(new Dimension(5, 40));
+		//panel.add(textOutput);
+		panel.add(areaScrollPane);
+
+
+		frame.add(panel);
+
+		ActionListener listener = new ClickListener();
+		send.addActionListener(listener);
+
+		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+
+	}
+
+
+	public class ClickListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			//send stuff here
+			label.setText("Button "+event.getActionCommand() +" was clicked");
+		}
 
 	}
 	
