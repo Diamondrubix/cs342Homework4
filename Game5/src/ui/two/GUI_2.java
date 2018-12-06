@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import game.KeyboardScanner;
 import ui.UserInterface;
 
 /**
@@ -25,6 +26,8 @@ public class GUI_2 implements UserInterface {
 	private JTextField commandInput = new JTextField(20);
 	private JTextArea textOutput;
 	private JScrollPane areaScrollPane;
+	private boolean gotInput = false;
+	private String line = "";
 
 	public GUI_2() {
 		frame = new JFrame();
@@ -66,7 +69,10 @@ public class GUI_2 implements UserInterface {
 		public void actionPerformed(ActionEvent event)
 		{
 			//send stuff here
-			label.setText("Button "+event.getActionCommand() +" was clicked");
+			//label.setText("Button "+event.getActionCommand() +" was clicked");
+			//System.out.println("action");
+			line = commandInput.getText();
+			gotInput = true;
 		}
 
 	}
@@ -78,6 +84,7 @@ public class GUI_2 implements UserInterface {
 	 * @param message message to display
 	 */
 	public void display(String message) {
+		textOutput.append(message+"\n");
 		
 	}
 	
@@ -88,6 +95,17 @@ public class GUI_2 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
-		return "";
+		/*
+		while(!gotInput){
+
+		}
+		gotInput = false;
+
+		return line;
+		*/
+
+		KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
+		return sc.nextLine();
+
 	}
 }
