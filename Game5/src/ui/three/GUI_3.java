@@ -41,6 +41,8 @@ public class GUI_3 implements UserInterface {
 	private JTextField textField;	// Textfield for input
 	private JTextArea ta;			// Text Area
 	private JScrollPane areaScroll;	// Scrolling for area text
+
+	private boolean inputTrigger;
 	
 	// Constructor
 	public GUI_3() {
@@ -58,8 +60,7 @@ public class GUI_3 implements UserInterface {
         submit = new JButton("Submit");
         submit.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent ea) {
-        		String s = getLine();
-        		display(s);
+        		GUI_3.this.inputTrigger = true;
         	}
         });
         // Set the default button on 'Enter' to submit
@@ -142,6 +143,14 @@ public class GUI_3 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
+		while (!inputTrigger) {
+			try {
+				Thread.sleep(200);
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		inputTrigger = false;
 		return textField.getText();
 	}
 }
