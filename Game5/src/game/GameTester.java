@@ -59,7 +59,7 @@ public class GameTester {
 		}
 
 		//exit.
-		if (gameRan) return;
+		if (gameRan) System.exit(0);
 
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("File not found. Please enter a filename: ");
@@ -76,5 +76,7 @@ public class GameTester {
 				continue;
 			}
 		}
+		
+		System.exit(0);
 	}
 }
