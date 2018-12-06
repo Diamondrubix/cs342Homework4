@@ -3,6 +3,7 @@ package character;
 import artifact.Artifact;
 import artifact.Armor;
 import artifact.Armor.ArmorType;
+import artifact.Weapon;
 import artifact.EquippableArtifact;
 import artifact.EquippableType;
 import place.Place;
@@ -36,6 +37,7 @@ public class Character {
 		protected ArrayList<EquippableArtifact> equipments = new ArrayList<>();
     protected static boolean arePlayers = false;
     protected int health = 100;
+		protected int damage = 10;
     protected Armor armorEquip;
     protected IO io; // Input output interface.
     private static Character currentCharacter;
@@ -50,10 +52,13 @@ public class Character {
     public String getName(){
         return name;
     }
+		public int getDamage() {
+			return damage;
+		}
 
     public static void setCurrent(Character c){
         currentCharacter = c;
-        c.io.noNetDisplay("IT IS YOUR TURN");
+        c.io.noNetDisplay("\nIT IS YOUR TURN");
     }
 
     public static void println(String msg){
@@ -265,8 +270,6 @@ public class Character {
 				}
 			}
 			return false;
-			// if (armorEquip == null) return false;
-			// return (armorEquip.getType() == armor);
 		}
 		
 		/**
@@ -298,6 +301,11 @@ public class Character {
 			}
 			else {
 				Character.println(artifact.name() +" is not an equippable Artifact.");
+			}
+			// Increase stat.
+			if (artifact instanceof Weapon) {
+				damage += ((Weapon)artifact).getDamage();
+				// System.out.println("current damage " + ((Weapon)artifact).getDamage());
 			}
 		}
 		

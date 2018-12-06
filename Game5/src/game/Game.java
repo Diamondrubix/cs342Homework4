@@ -224,6 +224,9 @@ public class Game {
 					if (typeID == 1) {
 						artifact = new Armor(input, 3);
 					}
+					else if (typeID == 2) {
+						artifact = new Weapon(input, 3);
+					}
 					else {
 						artifact = new Artifact(input, 3);
 					}
@@ -240,7 +243,7 @@ public class Game {
 			}
 		} 
 		else{
-			name = "doesn't maatter";
+			name = "doesn't matter";
 			Spectator s = new Spectator();
 			s.display("you are a spectator just watching another game");
 			System.out.println("you are a spectator just watching another game");
@@ -275,6 +278,7 @@ public class Game {
 
 		}
 		System.out.println("\n\n\n");
+		System.out.println("------------------------------------------------");
 		int winner = -1;
 		int ammount = 0;
 		for(int i =0; i<characters.size();i++){
