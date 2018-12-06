@@ -23,7 +23,7 @@ public class TextInterface implements UserInterface {
 	 * @param message message to display
 	 */
 	public void display(String message) {
-		System.out.println(message); // Use Network??
+		System.out.print(message); // Use Network??
 	}
 	
 	/**

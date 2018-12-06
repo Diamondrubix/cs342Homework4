@@ -29,8 +29,10 @@ import java.awt.Dimension;
 public class GUI_1 implements UserInterface {
 	private final JFrame frame;
 	private JTextField inputField = new JTextField();
-	JTextArea dialog = new JTextArea("all dialog", 20, 10);
+	private JTextArea dialog = new JTextArea("all dialog", 20, 10);
+	
 	private volatile boolean inputReceived = false;
+	private volatile String input;
 	
 	public GUI_1() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -68,10 +70,19 @@ public class GUI_1 implements UserInterface {
 				e.printStackTrace();
 			}
 		}
-		
-		System.out.println("DEBUG inputField: " + inputField.getText());
 		inputReceived = false;
-		return inputField.getText();
+		System.out.println("DEBUG inputField: " + input);
+		
+		if (input.equals("QUIT") || input.equals("Q") || input.equals("EXIT")) {
+			frame.dispose();
+		}
+		else if (input.contains("GUI")) {
+			String[] words = input.split("\\s+");
+			if (Integer.parseInt(words[1]) != 1) {
+				frame.dispose();
+			}
+		}
+		return input;
 	}
 	
 	/* Set up components for the frame. Extract to other classes later. */
@@ -89,6 +100,7 @@ public class GUI_1 implements UserInterface {
 			public void actionPerformed(ActionEvent e) {
 				// System.out.println("inputField: " + GUI_1.this.inputField.getText());
 				GUI_1.this.inputReceived = true;
+				GUI_1.this.input = inputField.getText().toUpperCase();
 			}
 		});
 		
