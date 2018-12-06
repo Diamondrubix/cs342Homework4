@@ -39,6 +39,7 @@ public class Character {
 
     public static void setCurrent(Character c){
         currentCharacter = c;
+        c.io.display("IT IS YOUR TURN");
     }
 
     public static void println(String msg){

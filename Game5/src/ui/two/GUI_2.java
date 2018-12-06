@@ -47,6 +47,7 @@ public class GUI_2 implements UserInterface {
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		//areaScrollPane.setPreferredSize(new Dimension(5, 40));
 		//panel.add(textOutput);
+		textOutput.setEditable(false);
 		panel.add(areaScrollPane);
 
 
@@ -72,7 +73,8 @@ public class GUI_2 implements UserInterface {
 			//System.out.println("action");
 			//line = commandInput.getText();
 			gotInput = true;
-			textOutput.setText("");
+			commandInput.setText("");
+			//textOutput.setText("");
 		}
 
 	}

@@ -30,7 +30,7 @@ public class Network {
     }
 
     public static void netPrintln(String str){
-        System.out.println(str);
+        //System.out.println(str);
         if(Network.multiplayer) {
             client.sendData(str);
         }

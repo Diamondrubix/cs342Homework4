@@ -1,9 +1,11 @@
 /* Author: Alexander Oey (aoey2) */
 package ui;
 
+import Network.Network;
 import ui.UserInterface;
 import ui.TextInterface;
 import ui.one.GUI_1;
+import ui.three.GUI_3;
 import ui.two.GUI_2;
 
 /**
@@ -36,6 +38,7 @@ public class IO {
 	 */
 	public void display(String message) {
 		implementor.display(message);
+		Network.netPrintln(message);
 	}
 	
 	/**
@@ -57,7 +60,7 @@ public class IO {
 			case TEXT: implementor = new TextInterface(); break;
 			case GUI_1: implementor = new GUI_1(); break;
 			case GUI_2: implementor = new GUI_2(); break;
-			case GUI_3: // text interface placeholder until implemented
+			case GUI_3: implementor = new GUI_3(); break;
 			default: 
 				implementor = new TextInterface(); 
 				break;
