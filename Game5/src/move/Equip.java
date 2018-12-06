@@ -37,7 +37,7 @@ public class Equip extends Move {
 	public void execute() {
 		Artifact a = character.strToArtifact(artifact);
 		if(a!=null) {
-			character.equipArmor(a);
+			character.equipArtifact(a);
 		}else{
 			//System.out.println("couldn't use artifact " + artifact);
 			Character.println("couldn't equip artifact " + artifact);

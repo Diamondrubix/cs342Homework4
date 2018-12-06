@@ -26,7 +26,7 @@ public class LavaRoom extends Place {
 	@Override
 	public void ambientFunction(Character c) {
 		// Check Player/NPC inventory for a LavaSuit
-		if (c.armorEquipped(ArmorType.LAVA) ) {
+		if (c.isEquipped(ArmorType.LAVA) ) {
 			// Do nothing OR regen HP
 			return;
 		}

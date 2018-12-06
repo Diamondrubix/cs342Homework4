@@ -82,6 +82,17 @@ public class Place {
 	public void addCharacter(Character c) {
 		characters.add(c);
 	}
+	
+	// NEW in 5.0
+	public Character getCharacter(String name) {
+		for (Character c: characters) {
+			if (c.getName().equals(name)) {
+				return c;
+			}
+		}
+		return null;
+	}
+			
 
 	/**
 	 * Returns an array containing names of Artifacts in this room.

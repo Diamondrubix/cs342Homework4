@@ -7,6 +7,9 @@ import game.Game;
 import place.Place;
 import character.Character;
 import artifact.Artifact;
+import artifact.Equippable;
+import artifact.EquippableArtifact;
+import artifact.EquippableType;
 
 import java.util.Scanner;
 
@@ -20,11 +23,11 @@ import java.util.Scanner;
  *
  * @author Alexander Oey (aoey2)
  */
-public class Armor extends Artifact {
+public class Armor extends EquippableArtifact {
 	/**
 	 * Represents the type of armor encapsulated by the Armor class.
 	 */
-	public enum ArmorType {
+	public enum ArmorType implements EquippableType {
 		NOTARMOR, // should never be used.
 		LAVA,
 		SPACE,
@@ -58,5 +61,13 @@ public class Armor extends Artifact {
 	 */
 	public ArmorType getType() {
 		return suitType;
+	}
+	
+	/**
+	 *
+	 */
+	@Override
+	public boolean isEquipType(EquippableType type) {
+		return (type instanceof ArmorType) && (suitType == (ArmorType) type);
 	}
 }

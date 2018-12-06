@@ -71,7 +71,7 @@ public class GUI_1 implements UserInterface {
 			}
 		}
 		inputReceived = false;
-		System.out.println("DEBUG inputField: " + input);
+		// System.out.println("DEBUG inputField: " + input);
 		
 		if (input.equals("QUIT") || input.equals("Q") || input.equals("EXIT")) {
 			frame.dispose();

@@ -89,6 +89,16 @@ public class UI implements DecisionMaker {
             }
             return new Equip(c,location, artifactName.trim());
 				}
+				else if (input.contains("ATTACK")) {
+						String[] words = input.split("\\s+");
+            // Append tokenized names.
+            String targetName = "";
+            for (int i = 1; i < words.length; ++i) {
+                targetName += words[i] + " ";
+            }
+						Character t = location.getCharacter(targetName.trim());
+            return new Attack(c, t, location, 10);
+				}
         //Move to other rooms.
         else {
             return new Go(c,location, args);

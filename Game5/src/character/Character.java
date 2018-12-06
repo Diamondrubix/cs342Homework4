@@ -3,6 +3,8 @@ package character;
 import artifact.Artifact;
 import artifact.Armor;
 import artifact.Armor.ArmorType;
+import artifact.EquippableArtifact;
+import artifact.EquippableType;
 import place.Place;
 
 import game.CleanLineScanner;
@@ -30,7 +32,8 @@ public class Character {
     protected String name;
     protected String description;
     protected Place location;
-    protected ArrayList<Artifact> inventory = new ArrayList<Artifact>();
+    protected ArrayList<Artifact> inventory = new ArrayList<>();
+		protected ArrayList<EquippableArtifact> equipments = new ArrayList<>();
     protected static boolean arePlayers = false;
     protected int health = 100;
     protected Armor armorEquip;
@@ -240,9 +243,30 @@ public class Character {
 		 * @param armor type of armor
 		 * @return true if ArmorType armor is equipped
 		 */
+		@Deprecated
 		public boolean armorEquipped(ArmorType armor) {
+			for (EquippableArtifact ea: equipments) {
+				
+			}
 			if (armorEquip == null) return false;
 			return (armorEquip.getType() == armor);
+		}
+		
+		/**
+		 * Checks if a certain type of armor is being used.
+		 *
+		 * @param armor type of armor
+		 * @return true if ArmorType armor is equipped
+		 */
+		public boolean isEquipped(EquippableType type) {
+			for (EquippableArtifact ea: equipments) {
+				if (ea.isEquipType(type)) {
+					return true;
+				}
+			}
+			return false;
+			// if (armorEquip == null) return false;
+			// return (armorEquip.getType() == armor);
 		}
 		
 		/**
@@ -250,6 +274,7 @@ public class Character {
 		 *
 		 * @param armor Armor object
 		 */
+		@Deprecated
 		public void equipArmor(Artifact armor) {
 			if (armor instanceof Armor) {
 				armorEquip = (Armor) armor;
@@ -259,6 +284,24 @@ public class Character {
 				System.out.println("Not an Armor");
 			}
 		}
+		
+		/**
+		 * Equips an Equippable item.
+		 *
+		 * @param item an Artifact instance of an Equippable item
+		 */
+		public void equipArtifact(Artifact artifact) {
+			if (artifact instanceof EquippableArtifact) {
+				equipments.add((EquippableArtifact) artifact);
+				inventory.remove(artifact);
+				Character.println(artifact.name() +" equipped.");
+			}
+			else {
+				Character.println(artifact.name() +" is not an equippable Artifact.");
+			}
+		}
+		
+		
 		/*
 		smple helper function to check not null
 		 */
