@@ -7,9 +7,11 @@ import ui.TextInterface;
 import ui.one.GUI_1;
 import ui.three.GUI_3;
 import ui.two.GUI_2;
+import character.Character;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Observer;
 
 /**
  * This class provides the input and output services from the program 
@@ -63,6 +65,12 @@ public class IO {
 	public static void noNetglobalDisplay(String message){
 		for(int i =0; i <allIO.size();i++){
 			allIO.get(i).noNetDisplay(message);
+		}
+	}
+	
+	public void addToObservable(Character c) {
+		if (implementor instanceof Observer) {
+			c.addObserver((Observer) implementor);
 		}
 	}
 	

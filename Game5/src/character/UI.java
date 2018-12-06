@@ -30,6 +30,7 @@ public class UI implements DecisionMaker {
 				if (input.contains("GUI")) {
 					String[] words = input.split("\\s+");
 					sc.selectInterface(Integer.parseInt(words[1]));
+					sc.addToObservable(c);
 					// Ask for input again.
 					input = sc.getLine();
 					input = input.toUpperCase().trim();

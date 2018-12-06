@@ -24,7 +24,7 @@ public class UnderwaterRoom extends Place {
 	@Override
 	public void ambientFunction(Character c) {
 		// Check Player/NPC inventory for a ScubaSuit
-		if (c.armorEquipped(ArmorType.SCUBA) ) {
+		if (c.isEquipped(ArmorType.SCUBA) ) {
 			// Do nothing OR regen HP
 			return;
 		}

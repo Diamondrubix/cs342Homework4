@@ -13,10 +13,10 @@ import game.Game;
 import Network.Network;
 import ui.IO;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Observable;
 
 /**
  * The Character class is not to be used directly, rather the game should implemente the children to move in its place
@@ -25,7 +25,7 @@ import java.util.Scanner;
  */
 
 
-public class Character {
+public class Character extends Observable {
 
     public static HashMap<Integer,Character> characters= new HashMap<Integer, Character>();
     private static ArrayList<Integer> characterIDs = new ArrayList<Integer>();
@@ -161,6 +161,8 @@ public class Character {
      */
     public boolean addArtifact(Artifact a){
         inventory.add(a);
+				this.setChanged();
+				this.notifyObservers(inventoryToString());
         return true;
     }
 
@@ -226,6 +228,8 @@ public class Character {
             if(name.equals(thing.toLowerCase())){
                 location.addArtifact(inventory.get(i));
                 inventory.remove(i);
+								this.setChanged();
+								this.notifyObservers(inventoryToString());
                 return true;
             }
         }
@@ -298,6 +302,8 @@ public class Character {
 				equipments.add((EquippableArtifact) artifact);
 				inventory.remove(artifact);
 				Character.println(artifact.name() +" equipped.");
+				this.setChanged();
+				this.notifyObservers(inventoryToString());
 			}
 			else {
 				Character.println(artifact.name() +" is not an equippable Artifact.");
@@ -330,5 +336,15 @@ public class Character {
     public void setLocation(Place p){
         location = p;
     }
-
+		
+		private String inventoryToString() {
+			StringBuilder message = new StringBuilder();
+			for(Artifact a : inventory){
+				message.append(a.name()).append("\n");
+				message.append("Value: ").append(a.value()).append("\n");
+				message.append("Weight: ").append(a.weight()).append("\n");
+				message.append(a.description()).append("\n");
+			}
+			return message.toString();
+		}
 }

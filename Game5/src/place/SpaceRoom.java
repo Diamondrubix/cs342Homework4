@@ -24,7 +24,7 @@ public class SpaceRoom extends Place {
 	@Override
 	public void ambientFunction(Character c) {
 		// Check user inventory for a space suit.
-		if (c.armorEquipped(ArmorType.SPACE) ) {
+		if (c.isEquipped(ArmorType.SPACE) ) {
 			// User takes no damage
 		}
 		else {

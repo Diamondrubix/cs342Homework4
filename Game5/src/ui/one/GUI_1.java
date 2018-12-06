@@ -20,16 +20,20 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.Dimension;
 
+import java.util.Observer;
+import java.util.Observable;
+
 /**
  * This class represents a graphical user interface.
  * This user interface is not intended to be used with the command line.
  *
  * @author Alexander Oey (aoey2)
  */
-public class GUI_1 implements UserInterface {
+public class GUI_1 implements UserInterface, Observer {
 	private final JFrame frame;
 	private JTextField inputField = new JTextField();
 	private JTextArea dialog = new JTextArea("all dialog", 20, 10);
+	private JTextArea inventory = new JTextArea("inventory", 20, 10);
 	
 	private volatile boolean inputReceived = false;
 	private volatile String input;
@@ -85,8 +89,17 @@ public class GUI_1 implements UserInterface {
 		return input;
 	}
 	
-	/* Set up components for the frame. Extract to other classes later. */
+	/**
+	 * Implement Observer interface method. This method is called when 
+	 * the observed object is changed.
+	 */
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println("DEBUG "+ (String) arg);
+		inventory.setText((String)arg);
+	}
 	
+	/* Set up components for the frame. Extract to other classes later. */
 	private void init() {
 		dialog.setEditable(false);
 		JScrollPane scroll = new JScrollPane(dialog); 
@@ -108,12 +121,10 @@ public class GUI_1 implements UserInterface {
 		inputPanel.add(endTurnButton);
 	
 		frame.getContentPane().add(inputPanel, BorderLayout.SOUTH);
+		frame.getContentPane().add(inventory, BorderLayout.LINE_END);
 		
 		JLabel nameLabel = new JLabel(Character.currentPlayerName());
 		frame.getContentPane().add(nameLabel, BorderLayout.NORTH);
-		
-		JTextArea inventory = new JTextArea("inventory", 5, 2);
-		frame.getContentPane().add(inventory, BorderLayout.LINE_END);
 		
 		JTextArea stats = new JTextArea("stats", 5, 2);
 		frame.getContentPane().add(stats, BorderLayout.LINE_START);
