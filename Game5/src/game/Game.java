@@ -249,7 +249,6 @@ public class Game {
 				cl = Network.getClient(typeOfGame, 3001);
 				while(true){
 					String st = cl.getData();
-					System.out.println(st);
 					s.display(st);
 				}
 			} catch (IOException e) {

@@ -86,7 +86,7 @@ public class GUI_2 implements UserInterface {
 	 * @param message message to display
 	 */
 	public void display(String message) {
-		textOutput.append(message+"\n");
+		textOutput.append(message);
 
 	}
 	

@@ -3,8 +3,8 @@ package ui;
 import javax.swing.*;
 
 public class Spectator {
-    private static final int FRAME_WIDTH = 700;
-    private static final int FRAME_HEIGHT = 300;
+    private static final int FRAME_WIDTH = 600;
+    private static final int FRAME_HEIGHT = 600;
 
     private JFrame frame;
     private JPanel panel;
@@ -15,14 +15,15 @@ public class Spectator {
         frame = new JFrame();
         panel = new JPanel();
 
-        textOutput= new JTextArea(10,300);
+        textOutput= new JTextArea(35,30);
         textOutput.setLineWrap(true);
         textOutput.setWrapStyleWord(true);
         areaScrollPane = new JScrollPane(textOutput);
         areaScrollPane.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        textOutput.setEditable(false);
+        //textOutput.setEditable(fals
+        // e);
         panel.add(areaScrollPane);
 
 
@@ -35,7 +36,8 @@ public class Spectator {
     }
 
     public void display(String msg){
-        textOutput.append("stuff");
+        System.out.println(msg);
+        textOutput.append(msg+'\n');
     }
 
 }
