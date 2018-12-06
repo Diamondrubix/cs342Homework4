@@ -2,7 +2,6 @@ package character;
 
 
 import Network.Network;
-import sun.nio.ch.Net;
 import ui.IO;
 
 import java.util.Scanner;

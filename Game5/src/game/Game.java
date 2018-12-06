@@ -13,7 +13,6 @@ import Network.*;
 import place.Direction;
 import place.*;
 import artifact.*;
-import sun.nio.ch.Net;
 
 import java.io.IOException;
 import java.util.ArrayList;
