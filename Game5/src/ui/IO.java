@@ -8,6 +8,9 @@ import ui.one.GUI_1;
 import ui.three.GUI_3;
 import ui.two.GUI_2;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * This class provides the input and output services from the program 
  * to the user.
@@ -22,12 +25,17 @@ public class IO {
 	public static final int GUI_2 = 2;
 	public static final int GUI_3 = 3;
 
+	public static ArrayList<IO> allIO = new ArrayList<IO>();
+
+
+
 	/**
 	 * Constructs an I/O service object using TextInterface
 	 * as the user interface.
 	 * @see ui.TextInterface
 	 */
 	public IO() {
+		allIO.add(this);
 		selectInterface(TEXT);
 	}
 	
@@ -39,6 +47,23 @@ public class IO {
 	public void display(String message) {
 		implementor.display(message);
 		Network.netPrintln(message);
+	}
+
+	public void noNetDisplay(String message){
+		implementor.display(message);
+	}
+
+	public static void globalDisplay(String message){
+		for(int i =0; i <allIO.size();i++){
+			allIO.get(i).noNetDisplay(message);
+		}
+		Network.netPrintln(message);
+	}
+
+	public static void noNetglobalDisplay(String message){
+		for(int i =0; i <allIO.size();i++){
+			allIO.get(i).noNetDisplay(message);
+		}
 	}
 	
 	/**
