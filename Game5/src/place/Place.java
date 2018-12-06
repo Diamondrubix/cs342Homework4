@@ -269,7 +269,13 @@ public class Place {
 				totalWeight += a.weight();
 			}
 			//System.out.println();
-			Character.println("");
+			Character.println("Total weight: "+totalWeight);
+		}
+		if (!characters.isEmpty()) {
+			Character.println("All characters in this place: ");
+			for (Character c : characters) {
+				Character.println(c.getName());
+			}
 		}
 
 
