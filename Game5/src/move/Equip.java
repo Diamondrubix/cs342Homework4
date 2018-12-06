@@ -40,7 +40,7 @@ public class Equip extends Move {
 			character.equipArmor(a);
 		}else{
 			//System.out.println("couldn't use artifact " + artifact);
-			Network.netPrintln("couldn't equip artifact " + artifact);
+			Character.println("couldn't equip artifact " + artifact);
 		}
 	}
 }

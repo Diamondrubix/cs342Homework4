@@ -6,6 +6,7 @@ package place;
 import Network.Network;
 import artifact.Artifact;
 import game.CleanLineScanner;
+import character.Character;
 
 import java.util.*;
 
@@ -79,12 +80,12 @@ public class Direction {
 			locked = !(locked);
 			//System.out.println(locked);
 			//System.out.println("Used " + a.name() + "!\n");
-			Network.netPrintln(String.valueOf(locked));
-			Network.netPrintln("Used " + a.name() + "!\n");
+			Character.println(String.valueOf(locked));
+			Character.println("Used " + a.name() + "!\n");
 		}
 		else {
 			//System.out.println("Keypattern does not match.\n");
-			Network.netPrintln("Keypattern does not match.\n");
+			Character.println("Keypattern does not match.\n");
 			// System.out.println("Actual " + this.lockPattern + " given " + a.getKeyPattern());
 		}
 	}
@@ -110,15 +111,15 @@ public class Direction {
 			return to;
 		// Locked, return original
 		//System.out.println("\nThat direction is locked. Find the key and use it!");
-		Network.netPrintln("\nThat direction is locked. Find the key and use it!");
+		Character.println("\nThat direction is locked. Find the key and use it!");
 		return from;
 	}
 	public void print() {
 		// Direction ID
 		//System.out.println("`direction ID: " + this.ID);
 		//System.out.println("DirType: " + dir);
-		Network.netPrintln("`direction ID: " + this.ID);
-		Network.netPrintln("DirType: " + dir);
+		Character.println("`direction ID: " + this.ID);
+		Character.println("DirType: " + dir);
 	}
 	// Prints out all of the Direction information. DEBUGGING AND TESTING ONLY
 	public void print_DEBUG() {

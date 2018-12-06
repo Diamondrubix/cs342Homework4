@@ -245,20 +245,20 @@ public class Place {
 
 		//System.out.println("~~~~~~~~~~~~~~~~~~~~~");
 		//System.out.println(description);
-		Network.netPrintln("~~~~~~~~~~~~~~~~~~~~~");
-		Network.netPrintln(description);
+		Character.println("~~~~~~~~~~~~~~~~~~~~~");
+		Character.println(description);
 		int totalWeight = 0;
 		// Print all the available artifacts in the room.
 		if ( !artifacts.isEmpty() ) {
 			//System.out.print("All available artifacts: ");
-			Network.netPrintln("All available artifacts: ");
+			Character.println("All available artifacts: ");
 			for (Artifact a : artifacts ) {
 				//System.out.print(a.name() + ", ");
-				Network.netPrintln(a.name() + ", ");
+				Character.println(a.name() + ", ");
 				totalWeight += a.weight();
 			}
 			//System.out.println();
-			Network.netPrintln("");
+			Character.println("");
 		}
 
 

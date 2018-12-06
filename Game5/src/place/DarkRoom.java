@@ -41,6 +41,6 @@ public class DarkRoom extends Place {
 	@Override
 	public void print() {
 		//System.out.println("It's too dark in here to see anything...");
-		Network.netPrintln("It's too dark in here to see anything...");
+		Character.println("It's too dark in here to see anything...");
 	}
 }

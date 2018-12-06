@@ -37,10 +37,10 @@ public class GetItem extends Move {
 		Artifact a = currentPlace.removeArtifact(artifactName);
 		if(a==null){ // Artifact not found.
 			//System.out.println("No artifacts to pick up/could not pick it up");
-			Network.netPrintln("No artifacts to pick up/could not pick it up");
+			Character.println("No artifacts to pick up/could not pick it up");
 		}else {
 			//System.out.println("Picked up " + artifactName);
-			Network.netPrintln("Picked up " + artifactName);
+			Character.println("Picked up " + artifactName);
 			character.addArtifact(a);
 		}
 	}

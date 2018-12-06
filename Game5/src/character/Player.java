@@ -30,7 +30,7 @@ public class Player extends Character{
     @Override
     public boolean makeMove() {
         //SOystem.out.print("\n"+name+": ");
-        Network.netPrintln("\n"+name+": ");
+        Character.println("\n"+name+": ");
 				if (io == null) {
 					System.out.println("io null");
 					System.exit(-1);

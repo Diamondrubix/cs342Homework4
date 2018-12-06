@@ -131,10 +131,10 @@ public class Artifact {
 		System.out.println("Weight: " + this.mobility);
 		System.out.println(this.description);
 		*/
-		Network.netPrintln(this.name);
-		Network.netPrintln("Value: " + this.value);
-		Network.netPrintln("Weight: " + this.mobility);
-		Network.netPrintln(this.description);
+		Character.println(this.name);
+		Character.println("Value: " + this.value);
+		Character.println("Weight: " + this.mobility);
+		Character.println(this.description);
 	}
 	
 	/**

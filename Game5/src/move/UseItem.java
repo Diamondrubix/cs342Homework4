@@ -40,7 +40,7 @@ public class UseItem extends Move {
 			a.use(character, currentPlace);
 		}else{
 			//System.out.println("couldn't use artifact " + artifact);
-			Network.netPrintln("couldn't use artifact " + artifact);
+			Character.println("couldn't use artifact " + artifact);
 		}
 	}
 }

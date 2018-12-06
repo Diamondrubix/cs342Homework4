@@ -255,7 +255,7 @@ public class Character {
         location.ambientFunction(this);
 				if (health <= 0) {
 					Game.removeCharacter(this);
-					Network.netPrintln(name +" has died.");
+					Character.println(name +" has died.");
 				}
 				return true;
     }

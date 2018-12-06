@@ -36,6 +36,6 @@ public class DropItem extends Move {
 	public void execute() {
 		character.drop(artifactName);
 		//System.out.println("Dropped: " + artifactName);
-		Network.netPrintln("Dropped: " + artifactName.toLowerCase());
+		Character.println("Dropped: " + artifactName.toLowerCase());
 	}
 }
