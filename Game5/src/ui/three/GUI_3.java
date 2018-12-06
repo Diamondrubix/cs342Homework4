@@ -61,7 +61,6 @@ public class GUI_3 implements UserInterface {
         submit.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent ea) {
         		GUI_3.this.inputTrigger = true;
-        		textField.setText("");
         	}
         });
         // Set the default button on 'Enter' to submit
@@ -95,22 +94,40 @@ public class GUI_3 implements UserInterface {
         sPanel = new JPanel();
         // Inventory button
         inveBtn = new JButton("Inventory");
+        inveBtn.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent ea) {
+        		GUI_3.this.inputTrigger = true;
+        		textField.setText("inventory");
+        	}
+        });
         // Look button
         lookBtn = new JButton("Look");
+        lookBtn.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent ea) {
+        		GUI_3.this.inputTrigger = true;
+        		textField.setText("look");
+        	}
+        });
         // Quit button
         quitBtn = new JButton("QUIT");
         quitBtn.setBackground(new Color(209,52,52) );
         quitBtn.setForeground(Color.WHITE);
-        // Function - Quit the game
         quitBtn.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent ea) {
+        		GUI_3.this.inputTrigger = true;
+        		textField.setText("quit");
+        	}
+        });
+        // Reset button - QUIT ALL
+        resetBtn = new JButton("EXIT GAME");
+        resetBtn.setBackground(new Color(5, 69, 173) );
+        resetBtn.setForeground(Color.WHITE);
+        // Function - Quit the game
+        resetBtn.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent ea) {
         		System.exit(0);
         	}
         });
-        // Reset button
-        resetBtn = new JButton("RESET");
-        resetBtn.setBackground(new Color(5, 69, 173) );
-        resetBtn.setForeground(Color.WHITE);
         // Add components to panel
         sPanel.add(lookBtn);
         sPanel.add(inveBtn);
@@ -152,6 +169,8 @@ public class GUI_3 implements UserInterface {
 			}
 		}
 		inputTrigger = false;
-		return textField.getText();
+		String textRetrieved = textField.getText();
+		textField.setText("");
+		return textRetrieved;
 	}
 }
