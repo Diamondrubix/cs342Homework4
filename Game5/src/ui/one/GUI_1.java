@@ -2,6 +2,7 @@
 package ui.one;
 
 import ui.UserInterface;
+import character.Character;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ import java.awt.Dimension;
 public class GUI_1 implements UserInterface {
 	private final JFrame frame;
 	private JTextField inputField = new JTextField();
+	JTextArea dialog = new JTextArea("all dialog", 20, 10);
 	private volatile boolean inputReceived = false;
 	
 	public GUI_1() {
@@ -48,7 +50,7 @@ public class GUI_1 implements UserInterface {
 	 * @param message message to display
 	 */
 	public void display(String message) {
-		
+		dialog.append(message);
 	}
 	
 	/**
@@ -67,7 +69,7 @@ public class GUI_1 implements UserInterface {
 			}
 		}
 		
-		System.out.println("inputField: " + inputField.getText());
+		System.out.println("DEBUG inputField: " + inputField.getText());
 		inputReceived = false;
 		return inputField.getText();
 	}
@@ -75,7 +77,7 @@ public class GUI_1 implements UserInterface {
 	/* Set up components for the frame. Extract to other classes later. */
 	
 	private void init() {
-		JTextArea dialog = new JTextArea("all dialog", 20, 10);
+		dialog.setEditable(false);
 		JScrollPane scroll = new JScrollPane(dialog); 
 		frame.getContentPane().add(scroll, BorderLayout.CENTER);
 		
@@ -85,7 +87,7 @@ public class GUI_1 implements UserInterface {
 		endTurnButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("inputField: " + GUI_1.this.inputField.getText());
+				// System.out.println("inputField: " + GUI_1.this.inputField.getText());
 				GUI_1.this.inputReceived = true;
 			}
 		});
@@ -95,7 +97,7 @@ public class GUI_1 implements UserInterface {
 	
 		frame.getContentPane().add(inputPanel, BorderLayout.SOUTH);
 		
-		JLabel nameLabel = new JLabel("Player");
+		JLabel nameLabel = new JLabel(Character.currentPlayerName());
 		frame.getContentPane().add(nameLabel, BorderLayout.NORTH);
 		
 		JTextArea inventory = new JTextArea("inventory", 5, 2);
