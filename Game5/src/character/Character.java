@@ -36,10 +36,12 @@ public class Character extends Observable {
     protected ArrayList<Artifact> inventory = new ArrayList<>();
 		protected ArrayList<EquippableArtifact> equipments = new ArrayList<>();
     protected static boolean arePlayers = false;
-    protected int health = 100;
-		protected int damage = 10;
     protected IO io; // Input output interface.
     private static Character currentCharacter;
+		
+		// Character status.
+		protected int health = 100;
+		protected int damage = 10;
 		
 		private int totalValue = 0;
 
@@ -68,9 +70,7 @@ public class Character extends Observable {
 			return damage;
 		}
 		
-		/** 
-		 *
-		 */
+		
     public static void setCurrent(Character c){
         currentCharacter = c;
         c.io.noNetDisplay("\n===============IT IS YOUR TURN===============");
