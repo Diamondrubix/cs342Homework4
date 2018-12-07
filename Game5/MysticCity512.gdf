@@ -1,6 +1,6 @@
 GDF 5.1 Mystic City - Populated! // Magic word, version number, and Environment name.
 
-PLACES 15	// Fourteen Places in this file
+PLACES 20	// Fourteen Places in this file
 // In this test file, the first 6 room numbers are chosen in an X-Y fashion
 // The tens digit indicates the column and the units digit indicates the row
 
@@ -13,9 +13,11 @@ The main exit ( from the game ) is to the west
 
 0
 13	Ogre's Lair	// OL
-2
+4
 You have entered the Ogre's Lair!  Better leave before he wakes up . . .
-There are doors to the south and the east
+There are doors to the south and the east.
+You have access to additional areas!!
+Go North to begin traversing your bought DLC.
 
 0
 23	Treasure Storeroom	// TS
@@ -45,6 +47,43 @@ This room has shelves full of bottles and jars
 Some labels read "Powdered bat's wings" and "Toad eyes".
 There is a door to the east, and a stairway leading up.
 
+1
+14	Underwater Room		// UR
+3
+This room is completely submerged in cold water. 
+Player/NPC should not stay here too long unless they have a ScubaSuit.
+You may go back (South), or North to the Dark room.
+
+3
+15	Dark Room			// DR
+4
+It's really dark in this room. Player can't see a thing...
+user should have a flashlight to navigate and see what
+exists in this room. Drawbacks occur if no light exists..
+You can go back (South), or SE to the Fountain Room.
+
+5
+25	Fountain Room			// FR
+4
+This room is very colorful and bright. The light shines
+upon a crystal clear water fountain. The user heals while 
+standing nearby it.
+You are able to go SW, N, or E.
+
+4
+26	Space Room			// SR
+3
+There's no oxygen in this room. Player cannot breathe...
+User should wear a space suit in order to pass without harm.
+You may only go back South.
+
+6
+35	River Room			// RR
+4
+You have to cross a river or travel down it. Watch out for jumping 
+fish, crocodiles and the occasional rapids and waterfalls. Don't fall in!
+This is a watery room that can drag you faster than you could imagine.
+Go West to return to the Fountain Room.
 
 //The next set of rooms is version 1 of the catacombs. 
 //You need to travel through and back in order to get to the stage 2 of the game,
@@ -107,7 +146,7 @@ This room has lava
 There are doors to the west
 
 
-DIRECTIONS 37	//Thirty seven directions defined ( No number 15 )
+DIRECTIONS 47	//Thirty seven directions defined ( No number 15 )
 
 //Direction numbers are chosen arbitrarily from top to bottom and left to right
 
@@ -160,10 +199,26 @@ DIRECTIONS 37	//Thirty seven directions defined ( No number 15 )
 36	106	NW	11	0	// C6 to PS, shortcut
 
 // New paths in version 5.1
-
+// REFER TO NEW PICTURE OF DIAGRAM
+// MysticCity_1.png & MysticCity_2.png
+// Lava Room paths
 37 22 E 1000 0 //PE to LR
 38 1000 W 22 0 //LR to PE
-
+// Underwater Room paths
+39	13	N 	14	0	// OL to UR
+40	14	S 	13	0	// UR to OL
+41	14  N 	15	0	// UR to DR
+// Dark Room paths
+42	15	S 	14	0	// DR to UR
+43	15 	SE 	25	0	// DR to FR
+// Fountain room paths
+44	25	SW 	14	0	// FR to UR
+45	25	N 	26	0	// FR to SR
+46	25	E 	35	0	// FR to RR
+// Space Room paths
+47	26 	S 	25	0	// SR to FR
+// River Room paths
+48	35	W 	25 	0	// RR to FR
 
 
 // CHARACTERS section is new, and has not been tested
