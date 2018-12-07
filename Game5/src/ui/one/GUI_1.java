@@ -61,6 +61,7 @@ public class GUI_1 implements UserInterface, Observer {
 	 */
 	public void display(String message) {
 		dialog.append(message);
+		dialog.setCaretPosition(dialog.getDocument().getLength());
 	}
 	
 	/**
@@ -81,6 +82,7 @@ public class GUI_1 implements UserInterface, Observer {
 			}
 		}
 		inputReceived = false;
+		inputField.setText("");
 		// System.out.println("DEBUG inputField: " + input);
 		
 		if (input.equals("QUIT") || input.equals("Q") || input.equals("EXIT")) {
@@ -141,11 +143,12 @@ public class GUI_1 implements UserInterface, Observer {
 		statsPanel.add(stats, BorderLayout.CENTER);
 		charInfoPanel.add(statsPanel);
 		
+		JScrollPane scrollInventory = new JScrollPane(inventory);
 		JPanel inventoryPanel = new JPanel(new BorderLayout());
 		JLabel inventoryLabel = new JLabel("Inventory");
 		inventory.setEditable(false);
 		inventoryPanel.add(inventoryLabel, BorderLayout.NORTH);
-		inventoryPanel.add(inventory, BorderLayout.CENTER);
+		inventoryPanel.add(scrollInventory, BorderLayout.CENTER);
 		charInfoPanel.add(inventoryPanel);
 		// frame.getContentPane().add(inventory, BorderLayout.LINE_END);
 		frame.getContentPane().add(charInfoPanel, BorderLayout.LINE_START);
