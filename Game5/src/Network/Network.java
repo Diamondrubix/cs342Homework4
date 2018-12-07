@@ -36,6 +36,10 @@ public class Network {
         }
     }
 
+    public static void failed(){
+        multiplayer = false;
+    }
+
     /*
     will simply return a client object
      */

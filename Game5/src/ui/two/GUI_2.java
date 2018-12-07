@@ -4,6 +4,9 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.Observable;
+import java.util.Observer;
+import character.Character;
 
 import game.KeyboardScanner;
 import ui.UserInterface;
@@ -14,7 +17,7 @@ import ui.UserInterface;
  *
  * @author Adam Arato aarato2
  */
-public class GUI_2 implements UserInterface {
+public class GUI_2 implements UserInterface, Observer {
 
 	private static final int FRAME_WIDTH = 700;
 	private static final int FRAME_HEIGHT = 700;
@@ -24,12 +27,13 @@ public class GUI_2 implements UserInterface {
 	private JButton send;
 	private JLabel label;
 	private JTextField commandInput = new JTextField(20);
+	private JTextArea inventory = new JTextArea(10,20);
 	private JTextArea textOutput;
 	private JScrollPane areaScrollPane;
 	private boolean gotInput = false;
 
 	public GUI_2() {
-		frame = new JFrame();
+		frame = new JFrame(Character.currentPlayerName());
 		panel = new JPanel();
 		send = new JButton("Send");
 		panel.add(send);
@@ -50,6 +54,7 @@ public class GUI_2 implements UserInterface {
 		textOutput.setEditable(false);
 		panel.add(areaScrollPane);
 
+		panel.add(inventory);
 
 		frame.add(panel);
 
@@ -89,6 +94,13 @@ public class GUI_2 implements UserInterface {
 		textOutput.append(message);
 
 	}
+	@Override
+	public void update(Observable o, Object arg) {
+		String[] msg = (String[]) arg;
+		// System.out.println("DEBUG "+ (String) arg);
+		inventory.setText(msg[0]);
+
+	}
 	
 	/**
 	 * Get user input method for this class.
@@ -97,6 +109,8 @@ public class GUI_2 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
+		frame.toFront();
+		frame.requestFocus();
 
 		while(!gotInput){
 			try {
