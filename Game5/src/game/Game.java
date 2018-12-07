@@ -304,6 +304,7 @@ public class Game {
 		System.out.println("------------------------------------------------");
 		int winner = -1;
 		int ammount = 0;
+		boolean alive = true;
 		for(int i =0; i<characters.size();i++){
 			int temp = characters.get(i).getTotalValue();
 			//System.out.println("totalVal: "+temp);
@@ -318,10 +319,15 @@ public class Game {
 			if(temp>ammount){
 				winner = i;
 				ammount = temp;
+				alive = false;
 			}
 		}
 		if(winner !=-1){
-			System.out.println(characters.get(winner).getName()+" won with a grand total of "+ammount);
+			if(alive) {
+				System.out.println(characters.get(winner).getName() + " won with a grand total of " + ammount);
+			}else{
+				System.out.println(deadCharacters.get(winner).getName() + " won with a grand total of " + ammount);
+			}
 		}else{
 			System.out.println("you are all losers for having a value of 0");
 		}
