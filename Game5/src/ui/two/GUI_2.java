@@ -107,13 +107,20 @@ public class GUI_2 implements UserInterface {
 			}
 		}
 		gotInput = false;
-		String line =commandInput.getText();
+		String line =commandInput.getText().toUpperCase();
+		String ret = commandInput.getText();
 		commandInput.setText("");
-		return line;
 
-
-		//KeyboardScanner sc = KeyboardScanner.getKeyboardScanner();
-		//return sc.nextLine();
+		if (line.equals("QUIT") || line.equals("Q") || line.equals("EXIT")) {
+			frame.dispose();
+		}
+		else if (line.contains("GUI")) {
+			String[] words = line.split("\\s+");
+			if (Integer.parseInt(words[1]) != 2) {
+				frame.dispose();
+			}
+		}
+		return ret;
 
 	}
 }
