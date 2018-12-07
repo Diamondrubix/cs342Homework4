@@ -68,6 +68,7 @@ public class Place {
 			// Failed file parsing, incorrect assigning.
 		}
 	}
+	
 	// Constructor for creating the place object
 	public Place(int ID, String name, String description) {
 		this.ID = ID;

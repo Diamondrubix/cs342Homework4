@@ -38,6 +38,9 @@ public class GUI_1 implements UserInterface, Observer {
 	private volatile boolean inputReceived = false;
 	private volatile String input;
 	
+	/**
+	 * Constructs the GUI_1 object and runs the frame.
+	 */
 	public GUI_1() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		frame = new JFrame("Game");
@@ -95,7 +98,7 @@ public class GUI_1 implements UserInterface, Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("DEBUG "+ (String) arg);
+		// System.out.println("DEBUG "+ (String) arg);
 		inventory.setText((String)arg);
 	}
 	

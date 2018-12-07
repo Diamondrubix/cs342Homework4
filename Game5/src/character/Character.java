@@ -41,44 +41,65 @@ public class Character extends Observable {
     protected Armor armorEquip;
     protected IO io; // Input output interface.
     private static Character currentCharacter;
+		
+		private int totalValue = 0;
 
     /*
     gets the total value of a characters inventory
      */
-    public int getTotalValue(){
-        int val = 0;
-        for(int i =0; i < inventory.size();i++){
-            val+=inventory.get(i).value();
-        }
-        return val;
-    }
-    /*
-    getter for the name
+		public int getTotalValue() {
+			return totalValue;
+		}
+		
+    /**
+		 * Returns the name of the character.
+		 *
+		 * @return name
      */
     public String getName(){
         return name;
     }
+		
+		/**
+		 * Returns the maximum damage that can be dealt the character.
+		 *
+		 * @return damage amount
+     */
 		public int getDamage() {
 			return damage;
 		}
-
+		
+		/** 
+		 *
+		 */
     public static void setCurrent(Character c){
         currentCharacter = c;
         c.io.noNetDisplay("\nIT IS YOUR TURN");
     }
-
+		
+		/**
+		 * Helper method to print to this Character instance's 
+		 * IO interface.
+		 */
     public static void println(String msg){
         currentCharacter.io.display(msg + "\n");
     }
-
+		
+		/**
+		 * Returns the current active player name.
+		 *
+		 * @return character name
+		 */
     public static String currentPlayerName(){
         return currentCharacter.name;
     }
 
-
-	/*
-	main constructor by which characters are made.
-	 */
+		
+		/**
+		 * Constructs a Character instance given a Scanner to a file.
+		 *
+		 * @param sc Scanner instance to a file
+		 */
     public Character(Scanner sc){
 				//Get place information.
 				String[] tokens = CleanLineScanner.getTokens(sc);
@@ -155,9 +176,12 @@ public class Character extends Observable {
         location = Place.getPlaceByID(l);
     }
 
-    /*
-    returns a character by its id
-     */
+    /**
+		 * Returns a Character instance given its id.
+		 *
+		 * @param id unique integer identifier
+		 * @return Character instance with identifier id
+		 */
     public static Character getCharacterByID(int i){
         return characters.get(i);
     }
@@ -201,9 +225,10 @@ public class Character extends Observable {
         }
     }
 
-    /*
-			grabs and returns a random object from the characters inventory. 
-			Will be null if inventory is empty.
+    /**
+		 * Returns a random artifact from the character's inventory
+		 *
+		 * @return returns null if inventory is empty.
 		 */
     protected Artifact randomArtifactFromInventory(){
         int max = inventory.size();
@@ -214,20 +239,33 @@ public class Character extends Observable {
         int min = 0;
         int choice = (int) ((Math.random() * ((max - min) + 1)) + min);
         return inventory.get(choice);
-
     }
-
+		
+		/**
+		 * Increases the character's health.
+		 * 
+		 * @param h the amount of health added
+		 */
     public void heal(int h){
         health+=h;
     }
 
+		/**
+		 * Reduces the character's health.
+		 *
+		 * @param d the amount of health taken away
+		 */
     public void damage(int d){
         health-=d;
     }
 
-    /*
-			drops the specified artifact
-		*/
+    /**
+		 * Drops the artifact given by its name from character inventory to 
+		 * the floor.
+		 *
+		 * @param thing artifact name
+		 * @return true if sucessful, false if the artifact is not in inventory
+		 */
     public boolean drop(String thing){
         for(int i =0; i< inventory.size();i++){
             String name = inventory.get(i).name().toLowerCase();
@@ -241,7 +279,15 @@ public class Character extends Observable {
         }
         return false;
     }
-
+		
+		/**
+		 * Returns an Artifact instance given a string name of the artifact.
+		 * Returns null if the artifact does not exist in this Character's 
+		 * inventory.
+		 *
+		 * @param str artifact name
+		 * @return Artifact instance
+		 */
     public Artifact strToArtifact(String str){
         str = str.toLowerCase();
         for(int i =0; i< inventory.size();i++){
@@ -251,21 +297,6 @@ public class Character extends Observable {
         }
         return null;
     }
-		
-		/**
-		 * Checks if a certain type of armor is being used.
-		 *
-		 * @param armor type of armor
-		 * @return true if ArmorType armor is equipped
-		 */
-		@Deprecated
-		public boolean armorEquipped(ArmorType armor) {
-			for (EquippableArtifact ea: equipments) {
-				
-			}
-			if (armorEquip == null) return false;
-			return (armorEquip.getType() == armor);
-		}
 		
 		/**
 		 * Checks if a certain type of armor is being used.
@@ -283,25 +314,9 @@ public class Character extends Observable {
 		}
 		
 		/**
-		 * Equips armor.
-		 *
-		 * @param armor Armor object
-		 */
-		@Deprecated
-		public void equipArmor(Artifact armor) {
-			if (armor instanceof Armor) {
-				armorEquip = (Armor) armor;
-				inventory.remove(armor);
-			}
-			else {
-				System.out.println("Not an Armor");
-			}
-		}
-		
-		/**
 		 * Equips an Equippable item.
 		 *
-		 * @param item an Artifact instance of an Equippable item
+		 * @param str Artifact instance of an Equippable item
 		 */
 		public void equipArtifact(Artifact artifact) {
 			if (artifact instanceof EquippableArtifact) {
@@ -321,6 +336,27 @@ public class Character extends Observable {
 			}
 		}
 		
+		/**
+		 * Un-equips an Equippable item.
+		 *
+		 * @param name Artifact name of an Equippable item
+		 */
+		public void unequipArtifact(String name) {
+			for (Artifact a : equipments) {
+				if (a.name().equals(name)) {
+					equipments.remove(a);
+					inventory.add(a);
+					// Decrease stat.
+					if (a instanceof Weapon) {
+						damage -= ((Weapon) a).getDamage();
+					}
+					
+					//Tell observer to update state.
+					this.setChanged();
+					this.notifyObservers(inventoryToString());
+				}
+			}
+		}
 		
 		/*
 		smple helper function to check not null
@@ -328,29 +364,75 @@ public class Character extends Observable {
 		public boolean checkFor(String str) {
 			return (strToArtifact(str) != null);
 		}
-
+		
+		/**
+		 * Removes all equipment and drops all items to the current location.
+		 */
+		public void dropAll() {
+			this.calculateTotalValue();
+			for (Artifact a: equipments) {
+				equipments.remove(a);
+				inventory.add(a);
+			}
+			//Drop all inventory
+			for (Artifact a: inventory) {
+				location.addArtifact(a);
+			}
+			inventory.clear();
+		}
+		
+		/**
+		 * This method is called at the end of each character's turn. 
+		 * 
+		 * @return always returns true
+		 */
     public boolean makeMove(){
         //System.out.println("this is the character move function. this should not be running.");
         location.ambientFunction(this);
 				if (health <= 0) {
+					// Remove all equipments
 					Game.removeCharacter(this);
 					Character.println(name +" has died.");
 				}
 				return true;
     }
-
+		
+		/**
+		 * Changes the location of the character.
+		 *
+		 * @param p target location
+		 */
     public void setLocation(Place p){
         location = p;
     }
 		
+		/**
+		 * Builds the list of items in inventory without its descriptions
+		 * onto a String object. 
+		 * The string is fully formatted with newline characters.
+		 *
+		 * @return string containing list of items in inventory
+		 */
 		private String inventoryToString() {
 			StringBuilder message = new StringBuilder();
 			for(Artifact a : inventory){
 				message.append(a.name()).append("\n");
 				message.append("Value: ").append(a.value()).append("\n");
-				message.append("Weight: ").append(a.weight()).append("\n");
-				message.append(a.description()).append("\n");
+				message.append("Weight: ").append(a.weight()).append("\n").append("\n");
+				// message.append(a.description()).append("\n");
 			}
 			return message.toString();
 		}
+		
+		private void calculateTotalValue(){
+			int val = 0;
+			for(int i =0; i < inventory.size();i++){
+					val+=inventory.get(i).value();
+			}
+			for (Artifact a: equipments) {
+				val += a.value();
+			}
+			totalValue = val;
+		}
+
 }

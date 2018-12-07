@@ -47,6 +47,7 @@ public class Game {
 	 * @param c character to be removed
 	 */
 	public static void removeCharacter(Character c) {
+		c.dropAll();
 		characters.remove(c);
 		// Note: Have not implemented loot-drop
 	}
@@ -274,14 +275,15 @@ public class Game {
 				exit = characters.get(i).makeMove();
 				if(shouldExit())break;
 			}
-
 		}
+		
 		System.out.println("\n\n\n");
 		System.out.println("------------------------------------------------");
 		int winner = -1;
 		int ammount = 0;
 		for(int i =0; i<characters.size();i++){
 			int temp = characters.get(i).getTotalValue();
+			System.out.println("totalVal: "+temp);
 			if(temp>ammount){
 				winner = i;
 				ammount = temp;
