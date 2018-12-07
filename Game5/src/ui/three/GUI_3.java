@@ -164,6 +164,8 @@ public class GUI_3 implements UserInterface {
 	 * @return user input
 	 */
 	public String getLine() {
+		frame.toFront();
+		frame.requestFocus();
 		while (!inputTrigger) {
 			try {
 				Thread.sleep(200);
@@ -173,7 +175,15 @@ public class GUI_3 implements UserInterface {
 		}
 		inputTrigger = false;
 		String textRetrieved = textField.getText();
+
 		textField.setText("");
+		if (textRetrieved.toUpperCase().contains("GUI") ) {
+			String[] words = textRetrieved.toUpperCase().split("\\s+");
+			if (Integer.parseInt(words[1]) != 2) {
+				frame.dispose();
+			}
+		}
+
 		return textRetrieved;
 	}
 }
