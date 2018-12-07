@@ -37,10 +37,13 @@ type localhost, then switch back to the first program and start moving. You will
 the second running program. There is no error checking in this process and the program will crash
 if either port 3001 is occupied or if you do not give it a proper ip address.
 
+The winner for the game will be calculated by the value of the artifacts the player
+are carrying at the time when the game ends.
 The names of each player will be printed on the console so the input following the name
-will be the action of that player. To use a gui use gui <number>
-replace <number> with numbers (0-4) 0 is the text interface 1 is Alex, 2 is Adam and 3 is Zain
+will be the action of that player.
 Valid Commands list (case insensitive):
+	GUI <number> - Picks the user interface for the game. The valid numbers are:
+								 0 is the text interface, 1 is Alex, 2 is Adam and 3 is Zain
 	Exit - Exits the game
 	Look - Prints out information about the current player location and player health and equipment
 	Inventory OR Inve - Prints out the player inventory
