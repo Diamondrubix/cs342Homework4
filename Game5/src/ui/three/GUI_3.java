@@ -179,7 +179,7 @@ public class GUI_3 implements UserInterface {
 		textField.setText("");
 		if (textRetrieved.toUpperCase().contains("GUI") ) {
 			String[] words = textRetrieved.toUpperCase().split("\\s+");
-			if (Integer.parseInt(words[1]) != 2) {
+			if (Integer.parseInt(words[1]) != 3) {
 				frame.dispose();
 			}
 		}

@@ -105,14 +105,19 @@ by all group members for changes/adjustments.
 
 // HOMEWORK 5
 
-My responsibility for this project was to get my end of the GUI working for implementation of the final homework
-along with completing the UML diagram. For my GUI, I added all typical functions plus buttons for the character 
+For this project I had to get my end of the GUI working for implementation of the final homework
+along with the completion of the UML diagram. For my GUI, I added all typical functions plus buttons for the character 
 to see their inventory, quit, or exit the whole entire game. The GUI was linked to Alex and Adam's GUI 
-with the UserInterface. Additionally, like in HW 4, the 2nd task I worked on was the complete UML diagram for HW 5. 
+with the UserInterface. 
+
+Additionally, like in HW 4, the 2nd task I worked on was the complete UML diagram for HW 5. 
 Anything that was missed or incorrect from the last diagram has been updated for the finished program. 
-Additions include new interface classes, armor/weapons/equippable classes (alex actually developed this, see his 
-readme), and fixed some inheritance connections that were wrong previously. Everything in HW 4 for places has been 
-transferred over to this new HW. Alex oey took care of the actual implementation and got it to work with his Armor injection.
-Lastly, I helped find compilation errors and bugs with Adam and Alex and helped whenever applicable.
+Additions include new interface classes, armor/weapons/equippable classes (alex made armor equippables, see his 
+readme), and fixed some inheritance connections that were wrong previously.
+
+Lastly, I added a major expansion to the old MysticCity that incorporates the places that I added last HW (version 512). 
+I drew up a picture that outlines all new additions and changes to the map. See MysticCity_1.png and MysticCity_2.png, 
+both show the working version when MysticCity512.gdf is ran. All directions are working and their respective artifacts
+required to retrieve the ambient function benefits (See HW4 readme for more information on Place details).
 
 
