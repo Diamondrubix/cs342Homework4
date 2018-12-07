@@ -41,6 +41,8 @@ support equipping the armor. Lastly, I added javadoc documentation for some clas
 
 Zain Zahran (zzahra2) :
 
+// HOMEWORK 4
+
 My part of the project was the same as everyone else for the merge step. We all sat together to
 attempt to get all of our classes together to compile. This was challenging since we had to
 consistently modify each of our classes, rename functions, etc. 
@@ -60,5 +62,17 @@ The 2nd main thing I worked on, was the UML diagram. For that, I was able to cre
 of our program and give a better understanding of the fundamentals occuring within. Everyone chipped in here
 to make sure that their new features were included in the UML diagram. Everything was confirmed and verified
 by all group members for changes/adjustments.
+
+// HOMEWORK 5
+
+My responsibility for this project was to get my end of the GUI working for implementation of the final homework
+along with completing the UML diagram. For my GUI, I added all typical functions plus buttons for the character 
+to see their inventory, quit, or exit the whole entire game. The GUI was linked to Alex and Adam's GUI 
+with the UserInterface. Additionally, like in HW 4, the 2nd task I worked on was the complete UML diagram for HW 5. 
+Anything that was missed or incorrect from the last diagram has been updated for the finished program. 
+Additions include new interface classes, armor/weapons/equippable classes (alex actually developed this, see his 
+readme), and fixed some inheritance connections that were wrong previously. Everything in HW 4 for places has been 
+transferred over to this new HW. Alex oey took care of the actual implementation and got it to work with his Armor injection.
+Lastly, I helped find compilation errors and bugs with Adam and Alex and helped whenever applicable.
 
 
