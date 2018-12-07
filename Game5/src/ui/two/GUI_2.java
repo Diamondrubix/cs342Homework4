@@ -92,6 +92,7 @@ public class GUI_2 implements UserInterface, Observer {
 	 */
 	public void display(String message) {
 		textOutput.append(message);
+		textOutput.setCaretPosition(textOutput.getDocument().getLength());
 
 	}
 	@Override
