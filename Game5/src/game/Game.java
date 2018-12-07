@@ -306,7 +306,7 @@ public class Game {
 		int ammount = 0;
 		for(int i =0; i<characters.size();i++){
 			int temp = characters.get(i).getTotalValue();
-			System.out.println("totalVal: "+temp);
+			//System.out.println("totalVal: "+temp);
 			if(temp>ammount){
 				winner = i;
 				ammount = temp;
@@ -314,7 +314,7 @@ public class Game {
 		}
 		for(int i =0; i<deadCharacters.size();i++){
 			int temp = deadCharacters.get(i).getTotalValue();
-			System.out.println("totalVal: "+temp);
+			//System.out.println("totalVal: "+temp);
 			if(temp>ammount){
 				winner = i;
 				ammount = temp;
