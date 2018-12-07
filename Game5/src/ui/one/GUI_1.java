@@ -49,7 +49,7 @@ public class GUI_1 implements UserInterface, Observer {
 		init();
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-		frame.setBounds(0,0,800, 600);
+		frame.setBounds(0, 0, (int) (screenSize.width*0.95), (int) (screenSize.height*0.9));
 		frame.setVisible(true);
 	}
 	
@@ -70,6 +70,8 @@ public class GUI_1 implements UserInterface, Observer {
 	 * @return user input
 	 */
 	public String getLine() {
+		frame.toFront();
+		frame.requestFocus();
 		while (!inputReceived) {
 			try {
 				Thread.sleep(200);

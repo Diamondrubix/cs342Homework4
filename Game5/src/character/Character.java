@@ -73,7 +73,7 @@ public class Character extends Observable {
 		 */
     public static void setCurrent(Character c){
         currentCharacter = c;
-        c.io.noNetDisplay("\nIT IS YOUR TURN");
+        c.io.noNetDisplay("\n===============IT IS YOUR TURN===============");
     }
 		
 		/**
@@ -199,11 +199,11 @@ public class Character extends Observable {
     dislays health and armor
      */
     public void print(){
-        System.out.println("health: " + health);
-				if (equipments.isEmpty()) {
-					System.out.println("Equipped: ");
+        Character.println("health: " + health);
+				if (!equipments.isEmpty()) {
+					Character.println("Equipped: ");
 					for (EquippableArtifact ea: equipments) {
-						System.out.println(ea.name());
+						Character.println(ea.name());
 					}
 				}
     }
@@ -391,7 +391,9 @@ public class Character extends Observable {
 		 */
     public boolean makeMove(){
         //System.out.println("this is the character move function. this should not be running.");
-        location.ambientFunction(this);
+        this.setChanged();
+				this.notifyObservers(packObservableObj());
+				location.ambientFunction(this);
 				if (health <= 0) {
 					// Remove all equipments
 					Game.removeCharacter(this);

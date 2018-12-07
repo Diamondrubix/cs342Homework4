@@ -55,6 +55,24 @@ support equipping the armor. Lastly, I added javadoc documentation for some clas
 
 // HOMEWORK 5
 
+I added GUI 1 that has a textfield accept commands to the character that selects the 
+GUI. The command is submitted to the game by pressing the end turn button.
+This GUI has a dialog from the game that is located in the center of the screen
+and two side panels that shows the current status of the character (such as damage and
+health) and the contents of the character's inventory. After switching for the first 
+time, the values in these side panels will not be available. 
+In addition, I implemented the IO class, the interface to the GUI(s) and TextInterface. 
+
+Next, I enhanced the gameplay by adding combat features that allows combat between 
+player characters. The combat is turn-based and players who have health below zero
+will die at the end of the round (not immediately). To make combat more interesting,
+I added weapons as artifacts to the game that enhances the combat abilities of the 
+player.
+
+To accomodate the addition of weapons and armors, I added EQUIP command and list of 
+equipped items to each character. The bonuses from a weapon will not be activated
+if it is not equipped. Also, I modified the GDF file format and added various 
+methods to the existing classes to support the combat mechanics.
 
 Zain Zahran (zzahra2) :
 
