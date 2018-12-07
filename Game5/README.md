@@ -27,7 +27,7 @@ make a sort of "spectator mode" for other people connecting.
 I added a gui (gui 2) that has a small textbox where you enter the commands as you would in the terminal version. You hit send
 in order to actually have the command go through. the larger text box below is where everything is displayed. you only see
 things releated to what your player did or can see. It will display "your turn" when it is your turn to move. every player has
-their own gui
+their own gui. The gui also has a smaller box below showing the players inventory. Player's name will be in the JFrame.
 
 I also changed up how the network code works in order to support the new bridge interface. The netprintln was replaced with two
 new types of prints in the IO class. regular print automatically sends to the network is network is enabled. nonetprint does not.
@@ -38,6 +38,11 @@ character gui.
 
 Network stuff was reworked to work with a spectator gui. I added a gui for the spectator. Now the spectator can see what every player
 sees combined. Even displays that go only to specific players will be visable to the spectator.
+
+Game class was modified not to crash when given an invalid ip address.
+
+I added the win condition of after all players have exited the total value of their inventory is added up and the player with the highest
+value wins the game. If there is a tie everybody is a loser.
 
 
 Alexander Oey (aoey2):
