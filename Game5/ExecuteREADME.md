@@ -46,7 +46,7 @@ Valid Commands list (case insensitive):
 	Get <name> - Picks up an artifact specified by the argument <name> from the player location
 	Drop <name> - Drops an artifact specified by the argument <name> from the player inventory
 	Use <name> - Use an artifact in player inventory specified by <name>
-	Equip <name> - Equip an artifact in player inventory. Only works for Armor types.
+	Equip <name> - Equip an artifact in player inventory. Only works for Equippable Artifact types.
 	Go <dir...> - Move to another place with <dir> as the move direction from current location.
 	             Supports sending multiple directions in one command which will move the character
 							 through multiple rooms.
