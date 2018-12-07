@@ -28,6 +28,7 @@ make a sort of "spectator mode" for other people connecting.
 
 Alexander Oey (aoey2):
 
+// HOMEWORK 4
 My part of the project that was included in the merger were all classes in the artifact,
 game and move package. In this homework, I modified the implementation of the Move class
 from using enumeration MoveType to command design pattern. In addition, I modified some 
@@ -37,6 +38,8 @@ I added the Armor functionality to the game and some the supporting functionalit
 as modifications to the GDF file format, the parser in the Game class for both special
 Artifact and Place types, and added some methods in the Character class to 
 support equipping the armor. Lastly, I added javadoc documentation for some classes.
+
+// HOMEWORK 5
 
 
 Zain Zahran (zzahra2) :
