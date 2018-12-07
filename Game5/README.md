@@ -42,6 +42,7 @@ support equipping the armor. Lastly, I added javadoc documentation for some clas
 Zain Zahran (zzahra2) :
 
 // HOMEWORK 4
+
 My part of the project was the same as everyone else for the merge step. We all sat together to
 attempt to get all of our classes together to compile. This was challenging since we had to
 consistently modify each of our classes, rename functions, etc. 
@@ -63,6 +64,7 @@ to make sure that their new features were included in the UML diagram. Everythin
 by all group members for changes/adjustments.
 
 // HOMEWORK 5
+
 My responsibility for this project was to get my end of the GUI working for implementation of the final homework
 along with completing the UML diagram. For my GUI, I added all typical functions plus buttons for the character 
 to see their inventory, quit, or exit the whole entire game. The GUI was linked to Alex and Adam's GUI 
