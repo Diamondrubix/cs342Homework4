@@ -30,6 +30,7 @@ public class Game {
 	//Fields.
 	private String name;
 	public static ArrayList<Character> characters = new ArrayList<Character>();
+	public static ArrayList<Character> deadCharacters = new ArrayList<Character>();
 	private int neededPlayers = 0;
 	
 	/**
@@ -49,6 +50,7 @@ public class Game {
 	public static void removeCharacter(Character c) {
 		c.dropAll();
 		characters.remove(c);
+		deadCharacters.add(c);
 		// Note: Have not implemented loot-drop
 	}
 	
@@ -304,6 +306,14 @@ public class Game {
 		int ammount = 0;
 		for(int i =0; i<characters.size();i++){
 			int temp = characters.get(i).getTotalValue();
+			System.out.println("totalVal: "+temp);
+			if(temp>ammount){
+				winner = i;
+				ammount = temp;
+			}
+		}
+		for(int i =0; i<deadCharacters.size();i++){
+			int temp = deadCharacters.get(i).getTotalValue();
 			System.out.println("totalVal: "+temp);
 			if(temp>ammount){
 				winner = i;
