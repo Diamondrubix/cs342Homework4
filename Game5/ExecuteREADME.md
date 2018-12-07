@@ -38,7 +38,8 @@ the second running program. There is no error checking in this process and the p
 if either port 3001 is occupied or if you do not give it a proper ip address.
 
 The names of each player will be printed on the console so the input following the name
-will be the action of that player. 
+will be the action of that player. To use a gui use gui <number>
+replace <number> with numbers (0-4) 0 is the text interface 1 is Alex, 2 is Adam and 3 is Zain
 Valid Commands list (case insensitive):
 	Exit - Exits the game
 	Look - Prints out information about the current player location and player health and equipment
