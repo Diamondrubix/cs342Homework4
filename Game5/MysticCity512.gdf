@@ -349,6 +349,18 @@ It looks like it took a long time to make.
 Armor to protect character from lava.
 0 // Selector
 
+-42 1
+1000 10 3 0 Space Suit
+1
+This suit will allow you to float in space... and breathe.
+1 // Selector
+
+-42 1
+12 10 3 0 Scuba Suit
+1
+This is what you're going to need to swim under water.
+2 // Selector
+
 -42 2
 13 5 3 0 Generic Sword
 1
