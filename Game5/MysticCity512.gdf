@@ -260,7 +260,7 @@ He took a wrong turn somewhere, and now can't find the way out!
 Not all who wander are lost, but this one is.
 
 
-ARTIFACTS	17	// Semi-random artifacts - New ones at the beginning.
+ARTIFACTS	19	// Semi-random artifacts - New ones at the beginning.
 
 -42 0 // placeorcharID SpecialBit
 21	20	10	0	Hitchiker's Guide // ID value mobility keyPattern name 
