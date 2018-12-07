@@ -32,9 +32,9 @@ import java.util.Observable;
 public class GUI_1 implements UserInterface, Observer {
 	private final JFrame frame;
 	private JTextField inputField = new JTextField();
-	private JTextArea dialog = new JTextArea("all dialog", 20, 10);
-	private JTextArea inventory = new JTextArea("inventory", 20, 10);
-	private JTextArea stats = new JTextArea("stats", 10, 10);
+	private JTextArea dialog = new JTextArea(20, 10);
+	private JTextArea inventory = new JTextArea(20, 10);
+	private JTextArea stats = new JTextArea(10, 10);
 	
 	private volatile boolean inputReceived = false;
 	private volatile String input;
@@ -131,10 +131,20 @@ public class GUI_1 implements UserInterface, Observer {
 		frame.getContentPane().add(nameLabel, BorderLayout.NORTH);
 		
 		JPanel charInfoPanel = new JPanel(new GridLayout(2,1));
+		
+		JPanel statsPanel = new JPanel(new BorderLayout());
+		JLabel statsLabel = new JLabel("Player Stats");
 		stats.setEditable(false);
+		statsPanel.add(statsLabel, BorderLayout.NORTH);
+		statsPanel.add(stats, BorderLayout.CENTER);
+		charInfoPanel.add(statsPanel);
+		
+		JPanel inventoryPanel = new JPanel(new BorderLayout());
+		JLabel inventoryLabel = new JLabel("Inventory");
 		inventory.setEditable(false);
-		charInfoPanel.add(stats);
-		charInfoPanel.add(inventory);
+		inventoryPanel.add(inventoryLabel, BorderLayout.NORTH);
+		inventoryPanel.add(inventory, BorderLayout.CENTER);
+		charInfoPanel.add(inventoryPanel);
 		// frame.getContentPane().add(inventory, BorderLayout.LINE_END);
 		frame.getContentPane().add(charInfoPanel, BorderLayout.LINE_START);
 	}
