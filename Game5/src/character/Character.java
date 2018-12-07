@@ -38,7 +38,6 @@ public class Character extends Observable {
     protected static boolean arePlayers = false;
     protected int health = 100;
 		protected int damage = 10;
-    protected Armor armorEquip;
     protected IO io; // Input output interface.
     private static Character currentCharacter;
 		
@@ -192,7 +191,7 @@ public class Character extends Observable {
     public boolean addArtifact(Artifact a){
         inventory.add(a);
 				this.setChanged();
-				this.notifyObservers(inventoryToString());
+				this.notifyObservers(packObservableObj());
         return true;
     }
 
@@ -201,8 +200,11 @@ public class Character extends Observable {
      */
     public void print(){
         System.out.println("health: " + health);
-				if (armorEquip != null) {
-					System.out.println("Equipped: " + armorEquip.name());
+				if (equipments.isEmpty()) {
+					System.out.println("Equipped: ");
+					for (EquippableArtifact ea: equipments) {
+						System.out.println(ea.name());
+					}
 				}
     }
 
@@ -273,7 +275,7 @@ public class Character extends Observable {
                 location.addArtifact(inventory.get(i));
                 inventory.remove(i);
 								this.setChanged();
-								this.notifyObservers(inventoryToString());
+								this.notifyObservers(packObservableObj());
                 return true;
             }
         }
@@ -323,17 +325,18 @@ public class Character extends Observable {
 				equipments.add((EquippableArtifact) artifact);
 				inventory.remove(artifact);
 				Character.println(artifact.name() +" equipped.");
+				// Increase stat.
+				if (artifact instanceof Weapon) {
+					damage += ((Weapon)artifact).getDamage();
+				}
+			
 				this.setChanged();
-				this.notifyObservers(inventoryToString());
+				this.notifyObservers(packObservableObj());
 			}
 			else {
 				Character.println(artifact.name() +" is not an equippable Artifact.");
 			}
-			// Increase stat.
-			if (artifact instanceof Weapon) {
-				damage += ((Weapon)artifact).getDamage();
-				// System.out.println("current damage " + ((Weapon)artifact).getDamage());
-			}
+			
 		}
 		
 		/**
@@ -353,7 +356,7 @@ public class Character extends Observable {
 					
 					//Tell observer to update state.
 					this.setChanged();
-					this.notifyObservers(inventoryToString());
+					this.notifyObservers(packObservableObj());
 				}
 			}
 		}
@@ -371,9 +374,9 @@ public class Character extends Observable {
 		public void dropAll() {
 			this.calculateTotalValue();
 			for (Artifact a: equipments) {
-				equipments.remove(a);
 				inventory.add(a);
 			}
+			equipments.clear();
 			//Drop all inventory
 			for (Artifact a: inventory) {
 				location.addArtifact(a);
@@ -422,6 +425,21 @@ public class Character extends Observable {
 				// message.append(a.description()).append("\n");
 			}
 			return message.toString();
+		}
+		
+		private String statsToString() {
+			StringBuilder message = new StringBuilder();
+			message.append("Health: ").append(health).append("\n");
+			message.append("Damage: ").append(damage).append("\n");
+			return message.toString();
+		}
+		
+		// Packs a String array to an Object.
+		private Object packObservableObj() {
+			String[] obj = new String[2];
+			obj[0] = inventoryToString();
+			obj[1] = statsToString();
+			return (Object) obj;
 		}
 		
 		private void calculateTotalValue(){

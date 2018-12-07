@@ -50,7 +50,7 @@ public class GUI_3 implements UserInterface {
         // Creating the Frame
         frame = new JFrame("GUI Frame");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 400);
+        frame.setSize(600, 500);
 
         /* --NORTH panel-- */
         // Creating the panel at top and adding components
@@ -82,7 +82,8 @@ public class GUI_3 implements UserInterface {
         // Provide scrolling capability
         areaScroll = new JScrollPane(ta);
         areaScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        areaScroll.setPreferredSize(new Dimension(300,300) );
+        areaScroll.setPreferredSize(new Dimension(450,450) );
+
         // Add scrolling text area to center panel
         cPanel.add(areaScroll);
         // ta.append(text);
@@ -152,6 +153,8 @@ public class GUI_3 implements UserInterface {
 	public void display(String message) {
 		// Change to display
 		ta.append(message+"\n");
+		// Auto scroll
+		ta.setCaretPosition(ta.getDocument().getLength());
 	}
 	
 	/**
